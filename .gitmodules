@@ -1,6 +1,6 @@
 [submodule "submodules/linphone"]
 	path = submodules/linphone
-	url = git://git.linphone.org/linphone.git
+	url = git://git.zirgoo.com/linphone.git
 [submodule "submodules/externals/osip"]
 	path = submodules/externals/osip
 	url = git://git.linphone.org/osip.git
@@ -39,7 +39,7 @@
 	url = http://git.chromium.org/webm/libvpx.git
 [submodule "submodules/externals/zrtpcpp"]
 	path = submodules/externals/zrtpcpp
-	url = git://git.linphone.org/zrtpcpp.git
+	url = git://git.zirgoo.com/zrtpcpp.git
 [submodule "submodules/mssilk"]
 	path = submodules/mssilk
 	url = git://git.linphone.org/mssilk.git
