@@ -6,7 +6,7 @@
 	url = git://git.linphone.org/osip.git
 [submodule "submodules/externals/exosip"]
 	path = submodules/externals/exosip
-	url = git://git.linphone.org/exosip.git
+	url = git://git.zirgoo.com/exosip.git
 [submodule "submodules/externals/gsm"]
 	path = submodules/externals/gsm
 	url = git://git.linphone.org/gsm.git
