@@ -580,11 +580,21 @@ static UICompositeViewDescription *compositeDescription = nil;
     }
     NSMutableSet *hiddenKeys = [NSMutableSet set];
     
-#ifndef DEBUG
     [hiddenKeys addObject:@"release_button"];
     [hiddenKeys addObject:@"clear_cache_button"];
     [hiddenKeys addObject:@"battery_alert_button"];
-#endif
+
+    // Customized hidden objects
+    [hiddenKeys addObject:@"wizard_button"];
+    [hiddenKeys addObject:@"domain_preference"];
+    [hiddenKeys addObject:@"proxy_preference"];
+    [hiddenKeys addObject:@"outbound_proxy_preference"];
+    [hiddenKeys addObject:@"enable_video_preference"];
+    [hiddenKeys addObject:@"audio_menu"];
+    [hiddenKeys addObject:@"video_menu"];
+    [hiddenKeys addObject:@"call_menu"];
+    [hiddenKeys addObject:@"network_menu"];
+    [hiddenKeys addObject:@"advanced_menu"];
     
     [hiddenKeys addObject:@"audio_advanced_group"];
     [hiddenKeys addObject:@"playback_gain_preference"];

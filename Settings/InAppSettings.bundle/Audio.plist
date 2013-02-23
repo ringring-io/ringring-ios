@@ -12,7 +12,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 			<key>Key</key>
 			<string>speex_16k_preference</string>
 			<key>Title</key>
@@ -42,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 			<key>Key</key>
 			<string>silk_16k_preference</string>
 			<key>Title</key>
@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 			<key>Key</key>
 			<string>amr_preference</string>
 			<key>Title</key>
@@ -102,7 +102,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 			<key>Key</key>
 			<string>pcmu_preference</string>
 			<key>Title</key>
@@ -112,7 +112,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 			<key>Key</key>
 			<string>pcma_preference</string>
 			<key>Title</key>
