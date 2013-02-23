@@ -186,9 +186,9 @@ static UICompositeViewDescription *compositeDescription = nil;
     
     LinphoneCore *lc = [LinphoneManager getLc];
     LCSipTransports transportValue={0};
-    transportValue.udp_port=5060;
+    transportValue.udp_port=0;
     transportValue.tls_port=0;
-    transportValue.tcp_port=0;
+    transportValue.tcp_port=5060;
     
     if (linphone_core_set_sip_transports(lc, &transportValue)) {
         [LinphoneLogger logc:LinphoneLoggerError format:"cannot set transport"];
@@ -205,7 +205,7 @@ static UICompositeViewDescription *compositeDescription = nil;
     [WizardViewController cleanTextField:connectAccountView];
     [WizardViewController cleanTextField:externalAccountView];
     [WizardViewController cleanTextField:validateAccountView];
-    [self changeView:welcomeView back:FALSE animation:FALSE];
+    [self changeView:connectAccountView back:FALSE animation:FALSE];
     [waitView setHidden:TRUE];
 }
 
@@ -247,7 +247,7 @@ static UICompositeViewDescription *compositeDescription = nil;
         [backButton setHidden:true];
     } else {
         [startButton setHidden:true];
-        [backButton setHidden:false];
+        [backButton setHidden:true];
     }
     
     if (view == validateAccountView) {
@@ -541,7 +541,7 @@ static UICompositeViewDescription *compositeDescription = nil;
         [self.waitView setHidden:false];
         [self addProxyConfig:username password:password
                       domain:[[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]
-                      server:[[LinphoneManager instance] lpConfigStringForKey:@"proxy" forSection:@"wizard"]];
+                      server:nil];
     }
 }
 
