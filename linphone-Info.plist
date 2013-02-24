@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Linphone</string>
+	<string>Zirgoo</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>linphone_icon_57.png</string>
-		<string>linphone_icon_72.png</string>
-		<string>linphone_icon_57@2x.png</string>
-		<string>linphone_icon_72@2x.png</string>
+		<string>zirgoo_icon_57.png</string>
+		<string>zirgoo_icon_72.png</string>
+		<string>zirgoo_icon_57@2x.png</string>
+		<string>zirgoo_icon_72@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -21,10 +21,10 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>linphone_icon_57.png</string>
-				<string>linphone_icon_72.png</string>
-				<string>linphone_icon_57@2x.png</string>
-				<string>linphone_icon_72@2x.png</string>
+				<string>zirgoo_icon_57.png</string>
+				<string>zirgoo_icon_72.png</string>
+				<string>zirgoo_icon_57@2x.png</string>
+				<string>zirgoo_icon_72@2x.png</string>
 			</array>
 		</dict>
 	</dict>
@@ -49,7 +49,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLIconFile</key>
-			<string>linphone_icon_72@2x</string>
+			<string>zirgoo_icon_72@2x</string>
 			<key>CFBundleURLName</key>
 			<string>org.linphone.phone</string>
 			<key>CFBundleURLSchemes</key>
@@ -59,7 +59,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.0.2</string>
+	<string>1.0 pre-alpha</string>
 	<key>NSMainNibFile</key>
 	<string>LinphoneApp</string>
 	<key>NSMainNibFile~ipad</key>

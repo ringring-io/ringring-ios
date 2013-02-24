@@ -77,7 +77,7 @@
     [linphoneIphoneVersionLabel setText:[NSString stringWithFormat:@"%@ iPhone %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
 	 ,[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]]];
 
-    [linphoneCoreVersionLabel setText:[NSString stringWithFormat:@"%@ Core %s", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], linphone_core_get_version()]];
+    [linphoneCoreVersionLabel setText:[NSString stringWithFormat:@"Linphone Core %s", linphone_core_get_version()]];
     
     if([LinphoneManager runningOnIpad]) {
         [LinphoneUtils adjustFontSize:self.view mult:2.22f];

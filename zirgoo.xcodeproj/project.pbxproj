@@ -132,6 +132,11 @@
 		344ABDF114850AE9007420B6 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 344ABDEF14850AE9007420B6 /* libc++.1.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		344ABDF214850AE9007420B6 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 344ABDF014850AE9007420B6 /* libstdc++.6.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34A6ECEB14CF13CB00460C04 /* linphone_icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A6ECEA14CF13CB00460C04 /* linphone_icon_72.png */; };
+		4D862A6216D99862009E2176 /* zirgoo_icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D862A6116D99862009E2176 /* zirgoo_icon_57.png */; };
+		4D862A6416D99893009E2176 /* zirgoo_icon_57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D862A6316D99892009E2176 /* zirgoo_icon_57@2x.png */; };
+		4D862A6616D998CE009E2176 /* linphone_splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D862A6516D998CE009E2176 /* linphone_splashscreen.png */; };
+		4D862A6816D998DB009E2176 /* linphone_splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D862A6716D998DB009E2176 /* linphone_splashscreen@2x.png */; };
+		4D862A6A16D998F3009E2176 /* linphone_splashscreen-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D862A6916D998F2009E2176 /* linphone_splashscreen-568h@2x.png */; };
 		57F005C415EE2CCF00914747 /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C315EE2CCF00914747 /* linphonerc */; };
 		57F005C515EE2CCF00914747 /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C315EE2CCF00914747 /* linphonerc */; };
 		57F005C815EE2D9200914747 /* linphonerc-factory in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C615EE2D9200914747 /* linphonerc-factory */; };
@@ -625,9 +630,7 @@
 		D350F22C15A43D3400149E54 /* setup_welcome_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D350F21B15A43D3400149E54 /* setup_welcome_logo.png */; };
 		D35406F715A47E9E007E7E81 /* button_background_default.png in Resources */ = {isa = PBXBuildFile; fileRef = D35406F515A47E9E007E7E81 /* button_background_default.png */; };
 		D35406F915A47E9E007E7E81 /* button_background_over.png in Resources */ = {isa = PBXBuildFile; fileRef = D35406F615A47E9E007E7E81 /* button_background_over.png */; };
-		D354944C160B615A0027E44E /* linphone_splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D354944A160B615A0027E44E /* linphone_splashscreen.png */; };
 		D354944D160B615A0027E44E /* linphone_splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D354944A160B615A0027E44E /* linphone_splashscreen.png */; };
-		D354944E160B615A0027E44E /* linphone_splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D354944B160B615A0027E44E /* linphone_splashscreen@2x.png */; };
 		D354944F160B615A0027E44E /* linphone_splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D354944B160B615A0027E44E /* linphone_splashscreen@2x.png */; };
 		D35497FE15875372000081D8 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35497FC15875372000081D8 /* ContactsViewController.m */; };
 		D35497FF15875372000081D8 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35497FC15875372000081D8 /* ContactsViewController.m */; };
@@ -1348,7 +1351,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* LinphoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinphoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* LinphoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinphoneAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* linphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* zirgoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zirgoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22058C70116E305000B08DDD /* linphone_icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linphone_icon_57.png; path = Resources/linphone_icon_57.png; sourceTree = "<group>"; };
 		220FAC79107654FC0068D98F /* eX_call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eX_call.h; sourceTree = "<group>"; };
@@ -1596,7 +1599,7 @@
 		22C7564A13265C6A007BC101 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
 		22C7564B13265C6A007BC101 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
 		22D1B68012A3E0BE001AE361 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
-		22D8F187147548E2008C97DB /* linphone-no-gpl-thirdparties.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "linphone-no-gpl-thirdparties.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D8F187147548E2008C97DB /* zirgoo-no-gpl-thirdparties.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zirgoo-no-gpl-thirdparties.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E0A81B111C44E100B04932 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		22E0A81C111C44E100B04932 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		22E0A81D111C44E100B04932 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -1620,6 +1623,11 @@
 		344ABDEF14850AE9007420B6 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
 		344ABDF014850AE9007420B6 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		34A6ECEA14CF13CB00460C04 /* linphone_icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linphone_icon_72.png; path = Resources/linphone_icon_72.png; sourceTree = "<group>"; };
+		4D862A6116D99862009E2176 /* zirgoo_icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zirgoo_icon_57.png; sourceTree = "<group>"; };
+		4D862A6316D99892009E2176 /* zirgoo_icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zirgoo_icon_57@2x.png"; sourceTree = "<group>"; };
+		4D862A6516D998CE009E2176 /* linphone_splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linphone_splashscreen.png; sourceTree = "<group>"; };
+		4D862A6716D998DB009E2176 /* linphone_splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linphone_splashscreen@2x.png"; sourceTree = "<group>"; };
+		4D862A6916D998F2009E2176 /* linphone_splashscreen-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linphone_splashscreen-568h@2x.png"; sourceTree = "<group>"; };
 		57F005C315EE2CCF00914747 /* linphonerc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = linphonerc; path = Resources/linphonerc; sourceTree = "<group>"; };
 		57F005C615EE2D9200914747 /* linphonerc-factory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "linphonerc-factory"; path = "Resources/linphonerc-factory"; sourceTree = "<group>"; };
 		57F005C715EE2D9200914747 /* linphonerc-factory~ipad */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "linphonerc-factory~ipad"; path = "Resources/linphonerc-factory~ipad"; sourceTree = "<group>"; };
@@ -2525,8 +2533,8 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* linphone.app */,
-				22D8F187147548E2008C97DB /* linphone-no-gpl-thirdparties.app */,
+				1D6058910D05DD3D006BFB54 /* zirgoo.app */,
+				22D8F187147548E2008C97DB /* zirgoo-no-gpl-thirdparties.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2885,6 +2893,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4D862A6916D998F2009E2176 /* linphone_splashscreen-568h@2x.png */,
+				4D862A6716D998DB009E2176 /* linphone_splashscreen@2x.png */,
+				4D862A6516D998CE009E2176 /* linphone_splashscreen.png */,
+				4D862A6316D99892009E2176 /* zirgoo_icon_57@2x.png */,
+				4D862A6116D99862009E2176 /* zirgoo_icon_57.png */,
 				2258633C11410BAC00C5A737 /* README */,
 				22276E8013C73D3100210156 /* libavcodec.a */,
 				22276E8113C73D3100210156 /* libavutil.a */,
@@ -3624,9 +3637,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* linphone */ = {
+		1D6058900D05DD3D006BFB54 /* zirgoo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "linphone" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "zirgoo" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				D33CF34715D3985000CD4B85 /* ShellScript */,
@@ -3640,14 +3653,14 @@
 				D3554ED515CA79B900478841 /* PBXTargetDependency */,
 				D3B90E1B15C2CBC800F64F8C /* PBXTargetDependency */,
 			);
-			name = linphone;
+			name = zirgoo;
 			productName = linphone;
-			productReference = 1D6058910D05DD3D006BFB54 /* linphone.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* zirgoo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		22D8F11D147548E2008C97DB /* linphone-no-gpl-thirdparties */ = {
+		22D8F11D147548E2008C97DB /* zirgoo-no-gpl-thirdparties */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22D8F182147548E2008C97DB /* Build configuration list for PBXNativeTarget "linphone-no-gpl-thirdparties" */;
+			buildConfigurationList = 22D8F182147548E2008C97DB /* Build configuration list for PBXNativeTarget "zirgoo-no-gpl-thirdparties" */;
 			buildPhases = (
 				22D8F11E147548E2008C97DB /* Resources */,
 				D33CF35115D3AC9800CD4B85 /* ShellScript */,
@@ -3661,9 +3674,9 @@
 				D3554ED715CA79C000478841 /* PBXTargetDependency */,
 				D3B90E1D15C2CBCD00F64F8C /* PBXTargetDependency */,
 			);
-			name = "linphone-no-gpl-thirdparties";
+			name = "zirgoo-no-gpl-thirdparties";
 			productName = linphone;
-			productReference = 22D8F187147548E2008C97DB /* linphone-no-gpl-thirdparties.app */;
+			productReference = 22D8F187147548E2008C97DB /* zirgoo-no-gpl-thirdparties.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3674,7 +3687,7 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "linphone" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "zirgoo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -3701,8 +3714,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* linphone */,
-				22D8F11D147548E2008C97DB /* linphone-no-gpl-thirdparties */,
+				1D6058900D05DD3D006BFB54 /* zirgoo */,
+				22D8F11D147548E2008C97DB /* zirgoo-no-gpl-thirdparties */,
 			);
 		};
 /* End PBXProject section */
@@ -4199,8 +4212,6 @@
 				D3328648160B5BC300E6435D /* dialer_alt_disabled_landscape~ipad.png in Resources */,
 				D332864A160B5BC300E6435D /* dialer_alt_disabled.png in Resources */,
 				D332864C160B5BC300E6435D /* dialer_alt_disabled~ipad.png in Resources */,
-				D354944C160B615A0027E44E /* linphone_splashscreen.png in Resources */,
-				D354944E160B615A0027E44E /* linphone_splashscreen@2x.png in Resources */,
 				D38F46F2160C5CC8002D4C4A /* linphone_splashscreen-568h@2x.png in Resources */,
 				D35E91EA160CA0BD0023116B /* field_background.9@2x.png in Resources */,
 				D35E91EE160CA0C70023116B /* button_background_default.9@2x.png in Resources */,
@@ -4226,6 +4237,11 @@
 				D310392A162C3C5200C00C18 /* linphone_splashscreen-Portrait@2x.png in Resources */,
 				D33E1F08164CF35100CFA363 /* callbar_left_padding.png in Resources */,
 				D33E1F0A164CF35100CFA363 /* callbar_right_padding.png in Resources */,
+				4D862A6216D99862009E2176 /* zirgoo_icon_57.png in Resources */,
+				4D862A6416D99893009E2176 /* zirgoo_icon_57@2x.png in Resources */,
+				4D862A6616D998CE009E2176 /* linphone_splashscreen.png in Resources */,
+				4D862A6816D998DB009E2176 /* linphone_splashscreen@2x.png in Resources */,
+				4D862A6A16D998F3009E2176 /* linphone_splashscreen-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5292,7 +5308,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = linphone;
+				PRODUCT_NAME = zirgoo;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5359,7 +5375,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = linphone;
+				PRODUCT_NAME = zirgoo;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5403,7 +5419,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "linphone-no-gpl-thirdparties";
+				PRODUCT_NAME = "zirgoo-no-gpl-thirdparties";
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -5445,7 +5461,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "linphone-no-gpl-thirdparties";
+				PRODUCT_NAME = "zirgoo-no-gpl-thirdparties";
 				SKIP_INSTALL = NO;
 			};
 			name = Release;
@@ -5488,7 +5504,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "linphone-no-gpl-thirdparties";
+				PRODUCT_NAME = "zirgoo-no-gpl-thirdparties";
 				SKIP_INSTALL = NO;
 			};
 			name = Distribution;
@@ -5531,7 +5547,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "linphone-no-gpl-thirdparties";
+				PRODUCT_NAME = "zirgoo-no-gpl-thirdparties";
 				SKIP_INSTALL = NO;
 			};
 			name = DistributionAdhoc;
@@ -5596,7 +5612,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = linphone;
+				PRODUCT_NAME = zirgoo;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5663,7 +5679,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = linphone;
+				PRODUCT_NAME = zirgoo;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5691,7 +5707,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "linphone" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "zirgoo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -5702,7 +5718,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		22D8F182147548E2008C97DB /* Build configuration list for PBXNativeTarget "linphone-no-gpl-thirdparties" */ = {
+		22D8F182147548E2008C97DB /* Build configuration list for PBXNativeTarget "zirgoo-no-gpl-thirdparties" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22D8F183147548E2008C97DB /* Debug */,
@@ -5713,7 +5729,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "linphone" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "zirgoo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
