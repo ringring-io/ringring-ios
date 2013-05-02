@@ -409,13 +409,32 @@ static NSString * const kDisappearAnimation = @"disappear";
 }
 
 - (IBAction)onSettingsClick:(id)event {
-    [[PhoneMainView instance] changeCurrentView:[SettingsViewController compositeViewDescription]];
+    //[[PhoneMainView instance] changeCurrentView:[SettingsViewController compositeViewDescription]];
+    UIAlertView* userExistsView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirmation", nil)
+                                                             message:NSLocalizedString(@"Do you want to close this session and switch to an other account?", nil)
+                                                            delegate:self
+                                                   cancelButtonTitle:@"No"
+                                                   otherButtonTitles:@"Yes", nil];
+    [userExistsView show];
+    [userExistsView release];
 }
 
 - (IBAction)onChatClick:(id)event {
     [[PhoneMainView instance] changeCurrentView:[ChatViewController compositeViewDescription]];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Switch to an other zirgoo account
+    if (buttonIndex == 1)
+    {
+        
+        WizardViewController *controller = DYNAMIC_CAST([[PhoneMainView instance] changeCurrentView:[WizardViewController compositeViewDescription]], WizardViewController);
+        if(controller != nil) {
+            [controller reset];
+        }
+    }
+}
 
 #pragma mark - TPMultiLayoutViewController Functions
 
