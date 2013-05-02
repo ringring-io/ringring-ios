@@ -27,6 +27,8 @@
 #import "ConsoleViewController.h"
 #import "LinphoneCoreSettingsStore.h"
 
+#import <RestKit/RestKit.h>
+
 #include "LinphoneManager.h"
 #include "linphonecore.h"
 
@@ -138,13 +140,24 @@
             return YES;
         }
     
+    [self setupRestKit];
+     
     [self startApplication];
 	NSDictionary *remoteNotif =[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (remoteNotif){
 		[LinphoneLogger log:LinphoneLoggerLog format:@"PushNotification from launch received."];
 		[self processRemoteNotification:remoteNotif];
 	}
+
     return YES;
+}
+
+- (void)setupRestKit{
+    
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://api.zirgoo.com/v1/"]];
+    
+    [[manager HTTPClient] setDefaultHeader:@"X-Parse-REST-API-Key" value:@"your key"];
+    [[manager HTTPClient] setDefaultHeader:@"X-Parse-Application-Id" value:@"your key"];
 }
 
 - (void)startApplication {
@@ -162,7 +175,6 @@
         }
     }
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	

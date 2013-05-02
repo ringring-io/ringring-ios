@@ -12,7 +12,7 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the       
  *  GNU Library General Public License for more details.                
  *                                                                      
- *  You should have received a copy of the GNU General Public License   
+ *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software         
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */ 
@@ -21,39 +21,30 @@
 #import "LinphoneManager.h"
 #import "PhoneMainView.h"
 
-#import <XMLRPCConnection.h>
-#import <XMLRPCConnectionManager.h>
-#import <XMLRPCResponse.h>
-#import <XMLRPCRequest.h>
+#import "RestKit/RestKit.h"
 
 typedef enum _ViewElement {
-    ViewElement_Username = 100,
-    ViewElement_Password = 101,
-    ViewElement_Password2 = 102,
-    ViewElement_Email = 103,
-    ViewElement_Domain = 104,
-    ViewElement_Label = 200,
-    ViewElement_Error = 201
+    ViewElement_Email = 100,
+    ViewElement_ActivationCode = 101
 } ViewElement;
+
+typedef enum _AlertView {
+    AlertView_EmailAlreadyRegistered = 100,
+    AlertView_InvalidActivationCode = 102
+} AlertView;
 
 @implementation WizardViewController
 
 @synthesize contentView;
 
-@synthesize welcomeView;
-@synthesize choiceView;
-@synthesize createAccountView;
-@synthesize connectAccountView;
-@synthesize externalAccountView;
-@synthesize validateAccountView;
+@synthesize registerEmailView;
+@synthesize activateEmailView;
 
 @synthesize waitView;
 
 @synthesize backButton;
-@synthesize startButton;
 
 @synthesize viewTapGestureRecognizer;
-
 
 #pragma mark - Lifecycle Functions
 
@@ -75,17 +66,12 @@ typedef enum _ViewElement {
     
     [contentView release];
     
-    [welcomeView release];
-    [choiceView release];
-    [createAccountView release];
-    [connectAccountView release];
-    [externalAccountView release];
-    [validateAccountView release];
+    [registerEmailView release];
+    [activateEmailView release];
     
     [waitView release];
     
     [backButton release];
-    [startButton release];
     
     [historyViews release];
     
@@ -158,12 +144,8 @@ static UICompositeViewDescription *compositeDescription = nil;
     [contentView addGestureRecognizer:viewTapGestureRecognizer];
     
     if([LinphoneManager runningOnIpad]) {
-        [LinphoneUtils adjustFontSize:welcomeView mult:2.22f];
-        [LinphoneUtils adjustFontSize:choiceView mult:2.22f];
-        [LinphoneUtils adjustFontSize:createAccountView mult:2.22f];
-        [LinphoneUtils adjustFontSize:connectAccountView mult:2.22f];
-        [LinphoneUtils adjustFontSize:externalAccountView mult:2.22f];
-        [LinphoneUtils adjustFontSize:validateAccountView mult:2.22f];
+        [LinphoneUtils adjustFontSize:registerEmailView mult:2.22f];
+        [LinphoneUtils adjustFontSize:activateEmailView mult:2.22f];
     }
 }
 
@@ -199,13 +181,9 @@ static UICompositeViewDescription *compositeDescription = nil;
     [[LinphoneManager instance] lpConfigSetString:@"" forKey:@"stun_preference"];
     linphone_core_set_stun_server(lc, NULL);
     linphone_core_set_firewall_policy(lc, LinphonePolicyNoFirewall);
-    [WizardViewController cleanTextField:welcomeView];
-    [WizardViewController cleanTextField:choiceView];
-    [WizardViewController cleanTextField:createAccountView];
-    [WizardViewController cleanTextField:connectAccountView];
-    [WizardViewController cleanTextField:externalAccountView];
-    [WizardViewController cleanTextField:validateAccountView];
-    [self changeView:connectAccountView back:FALSE animation:FALSE];
+    [WizardViewController cleanTextField:registerEmailView];
+    [WizardViewController cleanTextField:activateEmailView];
+    [self changeView:registerEmailView back:FALSE animation:FALSE];
     [waitView setHidden:TRUE];
 }
 
@@ -242,15 +220,11 @@ static UICompositeViewDescription *compositeDescription = nil;
 
 - (void)changeView:(UIView *)view back:(BOOL)back animation:(BOOL)animation {
     // Change toolbar buttons following view
-    if (view == welcomeView) {
-        [startButton setHidden:false];
+    //if (view == welcomeView) {
         [backButton setHidden:true];
-    } else {
-        [startButton setHidden:true];
-        [backButton setHidden:true];
-    }
+    //}
     
-    if (view == validateAccountView) {
+    if (view == activateEmailView) {
         [backButton setEnabled:FALSE];
     } else {
         [backButton setEnabled:TRUE];
@@ -373,47 +347,205 @@ static UICompositeViewDescription *compositeDescription = nil;
 	linphone_core_add_auth_info([LinphoneManager getLc], info);
 }
 
-- (void)checkUserExist:(NSString*)username {
-    [LinphoneLogger log:LinphoneLoggerLog format:@"XMLRPC check_account %@", username];
+- (void)registerEmail:(NSString*)email {
     
-    NSURL *URL = [NSURL URLWithString:[[LinphoneManager instance] lpConfigStringForKey:@"service_url" forSection:@"wizard"]];
-    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
-    [request setMethod: @"check_account" withParameters:[NSArray arrayWithObjects:username, nil]];
+    RKObjectManager* objectManager = [RKObjectManager sharedManager];
+    NSDictionary* params = [[NSDictionary alloc] initWithObjectsAndKeys: email, @"email", nil];
     
-    XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
-    [manager spawnConnectionWithXMLRPCRequest: request delegate: self];
-    
-    [request release];
-    [waitView setHidden:false];
+    [[objectManager HTTPClient]setParameterEncoding:AFJSONParameterEncoding];
+    [[objectManager HTTPClient]postPath:@"users" parameters:params
+                                success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonErrorArray = [((NSDictionary *)responseObject) valueForKey: @"error"];
+         
+         if(jsonErrorArray != nil) {
+             NSString *jsonErrorCode = [jsonErrorArray objectForKey: @"code"];
+             NSString *jsonErrorMessage = [jsonErrorArray objectForKey: @"message"];
+         
+             // Catch email is already registered error
+             if([jsonErrorCode isEqual: @"101"]) {
+                 // Popup confirmation for validation code email
+                 alertViewId = AlertView_EmailAlreadyRegistered;
+                 UIAlertView* userExistsView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Email is already registered", nil)
+                                                                          message:NSLocalizedString(@"Do you want to receive a new activation code?", nil)
+                                                                         delegate:self
+                                                                cancelButtonTitle:@"No"
+                                                                otherButtonTitles:@"Yes", nil];
+                 [waitView setHidden:true];
+                 [userExistsView show];
+                 [userExistsView release];
+             }
+             else {
+                 UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                                     message:NSLocalizedString(jsonErrorMessage, nil)
+                                                                    delegate:nil
+                                                           cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                           otherButtonTitles:nil,nil];
+                 [waitView setHidden:true];
+                 [errorView show];
+                 [errorView release];
+
+             }
+         } else {
+             
+             [waitView setHidden:true];
+             [self changeView:activateEmailView back:FALSE animation:TRUE];
+         }
+     }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSString *errorMessage = @"";
+
+         // Check internet connection error
+         if([error code] == -1009) {
+             errorMessage = [error localizedDescription];
+         } else {
+             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+         }
+         
+         UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                             message:NSLocalizedString(errorMessage, nil)
+                                                            delegate:nil
+                                                   cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                   otherButtonTitles:nil,nil];
+         [waitView setHidden:true];
+         [errorView show];
+         [errorView release];
+     }];
 }
 
-- (void)createAccount:(NSString*)identity password:(NSString*)password email:(NSString*)email {
-    NSString *useragent = [LinphoneManager getUserAgent];
-    [LinphoneLogger log:LinphoneLoggerLog format:@"XMLRPC create_account_with_useragent %@ %@ %@ %@", identity, password, email, useragent];
+- (void)renewActivationCode:(NSString*)email {
     
-    NSURL *URL = [NSURL URLWithString: [[LinphoneManager instance] lpConfigStringForKey:@"service_url" forSection:@"wizard"]];
-    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
-    [request setMethod: @"create_account_with_useragent" withParameters:[NSArray arrayWithObjects:identity, password, email, useragent, nil]];
+    RKObjectManager* objectManager = [RKObjectManager sharedManager];
+    NSDictionary* params = [[NSDictionary alloc] initWithObjectsAndKeys: email, @"email", nil];
     
-    XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
-    [manager spawnConnectionWithXMLRPCRequest: request delegate: self];
-    
-    [request release];
-    [waitView setHidden:false];
+    [[objectManager HTTPClient]setParameterEncoding:AFJSONParameterEncoding];
+    [[objectManager HTTPClient]postPath:@"users/renewactivationcode" parameters:params
+                                success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonErrorArray = [((NSDictionary *)responseObject) valueForKey: @"error"];
+         
+         if(jsonErrorArray != nil) {
+             NSString *jsonErrorMessage = [jsonErrorArray objectForKey: @"message"];
+            
+             UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                                 message:NSLocalizedString(jsonErrorMessage, nil)
+                                                                delegate:nil
+                                                       cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                       otherButtonTitles:nil,nil];
+             [waitView setHidden:true];
+             [errorView show];
+             [errorView release];
+         }
+         else {
+             
+             [waitView setHidden:true];
+             [self changeView:activateEmailView back:FALSE animation:TRUE];
+         }
+             
+     }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSString *errorMessage = @"";
+             
+         // Check internet connection error
+         if([error code] == -1009) {
+             errorMessage = [error localizedDescription];
+         } else {
+             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+         }
+             
+         UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                             message:NSLocalizedString(errorMessage, nil)
+                                                            delegate:nil
+                                                   cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                   otherButtonTitles:nil,nil];
+         [waitView setHidden:true];
+         [errorView show];
+         [errorView release];
+     }];
 }
 
-- (void)checkAccountValidation:(NSString*)identity {
-    [LinphoneLogger log:LinphoneLoggerLog format:@"XMLRPC check_account_validated %@", identity];
+- (void)activateEmail:(NSString*)email activationCode:(NSString*)activationCode {
     
-    NSURL *URL = [NSURL URLWithString: [[LinphoneManager instance] lpConfigStringForKey:@"service_url" forSection:@"wizard"]];
-    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
-    [request setMethod: @"check_account_validated" withParameters:[NSArray arrayWithObjects:identity, nil]];
+    RKObjectManager* objectManager = [RKObjectManager sharedManager];
+    NSDictionary* params = [[NSDictionary alloc] initWithObjectsAndKeys: email, @"email", activationCode, @"activation_code", nil];
     
-    XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
-    [manager spawnConnectionWithXMLRPCRequest: request delegate: self];
+    [[objectManager HTTPClient]setParameterEncoding:AFJSONParameterEncoding];
+    [[objectManager HTTPClient]postPath:@"users/activate" parameters:params
+                                success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonErrorArray = [((NSDictionary *)responseObject) valueForKey: @"error"];
+         
+         if(jsonErrorArray != nil) {
+             NSString *jsonErrorCode = [jsonErrorArray objectForKey: @"code"];
+             NSString *jsonErrorMessage = [jsonErrorArray objectForKey: @"message"];
+             
+             // Catch invalid email or activation code error
+             if([jsonErrorCode isEqual: @"104"]) {
+                 // Popup confirmation for validation code email
+                 alertViewId = AlertView_InvalidActivationCode;
+                 UIAlertView* invalidActivationCodeView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid activation code", nil)
+                                                                          message:NSLocalizedString(@"Do you want to retype the activation code?", nil)
+                                                                         delegate:self
+                                                                cancelButtonTitle:@"No"
+                                                                otherButtonTitles:@"Yes", nil];
+                 [waitView setHidden:true];
+                 [invalidActivationCodeView show];
+                 [invalidActivationCodeView release];
+             }
+             
+             // Skip user is already activated error
+             else if(![jsonErrorCode isEqual: @"103"]) {
+                 UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                                     message:NSLocalizedString(jsonErrorMessage, nil)
+                                                                    delegate:nil
+                                                           cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                           otherButtonTitles:nil,nil];
+                 [waitView setHidden:true];
+                 [errorView show];
+                 [errorView release];
+             }
+             else {
+                 [self signIn:email password:activationCode];
+             }
+         }
+         else {
+             [self signIn:email password:activationCode];
+         }
+     }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSString *errorMessage = @"";
+         
+         // Check internet connection error
+         if([error code] == -1009) {
+             errorMessage = [error localizedDescription];
+         } else {
+             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+         }
+         
+         UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                             message:NSLocalizedString(errorMessage, nil)
+                                                            delegate:nil
+                                                   cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                   otherButtonTitles:nil,nil];
+         [waitView setHidden:true];
+         [errorView show];
+         [errorView release];
+     }];
+}
+
+- (void)signIn:(NSString*)email password:(NSString*)password {
     
-    [request release];
-    [waitView setHidden:false];
+    // Convert email to sip friendly usernames
+    NSString *userName = [email stringByReplacingOccurrencesOfString: @"@"
+                                                withString: @"_AT_"];
+    
+    // Register to SIP server
+    [self addProxyConfig:userName password:password
+                  domain:[[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]
+                  server:[[LinphoneManager instance] lpConfigStringForKey:@"proxy" forSection:@"wizard"]];
 }
 
 - (void)registrationUpdate:(LinphoneRegistrationState)state {
@@ -424,16 +556,21 @@ static UICompositeViewDescription *compositeDescription = nil;
             break;
         }
         case LinphoneRegistrationNone:
-        case LinphoneRegistrationCleared:  {
-            [waitView setHidden:true];
-            break;
-        }
-        case LinphoneRegistrationFailed: {
-            [waitView setHidden:true];
-            break;
-        }
+        case LinphoneRegistrationCleared:
+        case LinphoneRegistrationFailed:
         case LinphoneRegistrationProgress: {
-            [waitView setHidden:false];
+            
+            NSString *errorMessage = [NSString stringWithFormat:@"Internal Zirgoo registration error."];
+            
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                                                                message:NSLocalizedString(errorMessage, nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                      otherButtonTitles:nil,nil];
+            [waitView setHidden:true];
+            [errorView show];
+            [errorView release];
+            
             break;
         }
         default:
@@ -456,9 +593,6 @@ static UICompositeViewDescription *compositeDescription = nil;
 
 #pragma mark - Action Functions
 
-- (IBAction)onStartClick:(id)sender {
-    [self changeView:choiceView back:FALSE animation:TRUE];
-}
 
 - (IBAction)onBackClick:(id)sender {
     if ([historyViews count] > 0) {
@@ -468,105 +602,9 @@ static UICompositeViewDescription *compositeDescription = nil;
     }
 }
 
-- (IBAction)onCancelClick:(id)sender {
-    [[PhoneMainView instance] changeCurrentView:[DialerViewController compositeViewDescription]];
-}
-
-- (IBAction)onCreateAccountClick:(id)sender {
-    [self changeView:createAccountView back:FALSE animation:TRUE];
-}
-
-- (IBAction)onConnectAccountClick:(id)sender {
-    [self changeView:connectAccountView back:FALSE animation:TRUE];
-}
-
-- (IBAction)onExternalAccountClick:(id)sender {
-    [self changeView:externalAccountView back:FALSE animation:TRUE];
-}
-
-- (IBAction)onCheckValidationClick:(id)sender {
-    NSString *username = [WizardViewController findTextField:ViewElement_Username view:contentView].text;
-    [self checkAccountValidation:[NSString stringWithFormat:@"%@@%@", username, [[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]]];
-}
-
-- (IBAction)onSignInExternalClick:(id)sender {
-    NSString *username = [WizardViewController findTextField:ViewElement_Username  view:contentView].text;
-    NSString *password = [WizardViewController findTextField:ViewElement_Password  view:contentView].text;
-    NSString *domain = [WizardViewController findTextField:ViewElement_Domain  view:contentView].text;
-    
-    
-    NSMutableString *errors = [NSMutableString string];
-    if ([username length] == 0) {
-        
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a username.\n", nil)]];
-    }
-    
-    if ([domain length] == 0) {
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a domain.\n", nil)]];
-    }
-    
-    if([errors length]) {
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
-                                                            message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                  otherButtonTitles:nil,nil];
-        [errorView show];
-        [errorView release];
-    } else {
-        [self.waitView setHidden:false];
-        [self addProxyConfig:username password:password domain:domain server:nil];
-    }
-}
-
-- (IBAction)onSignInClick:(id)sender {
-    NSString *username = [WizardViewController findTextField:ViewElement_Username  view:contentView].text;
-    NSString *password = [WizardViewController findTextField:ViewElement_Password  view:contentView].text;
-    
-    NSMutableString *errors = [NSMutableString string];
-    if ([username length] == 0) {
-        
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"Please enter a username.\n", nil)]];
-    }
-    
-    if([errors length]) {
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
-                                                            message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                  otherButtonTitles:nil,nil];
-        [errorView show];
-        [errorView release];
-    } else {
-        [self.waitView setHidden:false];
-        [self addProxyConfig:username password:password
-                      domain:[[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]
-                      server:nil];
-    }
-}
-
-- (IBAction)onRegisterClick:(id)sender {
-    NSString *username = [WizardViewController findTextField:ViewElement_Username  view:contentView].text;
-    NSString *password = [WizardViewController findTextField:ViewElement_Password  view:contentView].text;
-    NSString *password2 = [WizardViewController findTextField:ViewElement_Password2  view:contentView].text;
+- (IBAction)onRegisterEmailClick:(id)sender {
     NSString *email = [WizardViewController findTextField:ViewElement_Email view:contentView].text;
     NSMutableString *errors = [NSMutableString string];
-    
-    int username_length = [[LinphoneManager instance] lpConfigIntForKey:@"username_length" forSection:@"wizard"];
-    int password_length = [[LinphoneManager instance] lpConfigIntForKey:@"password_length" forSection:@"wizard"];
-    
-    if ([username length] < username_length) {
-        
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"The username is too short (minimum %d characters).\n", nil), username_length]];
-    }
-    
-    if ([password length] < password_length) {
-        [errors appendString:[NSString stringWithFormat:NSLocalizedString(@"The password is too short (minimum %d characters).\n", nil), password_length]];
-    }
-    
-    if (![password2 isEqualToString:password]) {
-        [errors appendString:NSLocalizedString(@"The passwords are different.\n", nil)];
-    }
     
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @".+@.+\\.[A-Za-z]{2}[A-Za-z]*"];
     if(![emailTest evaluateWithObject:email]) {
@@ -582,8 +620,59 @@ static UICompositeViewDescription *compositeDescription = nil;
         [errorView show];
         [errorView release];
     } else {
-        [self checkUserExist:username];
+        [waitView setHidden:false];
+        userEmail = email;
+        [self registerEmail:email];
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertViewId == AlertView_EmailAlreadyRegistered) {
+        // Request for new activation code
+        if (buttonIndex == 1)
+        {
+            NSString *email = [WizardViewController findTextField:ViewElement_Email view:contentView].text;
+            
+            [waitView setHidden:false];
+            [self renewActivationCode:email];
+        }
+        
+    }
+    else if(alertViewId == AlertView_InvalidActivationCode) {
+        // Request for new activation code
+        if (buttonIndex == 0)
+        {
+            
+            [WizardViewController cleanTextField:registerEmailView];
+            [WizardViewController cleanTextField:activateEmailView];
+            
+            [self changeView:registerEmailView back:FALSE animation:FALSE];
+            [waitView setHidden:TRUE];
+        }
+    }
+}
+
+
+- (IBAction)onActivateEmailClick:(id)sender {
+    NSString *activationCode = [WizardViewController findTextField:ViewElement_ActivationCode view:contentView].text;
+    NSMutableString *errors = [NSMutableString string];
+    
+    if([activationCode length] == 0) {
+        [errors appendString:NSLocalizedString(@"Enter the activation code.\n", nil)];
+    }
+    
+    if([errors length]) {
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
+                                                            message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  otherButtonTitles:nil,nil];
+        [errorView show];
+        [errorView release];
+    } else {
+        [waitView setHidden:false];
+        [self activateEmail:userEmail activationCode:activationCode];    }
 }
 
 - (IBAction)onViewTap:(id)sender {
@@ -653,97 +742,6 @@ static UICompositeViewDescription *compositeDescription = nil;
         [contentView setShowsVerticalScrollIndicator:TRUE];
     }
     [UIView commitAnimations];
-}
-
-
-#pragma mark - XMLRPCConnectionDelegate Functions
-
-- (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-    [LinphoneLogger log:LinphoneLoggerLog format:@"XMLRPC %@: %@", [request method], [response body]];
-    [waitView setHidden:true];
-    if ([response isFault]) {
-        NSString *errorString = [NSString stringWithFormat:NSLocalizedString(@"Communication issue (%@)", nil), [response faultString]];
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Communication issue",nil)
-                                                            message:errorString
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                  otherButtonTitles:nil,nil];
-        [errorView show];
-        [errorView release];
-    } else if([response object] != nil) { //Don't handle if not object: HTTP/Communication Error
-        if([[request method] isEqualToString:@"check_account"]) {
-            if([response object] == [NSNumber numberWithInt:1]) {
-                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check issue",nil)
-                                                                message:NSLocalizedString(@"Username already exists", nil)
-                                                               delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                      otherButtonTitles:nil,nil];
-                [errorView show];
-                [errorView release];
-            } else {
-                NSString *username = [WizardViewController findTextField:ViewElement_Username view:contentView].text;
-                NSString *password = [WizardViewController findTextField:ViewElement_Password view:contentView].text;
-                NSString *email = [WizardViewController findTextField:ViewElement_Email view:contentView].text;
-                [self createAccount:[NSString stringWithFormat:@"%@@%@", username, [[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]] password:password email:email];
-            }
-        } else if([[request method] isEqualToString:@"create_account_with_useragent"]) {
-            if([response object] == [NSNumber numberWithInt:0]) {
-                NSString *username = [WizardViewController findTextField:ViewElement_Username view:contentView].text;
-                NSString *password = [WizardViewController findTextField:ViewElement_Password view:contentView].text;
-                [self changeView:validateAccountView back:FALSE animation:TRUE];
-                [WizardViewController findTextField:ViewElement_Username view:contentView].text = username;
-                [WizardViewController findTextField:ViewElement_Password view:contentView].text = password;
-            } else {
-                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Account creation issue",nil)
-                                                                    message:NSLocalizedString(@"Can't create the account. Please try again.", nil)
-                                                                   delegate:nil
-                                                          cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                          otherButtonTitles:nil,nil];
-                [errorView show];
-                [errorView release];
-            }
-        } else if([[request method] isEqualToString:@"check_account_validated"]) {
-             if([response object] == [NSNumber numberWithInt:1]) {
-                 NSString *username = [WizardViewController findTextField:ViewElement_Username view:contentView].text;
-                 NSString *password = [WizardViewController findTextField:ViewElement_Password view:contentView].text;
-                [self addProxyConfig:username password:password
-                              domain:[[LinphoneManager instance] lpConfigStringForKey:@"domain" forSection:@"wizard"]
-                              server:[[LinphoneManager instance] lpConfigStringForKey:@"proxy" forSection:@"wizard"]];
-             } else {
-                 UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Account validation issue",nil)
-                                                                     message:NSLocalizedString(@"Your account is not validate yet.", nil)
-                                                                    delegate:nil
-                                                           cancelButtonTitle:NSLocalizedString(@"Continue",nil)
-                                                           otherButtonTitles:nil,nil];
-                 [errorView show];
-                 [errorView release];
-             }
-        }
-    }
-}
-
-- (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-    NSString *errorString = [NSString stringWithFormat:NSLocalizedString(@"Communication issue (%@)", nil), [error localizedDescription]];
-    UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Communication issue", nil)
-                                                    message:errorString
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"Continue", nil)
-                                          otherButtonTitles:nil,nil];
-    [errorView show];
-    [errorView release];
-    [waitView setHidden:true];
-}
-
-- (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    return FALSE;
-}
-
-- (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    
-}
-
-- (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    
 }
 
 

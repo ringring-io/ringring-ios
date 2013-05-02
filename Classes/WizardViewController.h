@@ -7,7 +7,7 @@
  *  the Free Software Foundation; either version 2 of the License, or   
  *  (at your option) any later version.                                 
  *                                                                      
- *  This program is distributed in the hope that it will be useful,     
+ *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of      
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the       
  *  GNU Library General Public License for more details.                
@@ -18,45 +18,34 @@
  */ 
 
 #import <UIKit/UIKit.h>
-#import <XMLRPCConnectionDelegate.h>
 #import "UICompositeViewController.h"
 
-@interface WizardViewController : TPMultiLayoutViewController <UITextFieldDelegate, UICompositeViewDelegate, XMLRPCConnectionDelegate, UIGestureRecognizerDelegate> {
+@interface WizardViewController : TPMultiLayoutViewController <UITextFieldDelegate, UICompositeViewDelegate, UIGestureRecognizerDelegate> {
     @private
     UITextField *activeTextField;
     UIView *currentView;
     NSMutableArray *historyViews;
+    NSString *userEmail;
+    int alertViewId;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentView;
 
-@property (nonatomic, retain) IBOutlet UIView *welcomeView;
-@property (nonatomic, retain) IBOutlet UIView *choiceView;
-@property (nonatomic, retain) IBOutlet UIView *createAccountView;
-@property (nonatomic, retain) IBOutlet UIView *connectAccountView;
-@property (nonatomic, retain) IBOutlet UIView *externalAccountView;
-@property (nonatomic, retain) IBOutlet UIView *validateAccountView;
+@property (nonatomic, retain) IBOutlet UIView *registerEmailView;
+@property (nonatomic, retain) IBOutlet UIView *activateEmailView;
 
 @property (nonatomic, retain) IBOutlet UIView *waitView;
 
 @property (nonatomic, retain) IBOutlet UIButton *backButton;
-@property (nonatomic, retain) IBOutlet UIButton *startButton;
 
 @property (nonatomic, retain) IBOutlet UITapGestureRecognizer *viewTapGestureRecognizer;
 
 - (void)reset;
 
-- (IBAction)onStartClick:(id)sender;
 - (IBAction)onBackClick:(id)sender;
-- (IBAction)onCancelClick:(id)sender;
 
-- (IBAction)onCreateAccountClick:(id)sender;
-- (IBAction)onConnectAccountClick:(id)sender;
-- (IBAction)onExternalAccountClick:(id)sender;
-- (IBAction)onCheckValidationClick:(id)sender;
+- (IBAction)onRegisterEmailClick:(id)sender;
+- (IBAction)onActivateEmailClick:(id)sender;
 
-- (IBAction)onSignInClick:(id)sender;
-- (IBAction)onSignInExternalClick:(id)sender;
-- (IBAction)onRegisterClick:(id)sender;
 
 @end
