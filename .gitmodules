@@ -1,6 +1,6 @@
 [submodule "submodules/linphone"]
 	path = submodules/linphone
-	url = git://git.zirgoo.com/linphone.git
+	url = https://github.com/zirgoo/zirgoo-iphone.git
 [submodule "submodules/externals/osip"]
 	path = submodules/externals/osip
 	url = git://git.linphone.org/osip.git
