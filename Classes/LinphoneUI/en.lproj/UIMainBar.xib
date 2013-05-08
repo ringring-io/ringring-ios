@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">11G63</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1926</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -60,6 +60,7 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 77}, {320, 2000}}</string>
 						<reference key="NSSuperview" ref="1018893129"/>
+						<reference key="NSNextKeyView" ref="60891552"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -229,7 +230,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{256, 0}, {64, 77}}</string>
 						<reference key="NSSuperview" ref="1018893129"/>
-						<reference key="NSNextKeyView" ref="55915342"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -243,7 +244,7 @@
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">0.0</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Settings</string>
+						<string key="IBUINormalTitle">Account</string>
 						<reference key="IBUIHighlightedTitleColor" ref="431727078"/>
 						<reference key="IBUISelectedTitleColor" ref="778491501"/>
 						<reference key="IBUINormalTitleColor" ref="581321397"/>
@@ -268,7 +269,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{128, 0}, {64, 77}}</string>
 						<reference key="NSSuperview" ref="1018893129"/>
-						<reference key="NSNextKeyView" ref="60891552"/>
+						<reference key="NSNextKeyView" ref="55915342"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -722,6 +723,6 @@
 			<string key="settings_over.png">{128, 154}</string>
 			<string key="settings_selected.png">{128, 154}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1926</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

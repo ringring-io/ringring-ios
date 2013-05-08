@@ -486,7 +486,7 @@ static UICompositeViewDescription *compositeDescription = nil;
                  // Popup confirmation for validation code email
                  alertViewId = AlertView_InvalidActivationCode;
                  UIAlertView* invalidActivationCodeView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid activation code", nil)
-                                                                          message:NSLocalizedString(@"Do you want to retype the activation code?", nil)
+                                                                          message:NSLocalizedString(@"Do you want to try again?", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:@"No"
                                                                 otherButtonTitles:@"Yes", nil];
@@ -555,10 +555,7 @@ static UICompositeViewDescription *compositeDescription = nil;
             [[PhoneMainView instance] changeCurrentView:[DialerViewController compositeViewDescription]];
             break;
         }
-        case LinphoneRegistrationNone:
-        case LinphoneRegistrationCleared:
-        case LinphoneRegistrationFailed:
-        case LinphoneRegistrationProgress: {
+        case LinphoneRegistrationFailed: {
             
             NSString *errorMessage = [NSString stringWithFormat:@"Internal Zirgoo registration error."];
             
@@ -573,6 +570,11 @@ static UICompositeViewDescription *compositeDescription = nil;
             
             break;
         }
+            
+        case LinphoneRegistrationNone:
+        case LinphoneRegistrationCleared:
+        case LinphoneRegistrationProgress:
+            break;
         default:
             break;
     }
