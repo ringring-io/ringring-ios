@@ -658,6 +658,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4D6DE0BB173C3C9500305A77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D6F512B171993C80043B54C /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
 		4D98B8CF171E069C00E93D06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4D6F512B171993C80043B54C /* RestKit.xcodeproj */;
@@ -1311,8 +1318,6 @@
 		D381882D15FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/ContactDetailsLabelViewController.xib; sourceTree = "<group>"; };
 		D381882E15FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/ContactDetailsViewController.xib; sourceTree = "<group>"; };
 		D381882F15FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/ContactsViewController.xib; sourceTree = "<group>"; };
-		D381883015FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/DialerViewController.xib; sourceTree = "<group>"; };
-		D381883115FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = "fr.lproj/DialerViewController~ipad.xib"; sourceTree = "<group>"; };
 		D381883215FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/FirstLoginViewController.xib; sourceTree = "<group>"; };
 		D381883315FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HistoryDetailsViewController.xib; sourceTree = "<group>"; };
 		D381883415FE447200C3EDCA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HistoryViewController.xib; sourceTree = "<group>"; };
@@ -1670,8 +1675,6 @@
 		FD61C855169FBD1C001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/ContactDetailsLabelViewController.xib; sourceTree = "<group>"; };
 		FD61C857169FBD74001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/ContactDetailsViewController.xib; sourceTree = "<group>"; };
 		FD61C859169FC1DD001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/ContactsViewController.xib; sourceTree = "<group>"; };
-		FD61C85C169FC2CE001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/DialerViewController.xib; sourceTree = "<group>"; };
-		FD61C85E169FC39D001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = "ru.lproj/DialerViewController~ipad.xib"; sourceTree = "<group>"; };
 		FD61C860169FC419001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/FirstLoginViewController.xib; sourceTree = "<group>"; };
 		FD61C862169FC495001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/HistoryDetailsViewController.xib; sourceTree = "<group>"; };
 		FD61C86E169FE759001AA2D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/HistoryViewController.xib; sourceTree = "<group>"; };
@@ -2971,6 +2974,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4D6DE0BC173C3C9500305A77 /* PBXTargetDependency */,
 				D3B90E1B15C2CBC800F64F8C /* PBXTargetDependency */,
 			);
 			name = zirgoo;
@@ -3686,6 +3690,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4D6DE0BC173C3C9500305A77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 4D6DE0BB173C3C9500305A77 /* PBXContainerItemProxy */;
+		};
 		D3B90E1B15C2CBC800F64F8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NinePatch;
@@ -3776,8 +3785,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D38187C315FE345B00C3EDCA /* en */,
-				D381883015FE447200C3EDCA /* fr */,
-				FD61C85C169FC2CE001AA2D6 /* ru */,
 			);
 			name = DialerViewController.xib;
 			sourceTree = "<group>";
@@ -3786,8 +3793,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D38187C715FE345F00C3EDCA /* en */,
-				D381883115FE447200C3EDCA /* fr */,
-				FD61C85E169FC39D001AA2D6 /* ru */,
 			);
 			name = "DialerViewController~ipad.xib";
 			sourceTree = "<group>";
@@ -3954,7 +3959,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -3972,7 +3977,8 @@
 					DEBUG,
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = (
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
 					submodules/linphone/coreapi,
 					submodules/linphone/mediastreamer2/include,
 					submodules/linphone/mediastreamer2/include,
@@ -3983,7 +3989,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/NinePatch/,
 					Classes/Utils/XMLRPC/,
-					"\"${BUILT_PRODUCTS_DIR}/../../Headers\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = "linphone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -4026,7 +4032,7 @@
 		228B19A71302902F00F154D3 /* DistributionAdhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Kosztolanyi";
 				COMPRESS_PNG_FILES = NO;
@@ -4045,7 +4051,8 @@
 					HAVE_SSL,
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = (
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
 					submodules/linphone/coreapi,
 					submodules/linphone/mediastreamer2/include,
 					submodules/linphone/mediastreamer2/include,
@@ -4056,7 +4063,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/NinePatch/,
 					Classes/Utils/XMLRPC/,
-					"\"${BUILT_PRODUCTS_DIR}/../../Headers\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = "linphone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -4100,7 +4107,7 @@
 		22F3D55613CC3C9100A0DA02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -4117,7 +4124,8 @@
 					HAVE_SSL,
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = (
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
 					submodules/linphone/coreapi,
 					submodules/linphone/mediastreamer2/include,
 					submodules/linphone/mediastreamer2/include,
@@ -4128,7 +4136,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/NinePatch/,
 					Classes/Utils/XMLRPC/,
-					"\"${BUILT_PRODUCTS_DIR}/../../Headers\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = "linphone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -4171,7 +4179,7 @@
 		22F51EE8107FA53D00F98953 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Kosztolanyi";
 				COMPRESS_PNG_FILES = NO;
@@ -4190,7 +4198,8 @@
 					HAVE_SSL,
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = (
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
 					submodules/linphone/coreapi,
 					submodules/linphone/mediastreamer2/include,
 					submodules/linphone/mediastreamer2/include,
@@ -4201,7 +4210,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/NinePatch/,
 					Classes/Utils/XMLRPC/,
-					"\"${BUILT_PRODUCTS_DIR}/../../Headers\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = "linphone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
