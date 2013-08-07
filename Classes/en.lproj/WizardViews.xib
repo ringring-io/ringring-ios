@@ -42,7 +42,6 @@
 						<int key="NSvFlags">311</int>
 						<string key="NSFrame">{{-119, 34}, {560, 97}}</string>
 						<reference key="NSSuperview" ref="183617546"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="131114733"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -85,7 +84,6 @@
 						<int key="NSvFlags">314</int>
 						<string key="NSFrame">{{41, 197}, {240, 25}}</string>
 						<reference key="NSSuperview" ref="183617546"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="354411721"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -118,7 +116,6 @@
 						<int key="NSvFlags">319</int>
 						<string key="NSFrame">{{41, 159}, {255, 30}}</string>
 						<reference key="NSSuperview" ref="183617546"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="696113137"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -162,7 +159,6 @@
 						<int key="NSvFlags">287</int>
 						<string key="NSFrame">{{33, 330}, {255, 50}}</string>
 						<reference key="NSSuperview" ref="183617546"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -206,7 +202,6 @@
 				</array>
 				<string key="NSFrameSize">{320, 394}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="885218898"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor" id="981989056">
@@ -534,142 +529,7 @@ biBlbWFpbGVkA</string>
 			<nil key="sourceID"/>
 			<int key="maxID">140</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">TPMultiLayoutViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="landscapeView">UIView</string>
-						<string key="portraitView">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="landscapeView">
-							<string key="name">landscapeView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="portraitView">
-							<string key="name">portraitView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TPMultiLayoutViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TUNinePatch</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TUNinePatch.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UILinphoneButton</string>
-					<string key="superclassName">UIButton</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="backgroundNinePatch">TUNinePatch</string>
-						<string key="backgroundOverNinePatch">TUNinePatch</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="backgroundNinePatch">
-							<string key="name">backgroundNinePatch</string>
-							<string key="candidateClassName">TUNinePatch</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="backgroundOverNinePatch">
-							<string key="name">backgroundOverNinePatch</string>
-							<string key="candidateClassName">TUNinePatch</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UILinphoneButton.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UILinphoneTextField</string>
-					<string key="superclassName">UITextField</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">backgroundNinePatch</string>
-						<string key="NS.object.0">TUNinePatch</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">backgroundNinePatch</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">backgroundNinePatch</string>
-							<string key="candidateClassName">TUNinePatch</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UILinphoneTextField.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WizardViewController</string>
-					<string key="superclassName">TPMultiLayoutViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="onActivateEmailClick:">id</string>
-						<string key="onBackClick:">id</string>
-						<string key="onRegisterEmailClick:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="onActivateEmailClick:">
-							<string key="name">onActivateEmailClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onBackClick:">
-							<string key="name">onBackClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onRegisterEmailClick:">
-							<string key="name">onRegisterEmailClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activateEmailView">UIView</string>
-						<string key="backButton">UIButton</string>
-						<string key="contentView">UIScrollView</string>
-						<string key="registerEmailView">UIView</string>
-						<string key="viewTapGestureRecognizer">UITapGestureRecognizer</string>
-						<string key="waitView">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activateEmailView">
-							<string key="name">activateEmailView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="backButton">
-							<string key="name">backButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="contentView">
-							<string key="name">contentView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="registerEmailView">
-							<string key="name">registerEmailView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewTapGestureRecognizer">
-							<string key="name">viewTapGestureRecognizer</string>
-							<string key="candidateClassName">UITapGestureRecognizer</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="waitView">
-							<string key="name">waitView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WizardViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
