@@ -95,6 +95,18 @@
 		4DA55CB616D9B8BC00C1C98F /* zirgoo_icon_57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA55CB116D9B8BC00C1C98F /* zirgoo_icon_57@2x.png */; };
 		4DA55CB816D9B8BC00C1C98F /* zirgoo_icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA55CB216D9B8BC00C1C98F /* zirgoo_icon_72.png */; };
 		4DA55CBA16D9B8BC00C1C98F /* zirgoo_icon_72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA55CB316D9B8BC00C1C98F /* zirgoo_icon_72@2x.png */; };
+		4DC2648717BDA65F00D59878 /* sphone_icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2647B17BDA65F00D59878 /* sphone_icon_57.png */; };
+		4DC2648817BDA65F00D59878 /* sphone_icon_57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2647C17BDA65F00D59878 /* sphone_icon_57@2x.png */; };
+		4DC2648917BDA65F00D59878 /* sphone_icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2647D17BDA65F00D59878 /* sphone_icon_72.png */; };
+		4DC2648A17BDA65F00D59878 /* sphone_icon_72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2647E17BDA65F00D59878 /* sphone_icon_72@2x.png */; };
+		4DC2648B17BDA65F00D59878 /* sphone_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2647F17BDA65F00D59878 /* sphone_logo.png */; };
+		4DC2648C17BDA65F00D59878 /* sphone_splashscreen-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648017BDA65F00D59878 /* sphone_splashscreen-568h@2x.png */; };
+		4DC2648D17BDA65F00D59878 /* sphone_splashscreen-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648117BDA65F00D59878 /* sphone_splashscreen-Landscape.png */; };
+		4DC2648E17BDA65F00D59878 /* sphone_splashscreen-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648217BDA65F00D59878 /* sphone_splashscreen-Landscape@2x.png */; };
+		4DC2648F17BDA65F00D59878 /* sphone_splashscreen-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648317BDA65F00D59878 /* sphone_splashscreen-Portrait.png */; };
+		4DC2649017BDA65F00D59878 /* sphone_splashscreen-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648417BDA65F00D59878 /* sphone_splashscreen-Portrait@2x.png */; };
+		4DC2649117BDA65F00D59878 /* sphone_splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648517BDA65F00D59878 /* sphone_splashscreen.png */; };
+		4DC2649217BDA65F00D59878 /* sphone_splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC2648617BDA65F00D59878 /* sphone_splashscreen@2x.png */; };
 		57F005C415EE2CCF00914747 /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C315EE2CCF00914747 /* linphonerc */; };
 		57F005C815EE2D9200914747 /* linphonerc-factory in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C615EE2D9200914747 /* linphonerc-factory */; };
 		57F005CA15EE2D9200914747 /* linphonerc-factory~ipad in Resources */ = {isa = PBXBuildFile; fileRef = 57F005C715EE2D9200914747 /* linphonerc-factory~ipad */; };
@@ -1012,6 +1024,18 @@
 		4DA55CB116D9B8BC00C1C98F /* zirgoo_icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zirgoo_icon_57@2x.png"; path = "Resources/zirgoo_icon_57@2x.png"; sourceTree = "<group>"; };
 		4DA55CB216D9B8BC00C1C98F /* zirgoo_icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zirgoo_icon_72.png; path = Resources/zirgoo_icon_72.png; sourceTree = "<group>"; };
 		4DA55CB316D9B8BC00C1C98F /* zirgoo_icon_72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zirgoo_icon_72@2x.png"; path = "Resources/zirgoo_icon_72@2x.png"; sourceTree = "<group>"; };
+		4DC2647B17BDA65F00D59878 /* sphone_icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphone_icon_57.png; sourceTree = "<group>"; };
+		4DC2647C17BDA65F00D59878 /* sphone_icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_icon_57@2x.png"; sourceTree = "<group>"; };
+		4DC2647D17BDA65F00D59878 /* sphone_icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphone_icon_72.png; sourceTree = "<group>"; };
+		4DC2647E17BDA65F00D59878 /* sphone_icon_72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_icon_72@2x.png"; sourceTree = "<group>"; };
+		4DC2647F17BDA65F00D59878 /* sphone_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphone_logo.png; sourceTree = "<group>"; };
+		4DC2648017BDA65F00D59878 /* sphone_splashscreen-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen-568h@2x.png"; sourceTree = "<group>"; };
+		4DC2648117BDA65F00D59878 /* sphone_splashscreen-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen-Landscape.png"; sourceTree = "<group>"; };
+		4DC2648217BDA65F00D59878 /* sphone_splashscreen-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen-Landscape@2x.png"; sourceTree = "<group>"; };
+		4DC2648317BDA65F00D59878 /* sphone_splashscreen-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen-Portrait.png"; sourceTree = "<group>"; };
+		4DC2648417BDA65F00D59878 /* sphone_splashscreen-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen-Portrait@2x.png"; sourceTree = "<group>"; };
+		4DC2648517BDA65F00D59878 /* sphone_splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphone_splashscreen.png; sourceTree = "<group>"; };
+		4DC2648617BDA65F00D59878 /* sphone_splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sphone_splashscreen@2x.png"; sourceTree = "<group>"; };
 		57F005C315EE2CCF00914747 /* linphonerc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = linphonerc; path = Resources/linphonerc; sourceTree = "<group>"; };
 		57F005C615EE2D9200914747 /* linphonerc-factory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "linphonerc-factory"; path = "Resources/linphonerc-factory"; sourceTree = "<group>"; };
 		57F005C715EE2D9200914747 /* linphonerc-factory~ipad */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "linphonerc-factory~ipad"; path = "Resources/linphonerc-factory~ipad"; sourceTree = "<group>"; };
@@ -2290,6 +2314,18 @@
 			children = (
 				4DA55CB016D9B8BC00C1C98F /* zirgoo_icon_57.png */,
 				4DA55CB116D9B8BC00C1C98F /* zirgoo_icon_57@2x.png */,
+				4DC2647B17BDA65F00D59878 /* sphone_icon_57.png */,
+				4DC2647C17BDA65F00D59878 /* sphone_icon_57@2x.png */,
+				4DC2647D17BDA65F00D59878 /* sphone_icon_72.png */,
+				4DC2647E17BDA65F00D59878 /* sphone_icon_72@2x.png */,
+				4DC2647F17BDA65F00D59878 /* sphone_logo.png */,
+				4DC2648017BDA65F00D59878 /* sphone_splashscreen-568h@2x.png */,
+				4DC2648117BDA65F00D59878 /* sphone_splashscreen-Landscape.png */,
+				4DC2648217BDA65F00D59878 /* sphone_splashscreen-Landscape@2x.png */,
+				4DC2648317BDA65F00D59878 /* sphone_splashscreen-Portrait.png */,
+				4DC2648417BDA65F00D59878 /* sphone_splashscreen-Portrait@2x.png */,
+				4DC2648517BDA65F00D59878 /* sphone_splashscreen.png */,
+				4DC2648617BDA65F00D59878 /* sphone_splashscreen@2x.png */,
 				4DA55CB216D9B8BC00C1C98F /* zirgoo_icon_72.png */,
 				4DA55CB316D9B8BC00C1C98F /* zirgoo_icon_72@2x.png */,
 				4DA55C9B16D9B8A900C1C98F /* linphone_splashscreen-568h@2x.png */,
@@ -3567,6 +3603,18 @@
 				4DA55CB816D9B8BC00C1C98F /* zirgoo_icon_72.png in Resources */,
 				4DA55CBA16D9B8BC00C1C98F /* zirgoo_icon_72@2x.png in Resources */,
 				4D98B8D9171F61C400E93D06 /* WizardViews.xib in Resources */,
+				4DC2648717BDA65F00D59878 /* sphone_icon_57.png in Resources */,
+				4DC2648817BDA65F00D59878 /* sphone_icon_57@2x.png in Resources */,
+				4DC2648917BDA65F00D59878 /* sphone_icon_72.png in Resources */,
+				4DC2648A17BDA65F00D59878 /* sphone_icon_72@2x.png in Resources */,
+				4DC2648B17BDA65F00D59878 /* sphone_logo.png in Resources */,
+				4DC2648C17BDA65F00D59878 /* sphone_splashscreen-568h@2x.png in Resources */,
+				4DC2648D17BDA65F00D59878 /* sphone_splashscreen-Landscape.png in Resources */,
+				4DC2648E17BDA65F00D59878 /* sphone_splashscreen-Landscape@2x.png in Resources */,
+				4DC2648F17BDA65F00D59878 /* sphone_splashscreen-Portrait.png in Resources */,
+				4DC2649017BDA65F00D59878 /* sphone_splashscreen-Portrait@2x.png in Resources */,
+				4DC2649117BDA65F00D59878 /* sphone_splashscreen.png in Resources */,
+				4DC2649217BDA65F00D59878 /* sphone_splashscreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

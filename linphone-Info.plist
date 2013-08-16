@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Zirgoo</string>
+	<string>SPhone</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>zirgoo_icon_57.png</string>
-		<string>zirgoo_icon_72.png</string>
-		<string>zirgoo_icon_57@2x.png</string>
-		<string>zirgoo_icon_72@2x.png</string>
+		<string>sphone_icon_57.png</string>
+		<string>sphone_icon_72.png</string>
+		<string>sphone_icon_57@2x.png</string>
+		<string>sphone_icon_72@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -21,15 +21,17 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>zirgoo_icon_57.png</string>
-				<string>zirgoo_icon_72.png</string>
-				<string>zirgoo_icon_57@2x.png</string>
-				<string>zirgoo_icon_72@2x.png</string>
+				<string>sphone_icon_57.png</string>
+				<string>sphone_icon_72.png</string>
+				<string>sphone_icon_57@2x.png</string>
+				<string>sphone_icon_72@2x.png</string>
 			</array>
+			<key>UIPrerenderedIcon</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.zirgoo.phone</string>
+	<string>com.zirgoo.sphone</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLocalizations</key>
@@ -72,9 +74,11 @@
 		<string>audio</string>
 	</array>
 	<key>UILaunchImageFile~ipad</key>
-	<string>linphone_splashscreen</string>
+	<string>sphone_splashscreen</string>
 	<key>UILaunchImageFile~iphone</key>
-	<string>linphone_splashscreen</string>
+	<string>sphone_splashscreen</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>wifi</string>
