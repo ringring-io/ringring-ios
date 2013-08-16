@@ -4075,7 +4075,7 @@
 				PROVISIONING_PROFILE = "7763350E-083E-4ADA-8535-05883F19F947";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DistributionAdhoc;
 		};
@@ -4150,7 +4150,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -4224,7 +4224,7 @@
 				PROVISIONING_PROFILE = "C7F794BC-6D48-41F2-B37D-E1B1B1A40901";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
 		};
@@ -4299,7 +4299,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
