@@ -400,7 +400,7 @@ static UICompositeViewDescription *compositeDescription = nil;
          if([error code] == -1009) {
              errorMessage = [error localizedDescription];
          } else {
-             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+             errorMessage = [NSString stringWithFormat:@"Internal communication error. (Code: %d)", [error code]];
          }
          
          UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
@@ -452,7 +452,7 @@ static UICompositeViewDescription *compositeDescription = nil;
          if([error code] == -1009) {
              errorMessage = [error localizedDescription];
          } else {
-             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+             errorMessage = [NSString stringWithFormat:@"Internal communication error. (Code: %d)", [error code]];
          }
              
          UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
@@ -522,7 +522,7 @@ static UICompositeViewDescription *compositeDescription = nil;
          if([error code] == -1009) {
              errorMessage = [error localizedDescription];
          } else {
-             errorMessage = [NSString stringWithFormat:@"Internal Zirgoo communication error. (Code: %d)", [error code]];
+             errorMessage = [NSString stringWithFormat:@"Internal communication error. (Code: %d)", [error code]];
          }
          
          UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
@@ -557,7 +557,7 @@ static UICompositeViewDescription *compositeDescription = nil;
         }
         case LinphoneRegistrationFailed: {
             
-            NSString *errorMessage = [NSString stringWithFormat:@"Internal Zirgoo registration error."];
+            NSString *errorMessage = [NSString stringWithFormat:@"Internal registration error."];
             
             UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
                                                                 message:NSLocalizedString(errorMessage, nil)
