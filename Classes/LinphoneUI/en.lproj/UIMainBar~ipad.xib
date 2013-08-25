@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">11G63</string>
+		<string key="IBDocument.SystemVersion">12E3067</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1138.51</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -197,8 +197,10 @@
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">3</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">Contacts</string>
+							<integer value="256" key="IBUIAccessibilityTraits"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -209,8 +211,6 @@
 						<double key="IBUITitleEdgeInsets.left">60</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
 						<string key="IBUINormalTitle">Contacts</string>
-						<reference key="IBUIHighlightedTitleColor" ref="259203200"/>
-						<reference key="IBUISelectedTitleColor" ref="18724502"/>
 						<reference key="IBUINormalTitleColor" ref="654766331"/>
 						<reference key="IBUINormalTitleShadowColor" ref="540119952"/>
 						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
@@ -225,7 +225,12 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">contacts_default~ipad.png</string>
 						</object>
-						<reference key="IBUIFontDescription" ref="866058849"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<string key="name">Helvetica</string>
+							<string key="family">Helvetica</string>
+							<int key="traits">0</int>
+							<double key="pointSize">14</double>
+						</object>
 						<reference key="IBUIFont" ref="743528120"/>
 					</object>
 					<object class="IBUIButton" id="877138605">
@@ -272,7 +277,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{593, 0}, {175, 77}}</string>
 						<reference key="NSSuperview" ref="215340891"/>
-						<reference key="NSNextKeyView" ref="686020189"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">5</int>
@@ -312,12 +316,14 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{418, 0}, {175, 77}}</string>
 						<reference key="NSSuperview" ref="215340891"/>
-						<reference key="NSNextKeyView" ref="582329659"/>
+						<reference key="NSNextKeyView" ref="686020189"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">6</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">Chat</string>
+							<integer value="256" key="IBUIAccessibilityTraits"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -367,6 +373,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{2, 2}, {17, 17}}</string>
 								<reference key="NSSuperview" ref="686020189"/>
+								<reference key="NSNextKeyView" ref="582329659"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
