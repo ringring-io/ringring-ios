@@ -1,6 +1,6 @@
 [sip]
 sip_random_port=1
-contact="Zirgoo iPad" <sip:zirgoo.ipad@unknown-host>
+contact="Zirgoo iPhone" <sip:zirgoo.ipad@unknown-host>
 keepalive_period=30000
 default_proxy=0
 media_encryption=zrtp
