@@ -80,6 +80,7 @@
 						<int key="IBUITag">1</int>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">History</string>
+							<integer value="256" key="IBUIAccessibilityTraits"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
