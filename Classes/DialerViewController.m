@@ -187,6 +187,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 	[sharpButton   setDigit:'#'];
     
     [addressField setAdjustsFontSizeToFitWidth:TRUE]; // Not put it in IB: issue with placeholder size
+    [addressField setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     
     if([LinphoneManager runningOnIpad]) {
         if ([LinphoneManager instance].frontCamId != nil) {
