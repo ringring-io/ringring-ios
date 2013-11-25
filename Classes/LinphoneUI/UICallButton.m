@@ -67,7 +67,7 @@
 #pragma mark -
 
 - (void)touchUp:(id) sender {
-    NSString *address = [addressField text];
+    NSString *address = [[addressField text] stringByReplacingOccurrencesOfString:@"@" withString:@"%40"];
     NSString *displayName = nil;
     ABRecordRef contact = [[[LinphoneManager instance] fastAddressBook] getContact:address];
     if(contact) {
