@@ -1,6 +1,6 @@
 ############################################################################
-# msx264.mk 
-# Copyright (C) 2011  Belledonne Communications,Grenoble France
+# msisac.mk 
+# Copyright (C) 2014  Belledonne Communications,Grenoble France
 #
 ############################################################################
 #
@@ -19,25 +19,28 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ############################################################################
-msx264_dir?=msx264
-$(BUILDER_SRC_DIR)/$(msx264_dir)/configure:
-	cd $(BUILDER_SRC_DIR)/$(msx264_dir) && ./autogen.sh
+msisac_dir?=msisac
 
-$(BUILDER_BUILD_DIR)/$(msx264_dir)/Makefile: $(BUILDER_SRC_DIR)/$(msx264_dir)/configure
-	mkdir -p $(BUILDER_BUILD_DIR)/$(msx264_dir)
-	cd $(BUILDER_BUILD_DIR)/$(msx264_dir)/ \
+
+
+$(BUILDER_SRC_DIR)/$(msisac_dir)/configure:
+	cd $(BUILDER_SRC_DIR)/$(msisac_dir) && ./autogen.sh
+
+$(BUILDER_BUILD_DIR)/$(msisac_dir)/Makefile: $(BUILDER_SRC_DIR)/$(msisac_dir)/configure
+	mkdir -p $(BUILDER_BUILD_DIR)/$(msisac_dir)
+	cd $(BUILDER_BUILD_DIR)/$(msisac_dir)/ \
 	&& PKG_CONFIG_LIBDIR=$(prefix)/lib/pkgconfig CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site) \
-	$(BUILDER_SRC_DIR)/$(msx264_dir)/configure -prefix=$(prefix) --host=$(host) ${library_mode}  
+	$(BUILDER_SRC_DIR)/$(msisac_dir)/configure -prefix=$(prefix) --host=$(host) ${library_mode} CFLAGS="-Wno-error"
 
-build-msx264: build-x264 $(BUILDER_BUILD_DIR)/$(msx264_dir)/Makefile
-	cd $(BUILDER_BUILD_DIR)/$(msx264_dir) && PKG_CONFIG_LIBDIR=$(prefix)/lib/pkgconfig CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site)  make && make install
+build-msisac: $(BUILDER_BUILD_DIR)/$(msisac_dir)/Makefile
+	cd $(BUILDER_BUILD_DIR)/$(msisac_dir) && PKG_CONFIG_LIBDIR=$(prefix)/lib/pkgconfig CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site)  make && make install
 
-clean-msx264: clean-x264
-	cd  $(BUILDER_BUILD_DIR)/$(msx264_dir) && make clean
+clean-msisac:
+	cd  $(BUILDER_BUILD_DIR)/$(msisac_dir) && make clean
 
-veryclean-msx264: veryclean-x264
-	-cd $(BUILDER_BUILD_DIR)/$(msx264_dir) && make distclean 
-	-cd $(BUILDER_SRC_DIR)/$(msx264_dir) && rm -f configure
+veryclean-msisac:
+	-cd $(BUILDER_BUILD_DIR)/$(msisac_dir) && make distclean 
+	-cd $(BUILDER_SRC_DIR)/$(msisac_dir) && rm -f configure
 
-clean-makefile-msx264: clean-makefile-x264
-	cd $(BUILDER_BUILD_DIR)/$(msx264_dir) && rm -f Makefile
+clean-makefile-msisac:
+	cd $(BUILDER_BUILD_DIR)/$(msisac_dir) && rm -f Makefile

@@ -27,10 +27,10 @@ $(BUILDER_SRC_DIR)/$(mssilk_dir)/configure:
 	cd $(BUILDER_SRC_DIR)/$(mssilk_dir) && ./autogen.sh
 
 $(BUILDER_BUILD_DIR)/$(mssilk_dir)/Makefile: $(BUILDER_SRC_DIR)/$(mssilk_dir)/configure
-	echo -e "\033[01;32m Running configure in $(BUILDER_BUILD_DIR)/$(mssilk_dir) \033[0m"
+	@echo -e "\033[01;32m Running configure in $(BUILDER_BUILD_DIR)/$(mssilk_dir) \033[0m"
 	mkdir -p $(BUILDER_BUILD_DIR)/$(mssilk_dir)
 	cd $(BUILDER_BUILD_DIR)/$(mssilk_dir)/ \
-		&& PKG_CONFIG_PATH=$(prefix)/lib/pkgconfig CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site) \
+		&& PKG_CONFIG_LIBDIR=$(prefix)/lib/pkgconfig CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site) \
 		$(BUILDER_SRC_DIR)/$(mssilk_dir)/configure -prefix=$(prefix) --host=$(host) ${library_mode} \
 		--enable-static
 
@@ -42,13 +42,17 @@ build-mssilk: $(BUILDER_BUILD_DIR)/$(mssilk_dir)/Makefile
 		&& PKG_CONFIG_PATH=$(prefix)/lib/pkgconfig \
 		CONFIG_SITE=$(BUILDER_SRC_DIR)/build/$(config_site) \
 		make -j1 && make install
-
+ifeq ($(host),armv7-apple-darwin)
+	echo -e "\033[01;32m Getting BINARY version of silk for armV7 \033[0m"
+	cp $(BUILDER_SRC_DIR)/$(mssilk_dir)/ios_bin/armv7/libSKP_SILK_SDK.a $(prefix)/lib/
+endif
 
 else
+
 build-mssilk:
 	echo "SILK is disabled"
 
-endif
+endif # enable_silk	
 
 clean-mssilk: 
 	-cd  $(BUILDER_BUILD_DIR)/$(mssilk_dir) && make clean

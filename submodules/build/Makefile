@@ -20,38 +20,68 @@
 #
 ############################################################################
 enable_gpl_third_parties=yes
-enable_zrtp=no
+enable_zrtp=yes
+enable_ffmpeg=yes
+enable_opus=yes
+enable_debug=no
+
+TUNNEL_AVAILABLE=$(shell git submodule status ../tunnel)
+
+ifneq ($(TUNNEL_AVAILABLE),)
+	enable_tunnel=yes
+	enable_gpl_third_parties=no
+else
+	enable_tunnel=no
+endif
+
 
 .NOTPARALLEL all: check_options build warning
-ifeq ($(enable_gpl_third_parties)$(enable_zrtp),noyes)
+
+# check that the selected options are correct
+CHECKOPT_MSG := ""
+
+ifeq ($(enable_gpl_third_parties)$(enable_ffmpeg),noyes)
+# ffmpeg is not compatible with no GPL.
+	enable_ffmpeg:=no
+endif
+
+ifneq ($(CHECKOPT_MSG),"")
 check_options:
-	@echo "ZRTP is not available in non-gpl build."
-	@exit -1
+	@echo $(CHECKOPT_MSG)
 else
 check_options:
-
 endif
+
+# setup footer
 
 ifeq ($(enable_gpl_third_parties),yes)
 warning:
 	@echo 
-	@echo "*****************************************************************"
-	@echo "*****************************************************************"
-	@echo "*****CAUTION, this liblinphone SDK is built using GPL code ******"
-	@echo "*****To disable gpl code, use make enable_gpl_third_parties=no***"
-	@echo "*****************************************************************"
-	@echo "*****************************************************************"
+	@echo "***************************************************************************"
+	@echo "***************************************************************************"
+	@echo "*****CAUTION, this liblinphone SDK is built using 3rd party GPL code ******"
+	@echo "*****Even if you acquired a proprietary license from Belledonne      ******"
+	@echo "*****Communications, this SDK is GPL and GPL only.                   ******"
+	@echo "*****To disable 3rd party gpl code, please use:                      ******"
+	@echo "*****$ make enable_gpl_third_parties=no                              ******"
+	@echo "***************************************************************************"
+	@echo "***************************************************************************"
 else
 warning:
 	@echo 
 	@echo "*****************************************************************"
 	@echo "*****************************************************************"
-	@echo "*****linphone SDK without GPL code                         ******"
+	@echo "*****Linphone SDK without 3rd party GPL software           ******"
+	@echo "*****If you acquired a proprietary license from Belledonne ******"
+	@echo "*****Communications, this SDK can be used to create        ******"
+	@echo "*****a proprietary linphone-based application.             ******"
 	@echo "*****************************************************************"
 	@echo "*****************************************************************"
 endif
 
-LINPHONE_OPTIONS=enable_gpl_third_parties=$(enable_gpl_third_parties) enable_zrtp=$(enable_zrtp)
+LINPHONE_OPTIONS=enable_gpl_third_parties=$(enable_gpl_third_parties) \
+                 enable_zrtp=$(enable_zrtp)   enable_opus=$(enable_opus) \
+                 enable_debug=$(enable_debug) enable_ffmpeg=$(enable_ffmpeg) enable_tunnel=$(enable_tunnel)
 
 build:
 	make -f  builder-iphone-simulator.mk $(LINPHONE_OPTIONS) all  \
@@ -63,6 +93,10 @@ ipa: build
 	make -f  builder-iphone-simulator.mk  ipa \
 	&&  make -f  builder-iphone-os.mk  ipa \
 	&&  make -f  builder-iphone-os.mk  host=armv7s-apple-darwin ipa \
+
+zipres:
+	@tar  -C ../.. -czf ../../ios_assets.tar.gz Resources iTunesArtwork 
+	@echo Archive 'ios_assets.tar.gz' placed in root directory
 
 clean:
 	make -f  builder-iphone-simulator.mk  clean \
@@ -77,5 +111,5 @@ clean-makefile:
 veryclean:
 	make -f  builder-iphone-simulator.mk  veryclean \
 	&&  make -f  builder-iphone-os.mk  veryclean \
-	&&  make -f  builder-iphone-os.mk  host=armv7s-apple-darwin veryclean \
+	&&  make -f  builder-iphone-os.mk  host=armv7s-apple-darwin veryclean
 
