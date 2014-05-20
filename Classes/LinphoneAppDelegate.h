@@ -21,15 +21,12 @@
 #import <AddressBookUI/ABPeoplePickerNavigationController.h>
 
 
-#import "LinphoneCoreSettingsStore.h"
-
 @interface UILinphoneWindow : UIWindow
-
+@property (strong, nonatomic) UIWindow *window;
 @end
 
 @interface LinphoneAppDelegate : NSObject <UIApplicationDelegate,UIAlertViewDelegate> {
     @private
-	UIWindow *window;
     BOOL started;
 	int savedMaxCall;
 	

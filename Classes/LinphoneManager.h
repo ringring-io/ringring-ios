@@ -26,12 +26,6 @@
 
 #import <sqlite3.h>
 
-#import "IASKSettingsReader.h"
-#import "IASKSettingsStore.h"
-#import "IASKAppSettingsViewController.h"
-#import "FastAddressBook.h"
-#import "Utils.h"
-
 #include "linphonecore.h"
 
 extern const char *const LINPHONERC_APPLICATION_KEY;
@@ -154,7 +148,7 @@ typedef struct _LinphoneManagerSounds {
 - (void)lpConfigSetBool:(BOOL)value forKey:(NSString*)key forSection:(NSString*)section;
 - (BOOL)lpConfigBoolForKey:(NSString*)key forSection:(NSString*)section;
 
-@property (readonly) FastAddressBook* fastAddressBook;
+//@property (readonly) FastAddressBook* fastAddressBook;
 @property Connectivity connectivity;
 @property (readonly) NetworkType network;
 @property (readonly) const char*  frontCamId;

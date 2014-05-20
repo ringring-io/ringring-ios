@@ -34,7 +34,7 @@ max_calls=3
 
 [wizard]
 service_url=https://www.linphone.org/wizard.php
-domain=sip.zirgoo.com
+domain=sip2.zirgoo.com
 proxy=
 password_length=6
 username_length=4

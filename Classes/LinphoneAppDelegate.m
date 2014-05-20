@@ -17,20 +17,24 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */                                                                           
 
-#import "PhoneMainView.h"
 #import "linphoneAppDelegate.h"
 #import "AddressBook/ABPerson.h"
 
 #import "CoreTelephony/CTCallCenter.h"
 #import "CoreTelephony/CTCall.h"
 
-#import "ConsoleViewController.h"
-#import "LinphoneCoreSettingsStore.h"
-
+#import "AddressBookMap.h"
+#import "Settings.h"
 #import <RestKit/RestKit.h>
 
 #include "LinphoneManager.h"
+#include "LinphoneHelper.h"
 #include "linphonecore.h"
+
+#import "MappingProvider.h"
+#import "Contact.h"
+#import "User.h"
+
 
 @implementation UILinphoneWindow
 
@@ -38,6 +42,7 @@
 
 @implementation LinphoneAppDelegate
 
+@synthesize window = _window;
 @synthesize started;
 
 
@@ -61,13 +66,13 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application{
-	[LinphoneLogger logc:LinphoneLoggerLog format:"applicationDidEnterBackground"];
+	[LinphoneHelper logc:LinphoneLoggerLog format:"applicationDidEnterBackground"];
 	if(![LinphoneManager isLcReady]) return;
 	[[LinphoneManager instance] enterBackgroundMode];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-	[LinphoneLogger logc:LinphoneLoggerLog format:"applicationWillResignActive"];
+	[LinphoneHelper logc:LinphoneLoggerLog format:"applicationWillResignActive"];
     if(![LinphoneManager isLcReady]) return;
     LinphoneCore* lc = [LinphoneManager getLc];
     LinphoneCall* call = linphone_core_get_current_call(lc);
@@ -92,7 +97,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	[LinphoneLogger logc:LinphoneLoggerLog format:"applicationDidBecomeActive"];
+	[LinphoneHelper logc:LinphoneLoggerLog format:"applicationDidBecomeActive"];
     [self startApplication];
     
 	[[LinphoneManager instance] becomeActive];
@@ -145,7 +150,7 @@
     [self startApplication];
 	NSDictionary *remoteNotif =[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (remoteNotif){
-		[LinphoneLogger log:LinphoneLoggerLog format:@"PushNotification from launch received."];
+		[LinphoneHelper log:LinphoneLoggerLog format:@"PushNotification from launch received."];
 		[self processRemoteNotification:remoteNotif];
 	}
 
@@ -153,11 +158,36 @@
 }
 
 - (void)setupRestKit{
+    // Set base URL
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.zirgoo.com/"]];
     
-    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://api.zirgoo.com/v1/"]];
+    // Set HTTP parameters
+    [objectManager.HTTPClient setParameterEncoding:AFJSONParameterEncoding];
+    [objectManager.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [objectManager.HTTPClient setDefaultHeader:@"Accept" value:@"application/json"];
+    [objectManager setRequestSerializationMIMEType:RKMIMETypeJSON];
+    NSIndexSet *statusCodeSet = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
-    [[manager HTTPClient] setDefaultHeader:@"X-Parse-REST-API-Key" value:@"your key"];
-    [[manager HTTPClient] setDefaultHeader:@"X-Parse-Application-Id" value:@"your key"];
+    // Register response mapping
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[MappingProvider statusMapping]
+                                                                                      method:RKRequestMethodGET
+                                                                                 pathPattern:nil
+                                                                                     keyPath:@""
+                                                                                 statusCodes:statusCodeSet]];
+
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[MappingProvider userMapping]
+                                                                                      method:RKRequestMethodGET
+                                                                                 pathPattern:nil
+                                                                                     keyPath:@"user"
+                                                                                 statusCodes:statusCodeSet]];
+
+    [objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[MappingProvider userMapping]
+                                                                                      method:RKRequestMethodGET
+                                                                                 pathPattern:nil
+                                                                                     keyPath:@"users"
+                                                                                 statusCodes:statusCodeSet]];
+
+    [RKObjectManager setSharedManager:objectManager];
 }
 
 - (void)startApplication {
@@ -167,11 +197,22 @@
     }
     if([LinphoneManager isLcReady]) {
         
-        
         // Only execute one time at application start
         if(!started) {
             started = TRUE;
-            [[PhoneMainView instance] startUp];
+            [AddressBookMap reload];
+        }
+        
+        // Set factory default settings at the first launch
+        if ([Settings isFirstAlreadyLaunched] == NO) {
+            
+            [Settings setAutoClearCallHistoryEnabled:YES];
+            [Settings setAutoClearCallHistory:FiveteenMinutes];
+            
+            [Settings setAutoClearChatHistoryEnabled:YES];
+            [Settings setAutoClearChatHistory:FiveteenMinutes];
+            
+            [Settings setFirstAlreadyLaunched:YES];
         }
     }
 }
@@ -182,7 +223,9 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     [self startApplication];
+    
     if([LinphoneManager isLcReady]) {
+        /* CHC //
         if([[url scheme] isEqualToString:@"sip"]) {
             // Go to ChatRoom view
             DialerViewController *controller = DYNAMIC_CAST([[PhoneMainView instance] changeCurrentView:[DialerViewController compositeViewDescription]], DialerViewController);
@@ -190,6 +233,7 @@
                 [controller setAddress:[url absoluteString]];
             }
         }
+         */
     }
 	return YES;
 }
@@ -207,15 +251,15 @@
 			linphone_core_set_network_reachable(lc, TRUE);
             if(loc_key != nil) {
                 if([loc_key isEqualToString:@"IM_MSG"]) {
-                    [[PhoneMainView instance] addInhibitedEvent:kLinphoneTextReceived];
-                    [[PhoneMainView instance] changeCurrentView:[ChatViewController compositeViewDescription]];
+                    // CHC // [[PhoneMainView instance] addInhibitedEvent:kLinphoneTextReceived];
+                    // CHC // [[PhoneMainView instance] changeCurrentView:[ChatViewController compositeViewDescription]];
                 } else if([loc_key isEqualToString:@"IC_MSG"]) {
                     //it's a call
 					NSString *callid=[userInfo objectForKey:@"call-id"];
                     if (callid)
 						[[LinphoneManager instance] enableAutoAnswerForCallId:callid];
 					else
-						[LinphoneLogger log:LinphoneLoggerError format:@"PushNotification: does not have call-id yet, fix it !"];
+						[LinphoneHelper log:LinphoneLoggerError format:@"PushNotification: does not have call-id yet, fix it !"];
                 }
             }
         }
@@ -223,7 +267,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	[LinphoneLogger log:LinphoneLoggerLog format:@"PushNotification: Receive %@", userInfo];
+	[LinphoneHelper log:LinphoneLoggerLog format:@"PushNotification: Receive %@", userInfo];
 	[self processRemoteNotification:userInfo];
 }
 
@@ -231,6 +275,7 @@
     if([notification.userInfo objectForKey:@"callId"] != nil) {
         [[LinphoneManager instance] acceptCallForCallId:[notification.userInfo objectForKey:@"callId"]];
     } else if([notification.userInfo objectForKey:@"chat"] != nil) {
+        /* CHC //
         NSString *remoteContact = (NSString*)[notification.userInfo objectForKey:@"chat"];
         // Go to ChatRoom view
         [[PhoneMainView instance] changeCurrentView:[ChatViewController compositeViewDescription]];
@@ -238,6 +283,7 @@
         if(controller != nil) {
             [controller setRemoteAddress:remoteContact];
         }
+         */
     } else if([notification.userInfo objectForKey:@"callLog"] != nil) {
         NSString *callLog = (NSString*)[notification.userInfo objectForKey:@"callLog"];
         LinphoneCallLog* theLog = NULL;
@@ -252,11 +298,13 @@
         }
         if(theLog != NULL) {
             // Go to HistoryDetails view
+            /* CHC //
             [[PhoneMainView instance] changeCurrentView:[HistoryViewController compositeViewDescription]];
             HistoryDetailsViewController *controller = DYNAMIC_CAST([[PhoneMainView instance] changeCurrentView:[HistoryDetailsViewController compositeViewDescription] push:TRUE], HistoryDetailsViewController);
             if(controller != nil) {
                 [controller setCallLog:theLog];
             }
+             */
         }
     }
 }
@@ -265,12 +313,12 @@
 #pragma mark - PushNotification Functions
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
-    [LinphoneLogger log:LinphoneLoggerLog format:@"PushNotification: Token %@", deviceToken];
+    [LinphoneHelper log:LinphoneLoggerLog format:@"PushNotification: Token %@", deviceToken];
     [[LinphoneManager instance] setPushNotificationToken:deviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
-    [LinphoneLogger log:LinphoneLoggerError format:@"PushNotification: Error %@", [error localizedDescription]];
+    [LinphoneHelper log:LinphoneLoggerError format:@"PushNotification: Error %@", [error localizedDescription]];
     [[LinphoneManager instance] setPushNotificationToken:nil];
 }
 

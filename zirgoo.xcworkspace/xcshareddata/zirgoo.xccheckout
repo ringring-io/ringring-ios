@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>96BDF2A3-02B5-412C-BD07-3A59E0C25807</string>
+	<key>IDESourceControlProjectName</key>
+	<string>zirgoo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>607F8539-F9CD-4831-978D-D368E03E0758</key>
+		<string>http://github.com/RestKit/RestKit.git</string>
+		<key>6CFFBF7F-3D02-47B4-909E-26C5BABE4D1F</key>
+		<string>https://github.com/AFNetworking/AFNetworking.git</string>
+		<key>8EF07E0E-3E93-4256-AAE5-9AD7E6C2E7BE</key>
+		<string>https://github.com/zirgoo/zirgoo-iphone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>zirgoo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>607F8539-F9CD-4831-978D-D368E03E0758</key>
+		<string>../submodules/externals/RestKit</string>
+		<key>6CFFBF7F-3D02-47B4-909E-26C5BABE4D1F</key>
+		<string>../submodules/externals/RestKit/Vendor/AFNetworking</string>
+		<key>8EF07E0E-3E93-4256-AAE5-9AD7E6C2E7BE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zirgoo/zirgoo-iphone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8EF07E0E-3E93-4256-AAE5-9AD7E6C2E7BE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6CFFBF7F-3D02-47B4-909E-26C5BABE4D1F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AFNetworking</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>607F8539-F9CD-4831-978D-D368E03E0758</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RestKit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8EF07E0E-3E93-4256-AAE5-9AD7E6C2E7BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>zirgoo-iphone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

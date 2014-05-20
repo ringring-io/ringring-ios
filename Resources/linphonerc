@@ -4,6 +4,7 @@ contact="Zirgoo iPhone" <sip:zirgoo.ipad@unknown-host>
 keepalive_period=30000
 default_proxy=0
 media_encryption=zrtp
+transport=tls
 
 [rtp]
 audio_rtp_port=7076

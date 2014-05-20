@@ -1,18 +1,21 @@
-					            LINPHONE ON IPHONE
+					            ZIRGOO ON IPHONE
 					******************************************
 
 					
 BUILD PREQUISITES
 *****************
 
-Linphone for iPhone depends on liblinphone sdk. This SDK is generated from makefiles and shell scripts.
+Zirgoo for iPhone depends on liblinphone sdk. This SDK is generated from makefiles and shell scripts.
 You must first install both xcode with iPhone OS SDK and MacPorts (www.macports.org) for these scripts to work.
 
 Make sure that /opt/local/bin (macport tools) arrives first in your PATH env variable, so that the macport tools are taken in place of the versions brought by Apple in /usr/bin. Otherwise the build will fail with obscure errors.
 
+ * Install Xcode 5
+ * Download and install Xcode Command Line Tools from https://developer.apple.com/downloads/index.action#
+
 Once xcode and macports are installed, open a terminal and install the required build-time tools with:
 
-	$ sudo port install coreutils automake autoconf libtool intltool wget pkgconfig cmake gmake yasm grep doxygen ImageMagick optipng
+	$ sudo port install coreutils automake autoconf libtool intltool wget pkgconfig cmake gmake yasm nasm grep doxygen ImageMagick optipng antlr3
 
 
 Install gas-preprosessor.pl  (http://github.com/yuvi/gas-preprocessor/ ) to be copied into /opt/local/bin :
@@ -25,12 +28,11 @@ Link macport libtoolize to glibtoolize
 
 	$ sudo ln -s /opt/local/bin/glibtoolize /opt/local/bin/libtoolize
 
-Link host's strings to simulator SDK 
+Link host's strings, ar and ranlib to simulator SDK 
 
-	For Xcode prior to 4.3:
-	$ sudo ln -s  /usr/bin/strings /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/strings
-	For newer XCode:
 	$ sudo ln -s  /usr/bin/strings /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/strings
+	$ sudo ln -s  /usr/bin/ar /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ar
+	$ sudo ln -s  /usr/bin/ranlib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ranlib
 
 
 BUILDING THE SDK
@@ -45,21 +47,6 @@ BUILDING THE SDK
 	$ cd submodules/build
 	$ make all 
 
- ALTERNATIVELY, you can force liblinphone to use only non GPL code except for liblinphone, mediastremer2, ortp, exosip, osip.
- If you choose this flavor, your final application  is still subject to GPL except if you have a commercial license for liblinphone, mediastremer2, ortp, exosip, osip.
-
- To generate the liblinphone multi arch sdkin non GPL mode, do:
-	$ cd submodules/build
-	$ make all enable_gpl_third_parties=no
-
-xcode prior to 4.5:
-	$ make -f Makefile.xcode4.4
- * ZRTP support
-
- You can enable ZRTP support in GPL mode only, by adding "enable_zrtp=yes" to the make command, for example:
- 	$ make all enable_gpl_third_parties=yes enable_zrtp=yes
-	
-
 The resulting sdk is in liblinphone-sdk/ directory.
 
 
@@ -70,7 +57,7 @@ In case you upgrade your IOS SDK, you may force rebuilding everything, by doing
 BUILDING THE APPLICATION
 ************************
 
-After the SDK is built, just open the linphone xcode project with Xcode, and press "Run".
+After the SDK is built, just open the linphone xcode workspace with Xcode, and press "Run".
 
  * Note regarding third party components subject to license
  
@@ -78,18 +65,18 @@ The liblinphone-sdk is compiled with third parties code that are subject to pate
 Linphone controls the embedding of these codecs thanks to the preprocessor macros HAVE_SILK, HAVE_AMR, HAVE_G729 HAVE_X264 positioned in xcode project.
 Before embeding these 4 codecs in the final application, make sure to have the right to do so.
 
-TRANSLATER THE APPLICATION
-**************************
 
-You have to download the application Localization Suite(http://www.loc-suite.org/)
-Each modification in a xib have to be scanned and synchronized
+DEBUGING THE SDK
+****************
+
+Sometime it can be usefull to step into liblinphone SDK funtions. To allow xcode to enable breakpoint whithin liblinphone, SDK must be built with debug symbols.
+To add debug symbol to liblinphone SDK, add make option "enable_debug=yes".
+	$ make make all enable_gpl_third_parties=no enable_debug=yes
 
 
-LIMITATIONS, KNOWN BUGS
+DEBUGING MEDIASTREMMER2
 ***********************
+For IOS specicific media development like audio video capture/playback it may be interresting to use mediastream test tool.
+The project submodule/liblinphone.xcodeproj can be used for this purpose.
 
-* Video capture does not work in simulator (not implemented by simulator ?).
-* Sound does not work well (or at all) in simulator
-
-
-
+****************
