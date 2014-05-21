@@ -321,7 +321,6 @@
 }
 
 + (void)log:(LinphoneLoggerSeverity) severity format:(NSString *)format,... {
-    /*
     va_list args;
 	va_start (args, format);
     NSString *str = [[NSString alloc] initWithFormat: format arguments:args];
@@ -337,11 +336,10 @@
         ms_fatal("%s", [str UTF8String]);
     }
     va_end (args);
-    */
 }
 
 + (void)logc:(LinphoneLoggerSeverity) severity format:(const char *)format,... {
-    /*va_list args;
+    va_list args;
 	va_start (args, format);
     if(severity <= LinphoneLoggerDebug) {
         ortp_logv(ORTP_DEBUG, format, args);
@@ -355,7 +353,6 @@
         ortp_logv(ORTP_FATAL, format, args);
     }
 	va_end (args);
-    */
 }
 
 
