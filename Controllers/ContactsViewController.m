@@ -39,6 +39,7 @@
     NSArray *searchResults;
 }
 
+@synthesize navigationItem;
 @synthesize contactPersonSearchBar;
 @synthesize selectedContact;
 @synthesize registrationStateImage;
@@ -200,6 +201,51 @@
 {
     [self loadStatusesForOnscreenRows:scrollView];
 }
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+
+    // Show Call button
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call"
+                                                                         style:UIBarButtonItemStyleBordered
+                                                                        target:self
+                                                                        action:@selector(callManualNumber:)];
+    // Check current text and enable/disable call button
+    if ([LinphoneHelper isValidEmail:searchBar.text]) {
+        [navigationItem.rightBarButtonItem setEnabled:TRUE];
+    }
+    else {
+        [navigationItem.rightBarButtonItem setEnabled:FALSE];
+    }
+}
+
+- (void)searchBar:(UISearchBar *)contactPersonSearchBar textDidChange:(NSString *)searchText {
+
+    // Check new text and enable/disable call button
+    if ([LinphoneHelper isValidEmail:searchText]) {
+        [navigationItem.rightBarButtonItem setEnabled:TRUE];
+    }
+    else {
+        [navigationItem.rightBarButtonItem setEnabled:FALSE];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    // Delete Call button
+    navigationItem.rightBarButtonItem = nil;
+}
+
+// User selected a row from the table view
+- (void)callManualNumber:(id)sender
+{
+    selectedContact = [[Contact alloc] initWithDefault:contactPersonSearchBar.text];
+
+    // Start secure call
+    [self startSecureCall:selectedContact forIndexPath:nil];
+}
+
+
 
 
 #pragma mark - UI Functions
@@ -427,9 +473,11 @@
             contact.statusRefreshedAt = [NSDate date];
             
             // Update contactlist cell
-            ContactsTableViewCell *cell = (ContactsTableViewCell *)[self.contactsTableView cellForRowAtIndexPath:indexPath];
-            cell.contact = contact;
-            [cell refresh];
+            if(indexPath != nil) {
+                ContactsTableViewCell *cell = (ContactsTableViewCell *)[self.contactsTableView cellForRowAtIndexPath:indexPath];
+                cell.contact = contact;
+                [cell refresh];
+            }
             
             // The contact is activated
             if (contact.isActivated) {

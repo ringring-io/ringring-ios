@@ -20,6 +20,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView *registrationStateImage;
 @property (nonatomic, retain) IBOutlet UILabel *registeredUserLabel;
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+
 @property (nonatomic, weak) IBOutlet UISearchBar *contactPersonSearchBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
