@@ -21,10 +21,13 @@
 @property (nonatomic, retain) IBOutlet UILabel *registeredUserLabel;
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addContactButtonItem;
 
 @property (nonatomic, weak) IBOutlet UISearchBar *contactPersonSearchBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
+
+- (IBAction)addContact:(id)sender;
 
 - (IBAction)textfieldReturn:(UITextField *)sender;
 

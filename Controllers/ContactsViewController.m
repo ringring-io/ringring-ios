@@ -9,6 +9,7 @@
 #import "ContactsViewController.h"
 #import "ContactsTableViewCell.h"
 #import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 #import "Contact.h"
 #import "LinphoneManager.h"
@@ -25,7 +26,7 @@
 
 
 
-@interface ContactsViewController ()
+@interface ContactsViewController () <ABNewPersonViewControllerDelegate>
 {
     NSMutableArray *contacts;
     NSMutableArray *filteredContacts;
@@ -40,6 +41,7 @@
 }
 
 @synthesize navigationItem;
+@synthesize addContactButtonItem;
 @synthesize contactPersonSearchBar;
 @synthesize selectedContact;
 @synthesize registrationStateImage;
@@ -128,7 +130,6 @@
 
 
 #pragma mark - User Event Functions
-
 // User selected a row from the table view
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -141,6 +142,25 @@
 
     // Start secure call
     [self startSecureCall:selectedContact forIndexPath:indexPath];
+}
+
+// Add new contact
+- (IBAction)addContact:(id)sender {
+    ABNewPersonViewController *picker = [[ABNewPersonViewController alloc] init];
+    picker.newPersonViewDelegate = self;
+    
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
+    [self presentViewController:navigation animated:YES completion:nil];
+}
+
+// Dismisses the new-person view controller.
+- (void)newPersonViewController:(ABNewPersonViewController *)newPersonViewController didCompleteWithNewPerson:(ABRecordRef)person
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
+    
+    // Refresh contacts list
+    [AddressBookMap reload];
+    [self refreshContacts:nil];
 }
 
 // Hide keyboard when clicked on the return button
@@ -203,13 +223,14 @@
 }
 
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-
-    // Show Call button
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // Replace and show Call button
     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call"
                                                                          style:UIBarButtonItemStyleBordered
                                                                         target:self
                                                                         action:@selector(callManualNumber:)];
+    
     // Check current text and enable/disable call button
     if ([LinphoneHelper isValidEmail:searchBar.text]) {
         [navigationItem.rightBarButtonItem setEnabled:TRUE];
@@ -219,8 +240,8 @@
     }
 }
 
-- (void)searchBar:(UISearchBar *)contactPersonSearchBar textDidChange:(NSString *)searchText {
-
+- (void)searchBar:(UISearchBar *)contactPersonSearchBar textDidChange:(NSString *)searchText
+{
     // Check new text and enable/disable call button
     if ([LinphoneHelper isValidEmail:searchText]) {
         [navigationItem.rightBarButtonItem setEnabled:TRUE];
@@ -230,10 +251,12 @@
     }
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    
-    // Delete Call button
-    navigationItem.rightBarButtonItem = nil;
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    // Replace and show Add Contact button
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                          target:self
+                                                                                          action:@selector(addContact:)];
 }
 
 // User selected a row from the table view
@@ -244,7 +267,6 @@
     // Start secure call
     [self startSecureCall:selectedContact forIndexPath:nil];
 }
-
 
 
 
@@ -407,7 +429,6 @@
 
     // Refresh UITableView with new data
     [contactsTableView reloadData];
-    
 }
 
 - (void)refreshContactsWithUnreadMessages:(BOOL)reloadTableData

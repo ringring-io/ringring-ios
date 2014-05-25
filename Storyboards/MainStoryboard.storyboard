@@ -517,7 +517,13 @@
                                 <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Contacts" id="F7x-Lq-dYX"/>
+                                    <navigationItem title="Contacts" id="F7x-Lq-dYX">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="n3U-8C-QPk">
+                                            <connections>
+                                                <action selector="addContact:" destination="A9d-xl-7jx" id="CNa-tl-pvK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Wc1-Bv-jbJ">
@@ -644,6 +650,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="yKT-a2-48c"/>
                     <connections>
+                        <outlet property="addContactButtonItem" destination="n3U-8C-QPk" id="u3h-D5-vwk"/>
                         <outlet property="contactPersonSearchBar" destination="Wc1-Bv-jbJ" id="TGD-0n-t1P"/>
                         <outlet property="contactsSearchDisplayController" destination="E5c-a1-Abs" id="vb0-fX-4jI"/>
                         <outlet property="contactsTableView" destination="xJS-Bc-aeP" id="eFY-yD-cDd"/>
