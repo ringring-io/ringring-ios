@@ -17,9 +17,12 @@
 
 @property(nonatomic, weak) Contact *contact;
 
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashButtonItem;
 
 - (IBAction)backButtonTapped:(id)sender;
+- (IBAction)trashButtonTapped:(id)sender;
 
 @end

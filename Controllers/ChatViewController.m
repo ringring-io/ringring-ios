@@ -33,7 +33,8 @@
 
 @synthesize contact;
 @synthesize navigationItem;
-@synthesize backButton;
+@synthesize backButtonItem;
+@synthesize trashButtonItem;
 
 
 
@@ -399,8 +400,20 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
 
 - (IBAction)backButtonTapped:(id)sender
 {
-    //[self performSegueWithIdentifier:@"StartSecureCallSegue" sender:self];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)trashButtonTapped:(id)sender {
+    
+    // Delete expired messages
+    [Message deleteMessagesWithContactEmail:contact.email];
+    
+    // Reload messages
+    [self reloadMessages];
+    [self refreshMessages:nil];
+    
+    // Clear chat window
+    [self.tableView reloadData];
 }
 
 

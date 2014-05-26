@@ -458,23 +458,21 @@
                 <viewController id="g5z-ku-0eh" customClass="ChatViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="John Smith" prompt="smith.john@theend.hu" id="ZjS-ga-qe4">
-                        <barButtonItem key="leftBarButtonItem" title="lk" style="done" id="0OZ-bM-Sw0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yba-az-X2u">
-                                <rect key="frame" x="16" y="35" width="71" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="g5z-ku-0eh" eventType="touchUpInside" id="u65-JE-fzU"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="SoU-zQ-KLh">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="g5z-ku-0eh" id="ke2-7e-cO0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="fad-vv-Od7">
+                            <connections>
+                                <action selector="trashButtonTapped:" destination="g5z-ku-0eh" id="Yhq-gI-L5N"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="yba-az-X2u" id="eNB-OE-Yb1"/>
+                        <outlet property="backButtonItem" destination="SoU-zQ-KLh" id="pXZ-Xc-XI0"/>
                         <outlet property="navigationItem" destination="ZjS-ga-qe4" id="E76-gT-lA4"/>
+                        <outlet property="trashButtonItem" destination="fad-vv-Od7" id="7Od-qM-DMS"/>
                         <segue destination="IUm-gI-hlp" kind="modal" identifier="StartSecureCallSegue" id="gaZ-Rt-76U"/>
                     </connections>
                 </viewController>
@@ -1188,7 +1186,7 @@ code has been emailed</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bae-go-2bY"/>
-        <segue reference="ZBw-OF-6Ow"/>
         <segue reference="6Ow-YY-MyA"/>
+        <segue reference="gaZ-Rt-76U"/>
     </inferredMetricsTieBreakers>
 </document>
