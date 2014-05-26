@@ -18,7 +18,17 @@ typedef enum {
     kOutgoing
 } CallType;
 
+@class CallerViewController;
+
+@protocol CallerViewControllerDelegate <NSObject>
+
+- (void)callerViewDidAddContact:(CallerViewController *)callerViewController;
+
+@end
+
 @interface CallerViewController : UIViewControllerWithStatusBar
+
+@property (weak, nonatomic) id<CallerViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *registrationStateImage;
 @property (weak, nonatomic) IBOutlet UILabel *registrationStateLabel;
@@ -45,7 +55,6 @@ typedef enum {
 - (IBAction)acceptButtonTapped:(id)sender;
 - (IBAction)hangupButtonTapped:(id)sender;
 
-
-
-
 @end
+
+

@@ -156,11 +156,14 @@
 // Dismisses the new-person view controller.
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonViewController didCompleteWithNewPerson:(ABRecordRef)person
 {
-	[self dismissViewControllerAnimated:YES completion:NULL];
+    // Reload address book map
+    [AddressBookMap reload];
     
     // Refresh contacts list
-    [AddressBookMap reload];
     [self refreshContacts:nil];
+
+    // Dismiss new person view controller
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 // Hide keyboard when clicked on the return button
@@ -268,7 +271,15 @@
     [self startSecureCall:selectedContact forIndexPath:nil];
 }
 
-
+// Used added new contact on the caller view - Refresh contact list
+- (void)callerViewDidAddContact:(CallerViewController *)callerViewController
+{
+    // Reload address book map
+    [AddressBookMap reload];
+    
+    // Refresh contacts list
+    [self refreshContacts:nil];
+}
 
 #pragma mark - UI Functions
 
@@ -376,7 +387,8 @@
         // Set the caller view as the destination segue
         if([segue.identifier isEqualToString:@"StartSecureCallSegue"]){
             CallerViewController *callerViewController = (CallerViewController *)segue.destinationViewController;
-
+            callerViewController.delegate = self;
+            
             // Init an outgoing call and pass the selected contact to the secure call view
             if (callerViewController.callType == kNone) {
                 callerViewController.callType = kOutgoing;
@@ -407,6 +419,7 @@
 {
     // Refresh address book map on pull down refresh
     if (sender) {
+        // Reload address book map
         [AddressBookMap reload];
         
         // Hide refresh control

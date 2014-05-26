@@ -34,6 +34,8 @@
 
 @implementation CallerViewController
 
+@synthesize delegate;
+
 @synthesize callType;
 @synthesize incomingCall;
 @synthesize contact;
@@ -536,7 +538,14 @@
 
 // Dismisses add new contact view controller
 - (void)dismissUnknownPersonViewController:(id)sender {
+    
+    // Dismiss add new contact view controller
 	[self dismissViewControllerAnimated:YES completion:^{
+        
+        // Send message to the delegates
+        [delegate callerViewDidAddContact:self];
+        
+        // Dismiss caller view controller
         [self dismissViewControllerAnimated:YES completion:NULL];
     }];
 }

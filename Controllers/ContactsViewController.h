@@ -11,8 +11,9 @@
 #import "WizardActivateViewController.h"
 #import "UIViewControllerWithStatusBar.h"
 #import "Contact.h"
+#import "CallerViewController.h"
 
-@interface ContactsViewController : UIViewControllerWithStatusBar <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ContactsViewController : UIViewControllerWithStatusBar <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, CallerViewControllerDelegate>
 
 @property (nonatomic, strong) Contact* selectedContact;
 
