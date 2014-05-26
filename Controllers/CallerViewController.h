@@ -27,6 +27,7 @@ typedef enum {
 @property (nonatomic, assign) LinphoneCall* incomingCall;
 @property (nonatomic) CallType callType;
 @property (nonatomic) Contact *contact;
+@property (nonatomic, assign) BOOL isContactInAddressBook;
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *contactEmail;
 @property (weak, nonatomic) IBOutlet UILabel *callStatusLabel;
@@ -38,6 +39,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *declineButton;
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *hangupButton;
+
 
 - (IBAction)declineButtonTapped:(id)sender;
 - (IBAction)acceptButtonTapped:(id)sender;

@@ -111,14 +111,16 @@ static NSMutableDictionary *addressBookMap;
             //ABPersonCopyImageData(aRecordRef)];
         }
 
-        // Create a new contact
-        Contact *contact = [[Contact alloc] initWithEmail:email
-                                            withFirstName:aFirstName
-                                             withLastName:aLastName
-                                                withImage:anImage];
-        
-        // Put the new contact into the result array
-        [contactList addObject:contact];
+        // Create new contact if email exists in the address book
+        if (aRecordRef) {
+            Contact *contact = [[Contact alloc] initWithEmail:email
+                                                withFirstName:aFirstName
+                                                 withLastName:aLastName
+                                                    withImage:anImage];
+            
+            // Put the new contact into the result array
+            [contactList addObject:contact];
+        }
     }
     
     // Release ABAddressBookRef
@@ -134,7 +136,13 @@ static NSMutableDictionary *addressBookMap;
     [contactList addObject:email];
     
     NSMutableArray *contacts = [self getContactList:contactList];
-    return [contacts objectAtIndex:0];
+
+    // Get first contact if there is any
+    Contact *contact;
+    if ([contacts count] != 0)
+        contact = [contacts objectAtIndex:0];
+    
+    return contact;
 }
 
 // Get every contacts from myContacts

@@ -6,6 +6,9 @@
 //
 //
 
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
 #import "CallerViewController.h"
 #import "UIViewControllerWithStatusBar.h"
 #import "LinphoneManager.h"
@@ -15,7 +18,7 @@
 
 
 
-@interface CallerViewController () {
+@interface CallerViewController () <ABUnknownPersonViewControllerDelegate> {
     BOOL callErrorDetected;
     BOOL activeCallIsInProgress;
     BOOL callTimerStarted;
@@ -34,6 +37,7 @@
 @synthesize callType;
 @synthesize incomingCall;
 @synthesize contact;
+@synthesize isContactInAddressBook;
 
 @synthesize registrationStateImage;
 @synthesize registrationStateLabel;
@@ -192,7 +196,28 @@
             
              // Close call view if no error alert detected
              if (!callErrorDetected) {
-                [self dismissViewControllerAnimated:YES completion:nil];
+                 
+                 // Popup add to contact option if the contact is not in the addressbook
+                 if (!isContactInAddressBook) {
+                     
+                     // Stop Call Timer
+                     [self stopCallTimer];
+                     
+                     // Stop Call Security Timer
+                     [self stopCallSecurityTimer];
+                     
+                     UIAlertView* error = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New contact", nil)
+                                                                     message:NSLocalizedString(@"Do you want to add this contact to the address book?", nil)
+                                                                    delegate:self
+                                                           cancelButtonTitle:NSLocalizedString(@"No",nil)
+                                                           otherButtonTitles:NSLocalizedString(@"Yes",nil),nil];
+                     
+                     [error show];
+                 }
+                 // Dismiss call view
+                 else {
+                     [self dismissViewControllerAnimated:YES completion:nil];
+                 }
              }
 			break;
         }
@@ -296,8 +321,14 @@
 {
     [self clearActiveCall];
     
-    // dismiss call view
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // Add contact to address book
+    if (buttonIndex == 1) {
+        [self showUnknownPersonViewController];
+    }
+    // Dismiss call view
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 
@@ -318,16 +349,23 @@
         // Try to get caller id from address book
         email = [LinphoneHelper sipUserToEmail:sipUser];
         incomingContact = [AddressBookMap getContactWithEmail:email];
+        
+        // Contact found in the address book
+        if (incomingContact)
+            isContactInAddressBook = YES;
+        // If the email is not in the address book than create a default contact
+        else {
+            isContactInAddressBook = NO;
+            incomingContact = [[Contact alloc] initWithDefault:email];
+        }
+    }
 
-    }
-    // If the email is not in the address book than create a default contact
-    if (!incomingContact) {
-        incomingContact = [[Contact alloc] initWithDefault:email];
-    }
+    // Set contact
+    contact = incomingContact;
     
     // Update UI elements with caller details
-    contactEmail.title = incomingContact.email;
-    contactImageView.image = incomingContact.image;
+    contactEmail.title = contact.email;
+    contactImageView.image = contact.image;
     
     // Reset call status UI elements
     [self updateUICallStatus: NSLocalizedString(@"Incoming call..", nil)
@@ -337,7 +375,7 @@
     [securityImageView setHidden:TRUE];
     
     // Hide call timer with the caller name
-    [callTimerLabel setText:incomingContact.email];
+    [callTimerLabel setText:contact.email];
     
     // Hide/unhide call specific buttons
     [hangupButton setHidden:YES];
@@ -361,7 +399,13 @@
     NSString *displayName = contact.fullName;
     
     [[LinphoneManager instance] call:address displayName:displayName transfer:FALSE];
-    
+
+    // Try to get caller id from address book
+    if ([AddressBookMap getContactWithEmail:contact.email])
+        isContactInAddressBook = YES;
+    else
+        isContactInAddressBook = NO;
+
     // Reset call status UI elements
     [self updateUICallStatus:NSLocalizedString(@"Connecting..", nil)
                     zrtpHash:nil];
@@ -426,8 +470,6 @@
             if (ms_list_size(calls) == 1) { // Only one call
                 linphone_core_terminate_call(lc,(LinphoneCall*)(calls->data));
             }
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
         }
         
         [self clearActiveCall];
@@ -449,6 +491,61 @@
     callType = kNone;
 }
 
+// Called when users tap "Add new contact" in the application.
+- (void)showUnknownPersonViewController
+{
+	ABRecordRef aContact = ABPersonCreate();
+	CFErrorRef anError = NULL;
+	ABMultiValueRef email = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+	bool didAdd = ABMultiValueAddValueAndLabel(email, (__bridge CFTypeRef)(contact.email), kABOtherLabel, NULL);
+	
+	if (didAdd == YES)
+	{
+		ABRecordSetValue(aContact, kABPersonEmailProperty, email, &anError);
+		if (anError == NULL)
+		{
+			ABUnknownPersonViewController *picker = [[ABUnknownPersonViewController alloc] init];
+			picker.unknownPersonViewDelegate = self;
+			picker.displayedPerson = aContact;
+			picker.allowsAddingToAddressBook = YES;
+		    picker.allowsActions = YES;
+			picker.title = @"New Contact";
+			picker.message = @"Zirgoo User";
+			
+            UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
+            
+            picker.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
+                                                     action:@selector(dismissUnknownPersonViewController:)];
+            
+            [self presentViewController:navigation animated:YES completion:nil];
+		}
+		else
+		{
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+															message:@"Could not create unknown user"
+														   delegate:nil
+												  cancelButtonTitle:@"Cancel"
+												  otherButtonTitles:nil];
+			[alert show];
+		}
+	}
+	CFRelease(email);
+	CFRelease(aContact);
+}
+
+// Dismisses add new contact view controller
+- (void)dismissUnknownPersonViewController:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:^{
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+}
+
+// Dismisses the picker when users are done creating a contact or adding the displayed person properties to an existing contact.
+- (void)unknownPersonViewController:(ABUnknownPersonViewController *)unknownPersonView didResolveToPerson:(ABRecordRef)person
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 #pragma mark - Call Timer Functions
