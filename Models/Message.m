@@ -521,6 +521,33 @@ withMessageDirection:(MessageDirection)aMessageDirection
     sqlite3_finalize(sqlStatement);
 }
 
++ (void)deleteMessagesWithContactEmail:(NSString *)contactEmail
+{
+    sqlite3* database = [[LinphoneManager instance] database];
+    if(database == NULL) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Database not ready"];
+        return;
+    }
+
+    const char *sql = "DELETE FROM chat WHERE contact_email=@EMAIL";
+    sqlite3_stmt *sqlStatement;
+    if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
+        return;
+    }
+    
+    // Prepare statement
+    sqlite3_bind_text(sqlStatement, 1, [contactEmail UTF8String], -1, SQLITE_STATIC);
+                                          
+    if (sqlite3_step(sqlStatement) != SQLITE_DONE) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Error during execution of query: %s (%s)", sql, sqlite3_errmsg(database)];
+        sqlite3_finalize(sqlStatement);
+        return;
+    }
+    
+    sqlite3_finalize(sqlStatement);
+}
+
 + (void)deleteExpiredMessages
 {
     sqlite3* database = [[LinphoneManager instance] database];

@@ -81,7 +81,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Recents" id="N35-fM-2L3">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="cQe-8o-JDn"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="cQe-8o-JDn">
+                                            <connections>
+                                                <action selector="enterEditMode:" destination="M7D-QH-M4Q" id="zBz-gk-6GF"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -216,6 +220,8 @@
                     <tabBarItem key="tabBarItem" systemItem="recents" id="bnB-Ca-Q91"/>
                     <connections>
                         <outlet property="RecentsTableView" destination="inw-bV-4mO" id="JNZ-Pk-U5L"/>
+                        <outlet property="editButtonItem" destination="cQe-8o-JDn" id="16Y-fY-tPR"/>
+                        <outlet property="navigationItem" destination="N35-fM-2L3" id="LmF-Wu-8u7"/>
                         <outlet property="registeredUserLabel" destination="dBw-vA-CFR" id="KYf-up-M6z"/>
                         <outlet property="registrationStateImage" destination="Hhw-nP-Q5f" id="bbg-ri-jyC"/>
                         <outlet property="registrationStateLabel" destination="HG6-uW-DqR" id="joY-yE-1ab"/>
@@ -1182,7 +1188,7 @@ code has been emailed</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bae-go-2bY"/>
-        <segue reference="tUG-fU-gA4"/>
-        <segue reference="E1R-0j-lMg"/>
+        <segue reference="ZBw-OF-6Ow"/>
+        <segue reference="6Ow-YY-MyA"/>
     </inferredMetricsTieBreakers>
 </document>

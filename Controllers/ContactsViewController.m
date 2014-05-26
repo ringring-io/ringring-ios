@@ -229,7 +229,7 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     // Replace and show Call button
-    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Call"
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Call", nil)
                                                                          style:UIBarButtonItemStyleBordered
                                                                         target:self
                                                                         action:@selector(callManualNumber:)];

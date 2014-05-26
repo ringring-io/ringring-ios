@@ -83,6 +83,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
 + (Message *)getMessage:(NSNumber *)chatId;
 + (void)markAllAsRead:(NSString *)email;
 + (void)deleteMessagesBeforeDate:(NSDate *)date;
++ (void)deleteMessagesWithContactEmail:(NSString *)contactEmail;
 + (void)deleteExpiredMessages;
 
 + (NSString *)messageDirectionToString:(MessageDirection)messageDirection;

@@ -34,6 +34,8 @@
 @synthesize registrationStateLabel;
 @synthesize registeredUserLabel;
 
+@synthesize navigationItem;
+@synthesize editButtonItem;
 @synthesize recentsTableView;
 
 
@@ -71,8 +73,8 @@
     // Update badge number on Recents tab
     [self updateRecentsBadgeNumber];
 
-    // Delete call logs
-    [self deleteLogs];
+    // Auto delete old logs
+    [self deleteLogsAuto];
 
     // Refresh recent contacts list
     [self refreshRecentContacts:nil];
@@ -186,6 +188,11 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 
 
 #pragma mark - Segue Functions
@@ -255,6 +262,23 @@
     [recentsTableView reloadData];
 }
 
+- (void)deleteCallLogWithRecentContact:(RecentContact *)recentContact
+{
+    const MSList *callLogList = linphone_core_get_call_logs([LinphoneManager getLc]);
+    
+    // Get a list of emails from logs
+    const MSList *logListRef = callLogList;
+    while(logListRef != NULL) {
+        LinphoneCallLog *callLog = (LinphoneCallLog *) logListRef->data;
+        NSString *logEmail = [LinphoneHelper emailFromCallLog:callLog];
+        logListRef = ms_list_next(logListRef);
+
+        if ([logEmail isEqualToString:recentContact.email]) {
+            linphone_core_remove_call_log([LinphoneManager getLc], callLog);
+        }
+    }
+}
+
 - (void)deleteCallLogBeforeDate:(NSDate *)date
 {
     const MSList *callLogList = linphone_core_get_call_logs([LinphoneManager getLc]);
@@ -263,6 +287,7 @@
     const MSList *logListRef = callLogList;
     while(logListRef != NULL) {
         LinphoneCallLog *callLog = (LinphoneCallLog *) logListRef->data;
+        
         NSDate *callStartDate = [NSDate dateWithTimeIntervalSince1970:linphone_call_log_get_start_date(callLog)];
         logListRef = ms_list_next(logListRef);
         
@@ -273,7 +298,7 @@
     }
 }
 
-- (void)deleteLogs
+- (void)deleteLogsAuto
 {
     NSDate *currentDate = [NSDate date];
     NSDate *firstLogDate = [currentDate dateByAddingTimeInterval:
@@ -287,6 +312,20 @@
     
     if ([Settings autoClearChatHistory]) {
         [Message deleteMessagesBeforeDate:firstLogDate];
+    }
+}
+
+- (void)deleteLogsWithRecentContact:(RecentContact *)recentContact
+{
+    // Delete call log or message log
+    switch ((RecentType)recentContact.recentType) {
+        case RecentCall:
+            [self deleteCallLogWithRecentContact:recentContact];
+            break;
+            
+        case RecentMessage:
+            [Message deleteMessagesWithContactEmail:recentContact.email];
+            break;
     }
 }
 
@@ -309,6 +348,50 @@
     
     UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
     [tbi setBadgeValue:nil];
+}
+
+- (IBAction)enterEditMode:(id)sender
+{
+    // Set edit mode and replace and show Done button
+    if (![recentsTableView isEditing]) {
+        // Turn on edit mode
+        [recentsTableView setEditing:YES animated:YES];
+        
+        // Replace and show Done button
+        navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                          target:self
+                                                                                          action:@selector(enterEditMode:)];
+    }
+    // Unset edit mode and replace and show Edit button
+    else {
+        // Turn on edit mode
+        [recentsTableView setEditing:NO animated:YES];
+        
+        // Replace and show Edit button
+        navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                          target:self
+                                                                                          action:@selector(enterEditMode:)];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Delete recents
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        RecentContact *recentContact = [recentContacts objectAtIndex:indexPath.row];
+        
+        // Delete entries from call and message logs
+        [self deleteLogsWithRecentContact:recentContact];
+        
+        // Delete the row from the data source
+        [recentContacts removeObjectAtIndex:indexPath.row];
+
+        // Animate the deletion
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        // Refresh recent contacts list
+        [self refreshRecentContacts:nil];
+    }
 }
 
 @end

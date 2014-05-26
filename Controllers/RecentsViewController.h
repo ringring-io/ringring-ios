@@ -19,6 +19,11 @@
 @property (nonatomic, retain) IBOutlet UILabel *registrationStateLabel;
 @property (nonatomic, retain) IBOutlet UILabel *registeredUserLabel;
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *recentsTableView;
+
+
+- (IBAction)enterEditMode:(id)sender;
 
 @end
