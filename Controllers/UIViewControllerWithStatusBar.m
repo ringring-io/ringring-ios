@@ -129,24 +129,24 @@
         
         switch (state) {
             case LinphoneRegistrationOk:
-                registrationStatus = NSLocalizedString(@"Registered", nil);
-                registrationStatusImage = [UIImage imageNamed:@"led_connected.png"];
+                registrationStatus = NSLocalizedString(@"Online", nil);
+                registrationStatusImage = [UIImage imageNamed:@"led_online.png"];
                 registeredEmail = [LinphoneHelper registeredEmail];
                 break;
             case LinphoneRegistrationNone:
             case LinphoneRegistrationCleared:
-                registrationStatus =  NSLocalizedString(@"Not registered", nil);
-                registrationStatusImage = [UIImage imageNamed:@"led_disconnected.png"];
+                registrationStatus =  NSLocalizedString(@"Offline", nil);
+                registrationStatusImage = [UIImage imageNamed:@"led_offline.png"];
                 registeredEmail = nil;
                 break;
             case LinphoneRegistrationFailed:
-                registrationStatus =  NSLocalizedString(@"Registration failed", nil);
-                registrationStatusImage = [UIImage imageNamed:@"led_error.png"];
+                registrationStatus =  NSLocalizedString(@"Login failed", nil);
+                registrationStatusImage = [UIImage imageNamed:@"led_login_failed.png"];
                 registeredEmail = nil;
                 break;
             case LinphoneRegistrationProgress:
-                registrationStatus =  NSLocalizedString(@"Registration in progress", nil);
-                registrationStatusImage = [UIImage imageNamed:@"led_inprogress.png"];
+                registrationStatus =  NSLocalizedString(@"Logging in..", nil);
+                registrationStatusImage = [UIImage imageNamed:@"led_logging_in.png"];
                 registeredEmail = nil;
                 break;
             default: break;

@@ -107,7 +107,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknown_contact.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTE-eG-hup">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts_avatar_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="aTE-eG-hup">
                                                     <rect key="frame" x="20" y="0.0" width="55" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -144,7 +144,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="7Oo-7X-vtV"/>
                                                         <constraint firstAttribute="height" constant="30" id="j4d-81-jNh"/>
                                                     </constraints>
-                                                    <state key="normal" image="textbubble.png">
+                                                    <state key="normal" image="contacts_text.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -181,9 +181,10 @@
                                     <outlet property="delegate" destination="M7D-QH-M4Q" id="xrL-LM-tet"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_disconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hhw-nP-Q5f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_offline.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hhw-nP-Q5f">
                                 <rect key="frame" x="20" y="20" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="fWC-ic-NOI"/>
                                     <constraint firstAttribute="width" constant="15" id="zUE-ju-PpG"/>
@@ -254,9 +255,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_disconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="971-wH-JiR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_offline.png" translatesAutoresizingMaskIntoConstraints="NO" id="971-wH-JiR">
                                 <rect key="frame" x="20" y="20" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="X6N-Lo-GSy"/>
                                     <constraint firstAttribute="width" constant="15" id="yAV-Ub-Sp4"/>
@@ -287,7 +289,7 @@
                                     <navigationItem title="contactEmail" id="vRI-Ja-aew"/>
                                 </items>
                             </navigationBar>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknown_contact.png" translatesAutoresizingMaskIntoConstraints="NO" id="n8k-fS-kk1">
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts_avatar_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="n8k-fS-kk1">
                                 <rect key="frame" x="85" y="165" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -364,7 +366,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secure_ok.png" translatesAutoresizingMaskIntoConstraints="NO" id="t86-ec-l6j">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call_secure_ok.png" translatesAutoresizingMaskIntoConstraints="NO" id="t86-ec-l6j">
                                 <rect key="frame" x="243" y="215" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -492,10 +494,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_disconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="TGi-MI-rTQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="led_offline.png" translatesAutoresizingMaskIntoConstraints="NO" id="TGi-MI-rTQ">
                                 <rect key="frame" x="20" y="20" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="c9r-lx-RaH"/>
                                     <constraint firstAttribute="width" constant="15" id="vmO-W9-BKq"/>
@@ -550,14 +552,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknown_contact.png" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-8v-iUD">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts_avatar_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-8v-iUD">
                                                     <rect key="frame" x="20" y="0.0" width="55" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="Ris-yL-bm3"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status_online.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-Sr-Mre">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts_status_online.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-Sr-Mre">
                                                     <rect key="frame" x="60" y="43" width="15" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -591,7 +593,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="58" id="Yk1-WX-bGs"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="textbubble.png">
+                                                    <state key="normal" backgroundImage="contacts_text.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1173,11 +1175,11 @@ code has been emailed</string>
         </scene>
     </scenes>
     <resources>
-        <image name="led_disconnected.png" width="18" height="17"/>
-        <image name="secure_ok.png" width="256" height="256"/>
-        <image name="status_online.png" width="300" height="300"/>
-        <image name="textbubble.png" width="500" height="464"/>
-        <image name="unknown_contact.png" width="160" height="166"/>
+        <image name="call_secure_ok.png" width="256" height="256"/>
+        <image name="contacts_avatar_default.png" width="160" height="166"/>
+        <image name="contacts_status_online.png" width="300" height="300"/>
+        <image name="contacts_text.png" width="500" height="464"/>
+        <image name="led_offline.png" width="18" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1185,8 +1187,8 @@ code has been emailed</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bae-go-2bY"/>
+        <segue reference="ZBw-OF-6Ow"/>
         <segue reference="6Ow-YY-MyA"/>
-        <segue reference="gaZ-Rt-76U"/>
+        <segue reference="bae-go-2bY"/>
     </inferredMetricsTieBreakers>
 </document>

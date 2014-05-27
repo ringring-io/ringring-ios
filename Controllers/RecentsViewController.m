@@ -78,6 +78,14 @@
 
     // Refresh recent contacts list
     [self refreshRecentContacts:nil];
+    
+    // Turn off edit mode
+    [recentsTableView setEditing:NO animated:NO];
+    
+    // Replace and show Edit button
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                      target:self
+                                                                                      action:@selector(enterEditMode:)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -178,7 +186,7 @@
             if (recentContact.hasUnreadMessages) {
                 cell.contactEmailLabel.font = [UIFont boldSystemFontOfSize:14];
             }
-            recentTypeButtonImageName = @"textbubble.png";
+            recentTypeButtonImageName = @"contacts_text.png";
             break;
     }
     
@@ -364,7 +372,7 @@
     }
     // Unset edit mode and replace and show Edit button
     else {
-        // Turn on edit mode
+        // Turn off edit mode
         [recentsTableView setEditing:NO animated:YES];
         
         // Replace and show Edit button

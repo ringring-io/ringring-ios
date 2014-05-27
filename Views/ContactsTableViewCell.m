@@ -44,7 +44,7 @@
         contactFullNameLabel.numberOfLines = 1;
        
         sendMessageButton = [[UIButton alloc] initWithFrame:(CGRectMake(248, 0, 58, 60))];
-        [sendMessageButton setBackgroundImage:[UIImage imageNamed:@"textbubble.png"]
+        [sendMessageButton setBackgroundImage:[UIImage imageNamed:@"contacts_text.png"]
                                      forState:UIControlStateNormal];
         [sendMessageButton addTarget:self
                               action:@selector(sendMessageButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -85,20 +85,20 @@
     // Set status image
     if (contact.isActivated) {
         if (contact.isLoggedIn) {
-            statusImage.image = [UIImage imageNamed:@"status_online.png"];
+            statusImage.image = [UIImage imageNamed:@"contacts_status_online.png"];
             contactEmailLabel.textColor = [UIColor blackColor];
             contactFullNameLabel.textColor = [UIColor blackColor];
             sendMessageButton.hidden = NO;
         }
         else {
-            statusImage.image = [UIImage imageNamed:@"status_offline.png"];
+            statusImage.image = [UIImage imageNamed:@"contacts_status_offline.png"];
             contactEmailLabel.textColor = [UIColor lightGrayColor];
             contactFullNameLabel.textColor = [UIColor lightGrayColor];
             sendMessageButton.hidden = YES;
         }
     }
     else {
-        statusImage.image = [UIImage imageNamed:@"status_unregistered.png"];
+        statusImage.image = [UIImage imageNamed:@"contacts_status_unregistered.png"];
         contactEmailLabel.textColor = [UIColor lightGrayColor];
         contactFullNameLabel.textColor = [UIColor lightGrayColor];
         sendMessageButton.hidden = YES;

@@ -44,7 +44,7 @@
         // Clear empty space fullnames
         if ([self.fullName isEqualToString:@" "]) self.fullName = @"";
 
-        self.image = anImage?anImage:[UIImage imageNamed:@"unknown_contact.png"];
+        self.image = anImage?anImage:[UIImage imageNamed:@"contacts_avatar_default.png"];
         self.hasUnreadMessages = NO;
         self.isActivated = NO;
         self.isLoggedIn = NO;
@@ -67,7 +67,7 @@
         // Clear empty space fullnames
         if ([self.fullName isEqualToString:@" "]) self.fullName = @"";
 
-        self.image = aContact.image?aContact.image:[UIImage imageNamed:@"unknown_contact.png"];
+        self.image = aContact.image?aContact.image:[UIImage imageNamed:@"contacts_avatar_default.png"];
         self.hasUnreadMessages = NO;
         self.isActivated = NO;
         self.isLoggedIn = NO;
@@ -86,7 +86,7 @@
         self.firstName = NSLocalizedString(@"Unknown", nil);
         self.lastName = NSLocalizedString(@"Unknown", nil);
         self.fullName = NSLocalizedString(@"Unknown", nil);
-        self.image = [UIImage imageNamed:@"unknown_contact.png"];
+        self.image = [UIImage imageNamed:@"contacts_avatar_default.png"];
         self.hasUnreadMessages = NO;
         self.isActivated = NO;
         self.isLoggedIn = NO;

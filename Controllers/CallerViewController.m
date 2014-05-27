@@ -14,6 +14,7 @@
 #import "LinphoneManager.h"
 
 #import "LinphoneHelper.h"
+#import "ZirgooMessage.h"
 #import "AddressBookMap.h"
 
 
@@ -238,7 +239,7 @@
         case LinphoneCallUpdating:              // 17: A call update has been initiated by us */
         case LinphoneCallReleased:              // 18: The call object is no more retained by the core */
         {
-            NSLog(@"=============================== %d ================= ", callState);
+            NSLog(@"================ UNDAHNDLED CALL UPDATE: %d ================ ", callState);
             break;
         }
         default:
@@ -294,7 +295,7 @@
     linphone_core_get_default_proxy([LinphoneManager getLc],&proxyCfg);
     if (proxyCfg == nil) {
  
-        lMessage = NSLocalizedString(@"Please make sure your device is connected to the internet and double check your SIP account configuration in the settings.", nil);
+        lMessage = NSLocalizedString(@"Please make sure your device is connected to the internet.", nil);
     } else {
         lMessage = [NSString stringWithFormat : NSLocalizedString(@"Cannot call %@", nil), lDisplayName];
     }
@@ -304,7 +305,8 @@
     }
     else {
         if (message != nil) {
-            lMessage = [NSString stringWithFormat : NSLocalizedString(@"%@\nReason was: %@", nil), lMessage, message];
+            ZirgooMessage *zirgooMessage = [[ZirgooMessage alloc] initWithZirgooMessageString:message];
+            lMessage = [NSString stringWithFormat : NSLocalizedString(@"%@\n%@", nil), lMessage, zirgooMessage.zirgooText];
         }
     }
  
@@ -607,7 +609,7 @@
     
     // Default is non secure
     [zrtpHashLabel setText:@""];
-    securityImageView.image = [UIImage imageNamed:@"secure_not_ok.png"];
+    securityImageView.image = [UIImage imageNamed:@"call_secure_not_ok.png"];
     
     if(![LinphoneManager isLcReady]) {
         return;
@@ -637,25 +639,11 @@
                 NSString *zrtpHash = [[[NSString alloc] initWithUTF8String:linphone_call_get_authentication_token(call)] uppercaseString];
                 
                 [zrtpHashLabel setText:zrtpHash];
-                securityImageView.image = [UIImage imageNamed:@"secure_ok.png"];
+                securityImageView.image = [UIImage imageNamed:@"call_secure_ok.png"];
             }
             list = list->next;
         }
     }
-    
-    /*
-    if(security) {
-        
-        if(pending) {
-            [callSecurityImage setImage:[UIImage imageNamed:@"security_pending.png"]];
-        } else {
-            [callSecurityImage setImage:[UIImage imageNamed:@"security_ok.png"]];
-        }
-    } else {
-        [callSecurityImage setImage:[UIImage imageNamed:@"security_ko.png"]];
-    }
-    [callSecurityImage setHidden: false];
-    */
 }
 
 - (void)stopCallSecurityTimer {
