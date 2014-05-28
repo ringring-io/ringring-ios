@@ -681,9 +681,25 @@
                                                       otherButtonTitles:nil,nil];
             [alertView show];
         }
+        else if ([status.status isEqualToString:@"EMAIL_ALREADY_REGISTERED"]) {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
+                                                                message:NSLocalizedString(@"This email is already registered in Zirgoo.", nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      otherButtonTitles:nil,nil];
+            [alertView show];
+        }
+        else if ([status.status isEqualToString:@"INVITATION_LIMIT_NOT_EXCEEDED"]) {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
+                                                                message:NSLocalizedString(@"We already sent an invitation to this email recently.", nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      otherButtonTitles:nil,nil];
+            [alertView show];
+        }
         else {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail",nil)
-                                                                message:NSLocalizedString(@"Could not send the invitation this time. Try again later", nil)
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
+                                                                message:NSLocalizedString(@"Cannot send invitation currently. Try again later", nil)
                                                                delegate:nil
                                                       cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
                                                       otherButtonTitles:nil,nil];
