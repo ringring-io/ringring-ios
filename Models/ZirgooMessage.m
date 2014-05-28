@@ -61,7 +61,7 @@
         }
     }
     else {
-        self.zirgooText = NSLocalizedString(@"Unknown reason", nil);
+        self.zirgooText = NSLocalizedString(@"Try again later", nil);
     }
     
     return self;

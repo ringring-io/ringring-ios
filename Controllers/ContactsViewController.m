@@ -281,6 +281,16 @@
     [self refreshContacts:nil];
 }
 
+// Send invitation confirmation
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Send invitation
+    if (buttonIndex == 1) {
+        [self showLoader];
+        [self invite:selectedContact.email];
+    }
+}
+
 #pragma mark - UI Functions
 
 // Show loading anim
@@ -545,11 +555,11 @@
                                            
         // Any other non-success message
         else if ([status.status isEqualToString:@"USER_NOT_FOUND"]) {
-            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Call failed",nil)
-                                                                message:NSLocalizedString(@"This user is not registered at Zirgoo", nil)
-                                                               delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"OK",nil)
-                                                      otherButtonTitles:nil,nil];
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"This email is not registered", nil)
+                                                                message:NSLocalizedString(@"Do you want to invite this person to use Zirgoo?", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"No",nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Yes",nil), nil];
             [errorView show];
         }
                                            
@@ -641,6 +651,57 @@
                                             
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
     }];
+}
+
+// Get the statuses of a list of contacts by RESTful API call
+- (void)invite:(NSString *)email {
+    
+    // Set request and parameters
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [LinphoneHelper registeredEmail], @"from_email",
+                                   email, @"to_email",
+                                   nil];
+     
+    // Send Register email request
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/v2/user/%@/invite", email]
+                                    parameters:params
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        // Hide the loader animation
+        [self dismissLoader];
+          
+        // Get results: query result and user list
+        Status *status = [mappingResult.dictionary objectForKey:@""];
+        
+        if (status.success) {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Great",nil)
+                                                                message:NSLocalizedString(@"The invitation will be sent to your contact shortly, provided that no other invitation has not been sent", nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      otherButtonTitles:nil,nil];
+            [alertView show];
+        }
+        else {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail",nil)
+                                                                message:NSLocalizedString(@"Could not send the invitation this time. Try again later", nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      otherButtonTitles:nil,nil];
+            [alertView show];
+        }
+
+     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         
+         // Hide the loader animation
+         [self dismissLoader];
+         
+         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail",nil)
+                                                             message:NSLocalizedString(@"Could not send the invitation this time. Try again later", nil)
+                                                            delegate:nil
+                                                   cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                   otherButtonTitles:nil,nil];
+         [alertView show];
+     }];
 }
 
 @end

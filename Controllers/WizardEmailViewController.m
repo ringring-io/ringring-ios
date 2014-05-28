@@ -198,8 +198,8 @@
                     UIAlertView* userExistsView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Email is already registered", nil)
                                                                              message:NSLocalizedString(@"Do you want to receive a new activation code?", nil)
                                                                             delegate:self
-                                                                   cancelButtonTitle:@"No"
-                                                                   otherButtonTitles:@"Yes", nil];
+                                                                   cancelButtonTitle:NSLocalizedString(@"No", nil)
+                                                                   otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
                     [userExistsView show];
             }
             
