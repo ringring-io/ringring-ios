@@ -215,6 +215,10 @@ static NSMutableDictionary *addressBookMap;
 {
     NSMutableArray *excludeContactList = [[NSMutableArray alloc] init];
     
+    // Exclude the registered user from the contact list
+    Contact *registeredContact = [[Contact alloc] initWithDefault:[LinphoneHelper registeredEmail]];
+    [excludeContactList addObject:registeredContact];
+    
     return [self getAddressBookContacts:excludeContactList];
 }
 
