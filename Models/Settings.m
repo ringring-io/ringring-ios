@@ -36,7 +36,7 @@
     
     // Set default value if not defined
     if (autoClearCallHistory == NotDefined)
-        autoClearCallHistory = FiveMinutes;
+        autoClearCallHistory = OneMinute;
     
     return autoClearCallHistory;
 }
@@ -91,10 +91,10 @@
     
     switch ((Setting)AutoClearCallHistory) {
         case AutoClearCallHistory:
-            settingToString = @"AutoClearCallHistory";
+            settingToString = NSLocalizedString(@"AutoClearCallHistory", nil);
             break;
         case AutoClearChatHistory:
-            settingToString = @"AutoClearChatHistory";
+            settingToString = NSLocalizedString(@"AutoClearChatHistory", nil);
             break;
     }
     
@@ -106,25 +106,28 @@
     
     switch ((ClearInterval)clearInterval) {
         case NotDefined:
-            clearIntervalToString = @"Not defined";
+            clearIntervalToString = NSLocalizedString(@"Not defined", nil);
+            break;
+        case OneMinute:
+            clearIntervalToString = NSLocalizedString(@"1 minute", nil);
             break;
         case FiveMinutes:
-            clearIntervalToString = @"5 minutes";
+            clearIntervalToString = NSLocalizedString(@"5 minutes", nil);
             break;
         case FiveteenMinutes:
-            clearIntervalToString = @"15 minutes";
+            clearIntervalToString = NSLocalizedString(@"15 minutes", nil);
             break;
         case ThirtyMinutes:
-            clearIntervalToString = @"30 minutes";
+            clearIntervalToString = NSLocalizedString(@"30 minutes", nil);
             break;
         case OneHour:
-            clearIntervalToString = @"1 hour";
+            clearIntervalToString = NSLocalizedString(@"1 hour", nil);
             break;
         case TwelveHours:
-            clearIntervalToString = @"12 hours";
+            clearIntervalToString = NSLocalizedString(@"12 hours", nil);
             break;
         case OneDay:
-            clearIntervalToString = @"1 day";
+            clearIntervalToString = NSLocalizedString(@"1 day", nil);
             break;
     }
     
@@ -139,6 +142,9 @@
     switch ((ClearInterval)clearInterval) {
         case NotDefined:
             clearIntervalToSeconds = 0;
+            break;
+        case OneMinute:
+            clearIntervalToSeconds = 60;
             break;
         case FiveMinutes:
             clearIntervalToSeconds = 300;

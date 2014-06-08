@@ -1,6 +1,6 @@
-platform :ios, '6.1'
+platform :ios, '7.1'
 
 pod 'SVProgressHUD'
 pod 'RestKit', '~> 0.20.0'
-pod 'JSMessagesViewController', '~>3.4.4'
+pod 'JSQMessagesViewController', '~>5.0.4'
 pod 'StaticDataTableViewController', '~>0.0.1'

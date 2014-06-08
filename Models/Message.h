@@ -84,6 +84,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
 + (void)markAllAsRead:(NSString *)email;
 + (void)deleteMessagesBeforeDate:(NSDate *)date;
 + (void)deleteMessagesWithContactEmail:(NSString *)contactEmail;
++ (void)updateExpiredMessages;
 + (void)deleteExpiredMessages;
 
 + (NSString *)messageDirectionToString:(MessageDirection)messageDirection;

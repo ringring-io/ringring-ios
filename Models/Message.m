@@ -548,6 +548,34 @@ withMessageDirection:(MessageDirection)aMessageDirection
     sqlite3_finalize(sqlStatement);
 }
 
++ (void)updateExpiredMessages
+{
+    sqlite3* database = [[LinphoneManager instance] database];
+    if(database == NULL) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Database not ready"];
+        return;
+    }
+    
+    const char *sql = "UPDATE chat SET state = @STATE WHERE expiry_time != 0 AND received_date + expiry_time <= @NOW";
+    sqlite3_stmt *sqlStatement;
+    if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
+        return;
+    }
+    
+    // Prepare statement
+    sqlite3_bind_int(sqlStatement, 1, (int)MessageStateExpired);
+    sqlite3_bind_double(sqlStatement, 2, [[NSDate date] timeIntervalSince1970]);
+    
+    if (sqlite3_step(sqlStatement) != SQLITE_DONE) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Error during execution of query: %s (%s)", sql, sqlite3_errmsg(database)];
+        sqlite3_finalize(sqlStatement);
+        return;
+    }
+    
+    sqlite3_finalize(sqlStatement);
+}
+
 + (void)deleteExpiredMessages
 {
     sqlite3* database = [[LinphoneManager instance] database];
@@ -635,31 +663,31 @@ withMessageDirection:(MessageDirection)aMessageDirection
     
     switch ((MessageState)messageState) {
         case MessageStateIdle:
-            messageStateToString = @"Idle";
+            messageStateToString = NSLocalizedString(@"Idle", nil);
             break;
         case MessageStateInProgress:
-            messageStateToString = @"In Progress";
+            messageStateToString = NSLocalizedString(@"In Progress", nil);
             break;
         case MessageStateDelivered:
-            messageStateToString = @"Delivered";
+            messageStateToString = NSLocalizedString(@"Delivered", nil);
             break;
         case MessageStateNotDelivered:
-            messageStateToString = @"Not Delivered";
+            messageStateToString = NSLocalizedString(@"Not Delivered", nil);
             break;
         case MessageStateReceived:
-            messageStateToString = @"Received";
+            messageStateToString = NSLocalizedString(@"Received", nil);
             break;
         case MessageStateNotReceived:
-            messageStateToString = @"Not Received";
+            messageStateToString = NSLocalizedString(@"No feedback", nil);
             break;
         case MessageStateWaitingtoOpen:
-            messageStateToString = @"Waiting to Open";
+            messageStateToString = NSLocalizedString(@"Waiting to Open", nil);
             break;
         case MessageStateOpened:
-            messageStateToString = @"Opened";
+            messageStateToString = NSLocalizedString(@"Seen", nil);
             break;
         case MessageStateExpired:
-            messageStateToString = @"Expired";
+            messageStateToString = NSLocalizedString(@"Expired", nil);
             break;
     }
     
@@ -685,7 +713,8 @@ withMessageDirection:(MessageDirection)aMessageDirection
             receivedDate     : %@\n\
             openedDate       : %@\n\
             state            : %@\n\
-            expiryTime       : %@",
+            expiryTime       : %@\n\
+            indexPath        : %@",
             [self chatId],
             [self refChatId],
             [self email],
@@ -701,7 +730,8 @@ withMessageDirection:(MessageDirection)aMessageDirection
             [formatter stringFromDate:[self receivedDate]],
             [formatter stringFromDate:[self openedDate]],
             [Message messageStateToString:self.messageState],
-            [self expiryTime]];
+            [self expiryTime],
+            [[self indexPath] description]];
 }
 
 @end

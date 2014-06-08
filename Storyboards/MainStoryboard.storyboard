@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="COl-Lp-hK4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="COl-Lp-hK4">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -462,19 +462,17 @@
                     <navigationItem key="navigationItem" title="John Smith" prompt="smith.john@theend.hu" id="ZjS-ga-qe4">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="SoU-zQ-KLh">
                             <connections>
-                                <action selector="backButtonTapped:" destination="g5z-ku-0eh" id="ke2-7e-cO0"/>
+                                <action selector="backButtonTapped:" destination="g5z-ku-0eh" id="DAD-oC-uZw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="fad-vv-Od7">
                             <connections>
-                                <action selector="trashButtonTapped:" destination="g5z-ku-0eh" id="Yhq-gI-L5N"/>
+                                <action selector="trashButtonTapped:" destination="g5z-ku-0eh" id="EDP-T8-rKc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButtonItem" destination="SoU-zQ-KLh" id="pXZ-Xc-XI0"/>
-                        <outlet property="navigationItem" destination="ZjS-ga-qe4" id="E76-gT-lA4"/>
-                        <outlet property="trashButtonItem" destination="fad-vv-Od7" id="7Od-qM-DMS"/>
+                        <outlet property="navigationItem" destination="ZjS-ga-qe4" id="VdK-7O-jYO"/>
                         <segue destination="IUm-gI-hlp" kind="modal" identifier="StartSecureCallSegue" id="gaZ-Rt-76U"/>
                     </connections>
                 </viewController>
@@ -1037,8 +1035,25 @@ code has been emailed</string>
                         <sections>
                             <tableViewSection headerTitle="Clear call history in every" id="Mxg-nj-gPN">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wsp-jg-Phy" style="IBUITableViewCellStyleDefault" id="l0w-b4-fMW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" textLabel="mpk-5l-Qbm" style="IBUITableViewCellStyleDefault" id="XuK-w5-RaG">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XuK-w5-RaG" id="BJp-by-rDk">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1 minute" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mpk-5l-Qbm">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wsp-jg-Phy" style="IBUITableViewCellStyleDefault" id="l0w-b4-fMW">
+                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l0w-b4-fMW" id="LzO-ok-4yQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1055,7 +1070,7 @@ code has been emailed</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="bsv-9N-pyY" style="IBUITableViewCellStyleDefault" id="fR8-tA-cqU">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fR8-tA-cqU" id="OjC-cw-Mie">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1072,7 +1087,7 @@ code has been emailed</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="AiO-dm-tYr" style="IBUITableViewCellStyleDefault" id="UlH-ON-Ixa">
-                                        <rect key="frame" x="0.0" y="207" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UlH-ON-Ixa" id="WeA-eV-wTu">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1089,7 +1104,7 @@ code has been emailed</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Hxp-Dq-1aS" style="IBUITableViewCellStyleDefault" id="dT4-rI-Fvb">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="295" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dT4-rI-Fvb" id="tSo-XH-rMl">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1106,7 +1121,7 @@ code has been emailed</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="SaP-4f-7m1" style="IBUITableViewCellStyleDefault" id="4Bi-TT-tub">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Bi-TT-tub" id="lnb-Py-cBq">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1123,7 +1138,7 @@ code has been emailed</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KLC-1u-dOk" style="IBUITableViewCellStyleDefault" id="BXc-ur-YBv">
-                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="383" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BXc-ur-YBv" id="lLH-e5-aO2">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1187,8 +1202,8 @@ code has been emailed</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZBw-OF-6Ow"/>
-        <segue reference="6Ow-YY-MyA"/>
+        <segue reference="tUG-fU-gA4"/>
         <segue reference="bae-go-2bY"/>
+        <segue reference="Z2j-VG-E6L"/>
     </inferredMetricsTieBreakers>
 </document>

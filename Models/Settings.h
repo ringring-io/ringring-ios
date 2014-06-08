@@ -15,6 +15,7 @@ typedef enum Setting : NSUInteger {
 
 typedef enum ClearInterval : NSUInteger {
     NotDefined,
+    OneMinute,
     FiveMinutes,
     FiveteenMinutes,
     ThirtyMinutes,

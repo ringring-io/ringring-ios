@@ -36,12 +36,14 @@
 
 #define LINPHONE_LOGS_MAX_ENTRY 5000
 
+/*
 static void audioRouteChangeListenerCallback (
                                               void                   *inUserData,                                 // 1
                                               AudioSessionPropertyID inPropertyID,                                // 2
                                               UInt32                 inPropertyValueSize,                         // 3
                                               const void             *inPropertyValue                             // 4
                                               );
+*/
 static LinphoneCore* theLinphoneCore = nil;
 static LinphoneManager* theLinphoneManager = nil;
 
@@ -208,11 +210,13 @@ struct codec_name_pref_table codec_pref_table[]={
 
 - (id)init {
     if ((self = [super init])) {
+        /*
         AudioSessionInitialize(NULL, NULL, NULL, NULL);
         OSStatus lStatus = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, audioRouteChangeListenerCallback, self);
         if (lStatus) {
             [LinphoneHelper logc:LinphoneLoggerError format:"cannot register route change handler [%ld]",lStatus];
         }
+         */
         
         // Sounds
         {
@@ -255,10 +259,12 @@ struct codec_name_pref_table codec_pref_table[]={
     [self closeDatabase];
     [logs release];
     
+    /*
     OSStatus lStatus = AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_AudioRouteChange, audioRouteChangeListenerCallback, self);
 	if (lStatus) {
 		[LinphoneHelper logc:LinphoneLoggerError format:"cannot un register route change handler [%ld]", lStatus];
 	}
+    */
     
     [photoLibrary release];
 	[pendindCallIdFromRemoteNotif release];
@@ -1197,6 +1203,7 @@ static int comp_call_state_paused  (const LinphoneCall* call, const void* param)
 
 - (bool)allowSpeaker {
     bool notallow = false;
+    /*
     CFStringRef lNewRoute = CFSTR("Unknown");
     UInt32 lNewRouteSize = sizeof(lNewRoute);
     OSStatus lStatus = AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &lNewRouteSize, &lNewRoute);
@@ -1209,9 +1216,11 @@ static int comp_call_state_paused  (const LinphoneCall* call, const void* param)
             [route isEqualToString: @"Lineout"];
         CFRelease(lNewRoute);
     }
+    */
     return !notallow;
 }
 
+/*
 static void audioRouteChangeListenerCallback (
                                               void                   *inUserData,                                 // 1
                                               AudioSessionPropertyID inPropertyID,                                // 2
@@ -1236,8 +1245,10 @@ static void audioRouteChangeListenerCallback (
         lm.speakerEnabled = lm.speakerEnabled;
     }
 }
+*/
 
 - (void)setSpeakerEnabled:(BOOL)enable {
+    /*
     speakerEnabled = enable;
     if(enable && [self allowSpeaker]) {
         UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;  
@@ -1245,11 +1256,12 @@ static void audioRouteChangeListenerCallback (
                                  , sizeof (audioRouteOverride)
                                  , &audioRouteOverride);
     } else {
-        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;  
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
         AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute
                                  , sizeof (audioRouteOverride)
                                  , &audioRouteOverride);
     }
+    */
 }
 
 #pragma mark - Call Functions
