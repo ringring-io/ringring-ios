@@ -1,6 +1,3 @@
-[submodule "submodules/linphone"]
-	path = submodules/linphone
-	url = https://github.com/zirgoo/linphone.git
 [submodule "submodules/externals/gsm"]
 	path = submodules/externals/gsm
 	url = git://git.linphone.org/gsm.git
@@ -70,3 +67,6 @@
 [submodule "submodules/externals/opus"]
 	path = submodules/externals/opus
 	url = http://git.opus-codec.org/opus.git
+[submodule "submodules/linphone"]
+	path = submodules/linphone
+	url = http://github.com/ringring-io/linphone

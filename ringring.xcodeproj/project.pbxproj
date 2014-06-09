@@ -53,7 +53,6 @@
 		4D025EC018A2D60A00582A4F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D025EBF18A2D60A00582A4F /* ChatViewController.m */; };
 		4D094F15188C0BB200038D6A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D094F14188C0BB200038D6A /* MainStoryboard.storyboard */; };
 		4D0F310A192AC9C80093A1CB /* libortp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220FAD2C10765B400068D98F /* libortp.a */; };
-		4D2546BC1928D3280000F736 /* zirgoo_launchimage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D2546BB1928D3280000F736 /* zirgoo_launchimage-568h@2x.png */; };
 		4D2546C2192ABEEF0000F736 /* libxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C1192ABEEF0000F736 /* libxml2.a */; };
 		4D2546C4192ABF030000F736 /* libwels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C3192ABF030000F736 /* libwels.a */; };
 		4D2546C6192ABF1D0000F736 /* libopus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C5192ABF1D0000F736 /* libopus.a */; };
@@ -86,8 +85,6 @@
 		4D52771D1928C9FD002322F5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D52770D1928C9FD002322F5 /* Icon@2x.png */; };
 		4D52771E1928C9FD002322F5 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D52770E1928C9FD002322F5 /* iTunesArtwork.png */; };
 		4D52771F1928C9FD002322F5 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D52770F1928C9FD002322F5 /* iTunesArtwork@2x.png */; };
-		4D5277251928CE72002322F5 /* zirgoo_launchimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5277221928CE72002322F5 /* zirgoo_launchimage.png */; };
-		4D5277261928CE72002322F5 /* zirgoo_launchimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5277231928CE72002322F5 /* zirgoo_launchimage@2x.png */; };
 		4D5277281928CF5D002322F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5277271928CF5D002322F5 /* Images.xcassets */; };
 		4D591BF218BAC308001F2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D591BF118BAC308001F2C84 /* User.m */; };
 		4D591BF818BAC38F001F2C84 /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D591BF718BAC38F001F2C84 /* MappingProvider.m */; };
@@ -95,6 +92,9 @@
 		4D6F513E171996BB0043B54C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6F513D171996BB0043B54C /* CoreData.framework */; };
 		4D6F513F171996DA0043B54C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22744043106F33FC006EC466 /* Security.framework */; };
 		4D6F51411719CEB90043B54C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6F51401719CEB90043B54C /* libxml2.dylib */; };
+		4D7C44F51945348400F8A57E /* ringring_launchimage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C44F21945348400F8A57E /* ringring_launchimage-568h@2x.png */; };
+		4D7C44F61945348400F8A57E /* ringring_launchimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C44F31945348400F8A57E /* ringring_launchimage.png */; };
+		4D7C44F71945348400F8A57E /* ringring_launchimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C44F41945348400F8A57E /* ringring_launchimage@2x.png */; };
 		4D921884192BEA5300F723F7 /* AddressBookMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D921883192BEA5300F723F7 /* AddressBookMap.m */; };
 		4D921885192BEA6D00F723F7 /* AddressBookMap.h in Sources */ = {isa = PBXBuildFile; fileRef = 4D921882192BEA5300F723F7 /* AddressBookMap.h */; };
 		4DBEA45C1935213F00555C92 /* led_logging_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBEA4581935213F00555C92 /* led_logging_in.png */; };
@@ -162,7 +162,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* LinphoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinphoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* LinphoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinphoneAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* zirgoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zirgoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* ringring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ringring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		220FAC79107654FC0068D98F /* eX_call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eX_call.h; sourceTree = "<group>"; };
 		220FAC7A107654FC0068D98F /* eX_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eX_message.h; sourceTree = "<group>"; };
@@ -400,7 +400,6 @@
 		4D094F0E188AEAA000038D6A /* LauncherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LauncherViewController.h; path = Controllers/LauncherViewController.h; sourceTree = "<group>"; };
 		4D094F0F188AEAA000038D6A /* LauncherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LauncherViewController.m; path = Controllers/LauncherViewController.m; sourceTree = "<group>"; };
 		4D094F14188C0BB200038D6A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4D2546BB1928D3280000F736 /* zirgoo_launchimage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zirgoo_launchimage-568h@2x.png"; path = "Resources/LaunchImages/zirgoo_launchimage-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		4D2546C1192ABEEF0000F736 /* libxml2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml2.a; path = "liblinphone-sdk/apple-darwin/lib/libxml2.a"; sourceTree = "<group>"; };
 		4D2546C3192ABF030000F736 /* libwels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwels.a; path = "liblinphone-sdk/apple-darwin/lib/libwels.a"; sourceTree = "<group>"; };
 		4D2546C5192ABF1D0000F736 /* libopus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopus.a; path = "liblinphone-sdk/apple-darwin/lib/libopus.a"; sourceTree = "<group>"; };
@@ -434,8 +433,6 @@
 		4D52770D1928C9FD002322F5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4D52770E1928C9FD002322F5 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		4D52770F1928C9FD002322F5 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		4D5277221928CE72002322F5 /* zirgoo_launchimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zirgoo_launchimage.png; sourceTree = "<group>"; };
-		4D5277231928CE72002322F5 /* zirgoo_launchimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zirgoo_launchimage@2x.png"; sourceTree = "<group>"; };
 		4D5277271928CF5D002322F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = app/Images.xcassets; sourceTree = "<group>"; };
 		4D591BF018BAC308001F2C84 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4D591BF118BAC308001F2C84 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -449,6 +446,9 @@
 		4D5A0177187F77DB00F55B4D /* WizardActivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WizardActivateViewController.m; path = Controllers/WizardActivateViewController.m; sourceTree = "<group>"; };
 		4D6F513D171996BB0043B54C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4D6F51401719CEB90043B54C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		4D7C44F21945348400F8A57E /* ringring_launchimage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ringring_launchimage-568h@2x.png"; path = "Resources/LaunchImages/ringring_launchimage-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		4D7C44F31945348400F8A57E /* ringring_launchimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ringring_launchimage.png; path = Resources/LaunchImages/ringring_launchimage.png; sourceTree = SOURCE_ROOT; };
+		4D7C44F41945348400F8A57E /* ringring_launchimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ringring_launchimage@2x.png"; path = "Resources/LaunchImages/ringring_launchimage@2x.png"; sourceTree = SOURCE_ROOT; };
 		4D921882192BEA5300F723F7 /* AddressBookMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBookMap.h; path = Models/AddressBookMap.h; sourceTree = "<group>"; };
 		4D921883192BEA5300F723F7 /* AddressBookMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBookMap.m; path = Models/AddressBookMap.m; sourceTree = "<group>"; };
 		4DB1FCFB18833A40003A4E8F /* RecentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentsViewController.h; path = Controllers/RecentsViewController.h; sourceTree = "<group>"; };
@@ -592,7 +592,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* zirgoo.app */,
+				1D6058910D05DD3D006BFB54 /* ringring.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1032,9 +1032,9 @@
 		4D5277201928CE72002322F5 /* LaunchImages */ = {
 			isa = PBXGroup;
 			children = (
-				4D5277221928CE72002322F5 /* zirgoo_launchimage.png */,
-				4D5277231928CE72002322F5 /* zirgoo_launchimage@2x.png */,
-				4D2546BB1928D3280000F736 /* zirgoo_launchimage-568h@2x.png */,
+				4D7C44F21945348400F8A57E /* ringring_launchimage-568h@2x.png */,
+				4D7C44F31945348400F8A57E /* ringring_launchimage.png */,
+				4D7C44F41945348400F8A57E /* ringring_launchimage@2x.png */,
 			);
 			name = LaunchImages;
 			path = Resources/AppIcons/LaunchImages;
@@ -1153,7 +1153,7 @@
 			);
 			name = app;
 			productName = linphone;
-			productReference = 1D6058910D05DD3D006BFB54 /* zirgoo.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* ringring.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1164,7 +1164,7 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "zirgoo" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ringring" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1194,6 +1194,7 @@
 				4D5277281928CF5D002322F5 /* Images.xcassets in Resources */,
 				22F254811073D99800AC9B3F /* ringback.wav in Resources */,
 				4DBEA462193522DB00555C92 /* contacts_status_offline.png in Resources */,
+				4D7C44F71945348400F8A57E /* ringring_launchimage@2x.png in Resources */,
 				2237D4091084D7A9001383EE /* ring.wav in Resources */,
 				4DBEA46C1935255300555C92 /* call_secure_not_ok.png in Resources */,
 				2242E313125235120061DDCE /* ring.caf in Resources */,
@@ -1211,22 +1212,21 @@
 				4DBEA45C1935213F00555C92 /* led_logging_in.png in Resources */,
 				4DBEA45E1935213F00555C92 /* led_offline.png in Resources */,
 				4D52771F1928C9FD002322F5 /* iTunesArtwork@2x.png in Resources */,
-				4D5277261928CE72002322F5 /* zirgoo_launchimage@2x.png in Resources */,
+				4D7C44F51945348400F8A57E /* ringring_launchimage-568h@2x.png in Resources */,
 				4D5277131928C9FD002322F5 /* Icon-80.png in Resources */,
 				4D5277191928C9FD002322F5 /* Icon-Small-57@2x.png in Resources */,
 				4DBEA4651935230300555C92 /* contacts_status_unregistered.png in Resources */,
 				D3804E6215D92A57008072A5 /* msg.wav in Resources */,
-				4D5277251928CE72002322F5 /* zirgoo_launchimage.png in Resources */,
 				D321FF9915E628CB0098B5F4 /* linphonerc~ipad in Resources */,
 				4D5277141928C9FD002322F5 /* Icon-Small-29.png in Resources */,
 				4D5277171928C9FD002322F5 /* Icon-Small-50@2x.png in Resources */,
 				57F005C415EE2CCF00914747 /* linphonerc in Resources */,
 				4D52771C1928C9FD002322F5 /* Icon.png in Resources */,
 				57F005C815EE2D9200914747 /* linphonerc-factory in Resources */,
+				4D7C44F61945348400F8A57E /* ringring_launchimage.png in Resources */,
 				57F005CA15EE2D9200914747 /* linphonerc-factory~ipad in Resources */,
 				4D5277151928C9FD002322F5 /* Icon-Small-29@2x.png in Resources */,
 				4D094F15188C0BB200038D6A /* MainStoryboard.storyboard in Resources */,
-				4D2546BC1928D3280000F736 /* zirgoo_launchimage-568h@2x.png in Resources */,
 				4DBEA4671935239700555C92 /* contacts_text.png in Resources */,
 				4D5277111928C9FD002322F5 /* Icon-72.png in Resources */,
 				4DBEA46D1935255300555C92 /* call_secure_ok.png in Resources */,
@@ -1356,7 +1356,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = zirgoo_Prefix.pch;
+				GCC_PREFIX_HEADER = ringring_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IN_LINPHONE,
 					VIDEO_ENABLED,
@@ -1378,7 +1378,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/XMLRPC/,
 				);
-				INFOPLIST_FILE = "zirgoo-Info.plist";
+				INFOPLIST_FILE = "ringring-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -1390,7 +1390,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = zirgoo;
+				PRODUCT_NAME = ringring;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1401,7 +1401,7 @@
 		228B19A61302902F00F154D3 /* DistributionAdhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1418,12 +1418,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "7763350E-083E-4ADA-8535-05883F19F947";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = DistributionAdhoc;
 		};
@@ -1445,7 +1447,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = zirgoo_Prefix.pch;
+				GCC_PREFIX_HEADER = ringring_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IN_LINPHONE,
 					VIDEO_ENABLED,
@@ -1466,7 +1468,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/XMLRPC/,
 				);
-				INFOPLIST_FILE = "zirgoo-Info.plist";
+				INFOPLIST_FILE = "ringring-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -1478,7 +1480,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = zirgoo;
+				PRODUCT_NAME = ringring;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1489,7 +1491,7 @@
 		22F3D55513CC3C9100A0DA02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1506,12 +1508,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -1532,7 +1536,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = zirgoo_Prefix.pch;
+				GCC_PREFIX_HEADER = ringring_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IN_LINPHONE,
 					VIDEO_ENABLED,
@@ -1553,7 +1557,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/XMLRPC/,
 				);
-				INFOPLIST_FILE = "zirgoo-Info.plist";
+				INFOPLIST_FILE = "ringring-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -1565,7 +1569,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = zirgoo;
+				PRODUCT_NAME = ringring;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1576,7 +1580,7 @@
 		22F51EE7107FA53D00F98953 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1593,12 +1597,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "C7F794BC-6D48-41F2-B37D-E1B1B1A40901";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Distribution;
 		};
@@ -1620,7 +1626,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = zirgoo_Prefix.pch;
+				GCC_PREFIX_HEADER = ringring_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IN_LINPHONE,
 					VIDEO_ENABLED,
@@ -1641,7 +1647,7 @@
 					submodules/externals/speex/include,
 					Classes/Utils/XMLRPC/,
 				);
-				INFOPLIST_FILE = "zirgoo-Info.plist";
+				INFOPLIST_FILE = "ringring-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -1653,7 +1659,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = zirgoo;
+				PRODUCT_NAME = ringring;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1664,7 +1670,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1681,13 +1687,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1705,7 +1712,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "zirgoo" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ringring" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
