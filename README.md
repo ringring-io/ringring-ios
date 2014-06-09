@@ -1,10 +1,10 @@
-# Zirgoo on iPhone #
+# Ringring on iOS #
 
-Zirgoo is a Phone and Messaging application built for privacy with open architectures. You can originate calls and send messages in an easy and secured way with no data-collecting man or company in the middle. The technology is freely available for public.
+Ringring is a Phone and Messaging application built for privacy with open architectures. You can originate calls and send messages in an easy and secured way with no data-collecting man or company in the middle. The technology is freely available for public.
 
 ## Build Prerequisites ##
 
-Zirgoo for iPhone is based on [Liblinphone, free SIP VoIP SDK](http://www.linphone.org/eng/documentation/dev/liblinphone-free-sip-voip-sdk.html) and first you need to prepare your system to build it.
+Ringring on iOS is based on [Liblinphone, free SIP VoIP SDK](http://www.linphone.org/eng/documentation/dev/liblinphone-free-sip-voip-sdk.html) and first you need to prepare your system to build it.
 
 Download and install:
 
@@ -55,6 +55,6 @@ Install the Pod dependencies:
 
 Make sure to **always open the Xcode workspace** instead of the project file when building your project:
 
-    $ open zirgoo.xcworkspace
+    $ open ringring.xcworkspace
     
 Press "Run" in Xcode.
