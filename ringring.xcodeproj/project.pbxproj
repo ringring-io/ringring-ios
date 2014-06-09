@@ -96,7 +96,6 @@
 		4D7C44F61945348400F8A57E /* ringring_launchimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C44F31945348400F8A57E /* ringring_launchimage.png */; };
 		4D7C44F71945348400F8A57E /* ringring_launchimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C44F41945348400F8A57E /* ringring_launchimage@2x.png */; };
 		4D921884192BEA5300F723F7 /* AddressBookMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D921883192BEA5300F723F7 /* AddressBookMap.m */; };
-		4D921885192BEA6D00F723F7 /* AddressBookMap.h in Sources */ = {isa = PBXBuildFile; fileRef = 4D921882192BEA5300F723F7 /* AddressBookMap.h */; };
 		4DBEA45C1935213F00555C92 /* led_logging_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBEA4581935213F00555C92 /* led_logging_in.png */; };
 		4DBEA45D1935213F00555C92 /* led_login_failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBEA4591935213F00555C92 /* led_login_failed.png */; };
 		4DBEA45E1935213F00555C92 /* led_offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBEA45A1935213F00555C92 /* led_offline.png */; };
@@ -1294,7 +1293,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D921885192BEA6D00F723F7 /* AddressBookMap.h in Sources */,
 				4D591BF218BAC308001F2C84 /* User.m in Sources */,
 				4DFA36631899E70000A6E69F /* LinphoneManager.m in Sources */,
 				4DFA36591899E6B700A6E69F /* RecentsTableViewCell.m in Sources */,
