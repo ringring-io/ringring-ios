@@ -22,6 +22,7 @@
 
 @interface RecentsViewController () {
     NSMutableArray *recentContacts;
+    NSTimer *recentsRefreshTimer;
 }
 @end
 
@@ -70,29 +71,45 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Update badge number on Recents tab
-    [self updateRecentsBadgeNumber];
-
-    // Auto delete old logs
-    [self deleteLogsAuto];
-
-    // Refresh recent contacts list
-    [self refreshRecentContacts:nil];
+    [self refreshRecents:nil];
     
+    // Reset missed call log counter
+    linphone_core_reset_missed_calls_count([LinphoneManager getLc]);
+
     // Turn off edit mode
     [recentsTableView setEditing:NO animated:NO];
     
+    // Set observer - Text received listener
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textReceived:)
+                                                 name:kLinphoneTextReceived
+                                               object:nil];
     // Replace and show Edit button
     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                       target:self
                                                                                       action:@selector(enterEditMode:)];
+    
+    // Init Recents Refresh Timer
+    [self initRecentsRefreshTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+
+    // Update application badge number
+    [LinphoneHelper updateApplicationBadgeNumber];
     
     // Update badge number on Recents tab
-    [self resetRecentsBadgeNumber];
+    [self updateRecentsBadgeNumber];
+    
+    // Remove observer - Text received listener
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kLinphoneTextReceived
+                                                  object:nil];
+    
+    // Init Recents Refresh Timer
+    [self stopRecentsRefreshTimer];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -342,23 +359,26 @@
     
     UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
     if (count > 0) {
-        [tbi setBadgeValue:[NSString stringWithFormat:@"%ldl", count]];
+        [tbi setBadgeValue:[NSString stringWithFormat:@"%ld", count]];
     }
     else {
         [tbi setBadgeValue:nil];
     }
 }
 
-- (void)resetRecentsBadgeNumber {
-    // It's the recent (history) view. Reset the counter
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    linphone_core_reset_missed_calls_count([LinphoneManager getLc]);
+- (void)textReceived:(id)sender
+{
+    // Auto delete old logs
+    [self deleteLogsAuto];
     
-    UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
-    [tbi setBadgeValue:nil];
+    // Refresh recent contacts list
+    [self refreshRecentContacts:nil];
+
+    // Update badge numbers
+    [self updateRecentsBadgeNumber];
 }
 
-- (IBAction)enterEditMode:(id)sender
+    - (IBAction)enterEditMode:(id)sender
 {
     // Set edit mode and replace and show Done button
     if (![recentsTableView isEditing]) {
@@ -399,6 +419,45 @@
         
         // Refresh recent contacts list
         [self refreshRecentContacts:nil];
+        
+        // Update application badge number
+        [LinphoneHelper updateApplicationBadgeNumber];
+        
+        // Update recents badge number
+        [self updateRecentsBadgeNumber];
+    }
+}
+
+- (void)refreshRecents:(NSTimer *) aTimer
+{
+    // Update application badge number
+    [LinphoneHelper updateApplicationBadgeNumber];
+    
+    // Update badge number on Recents tab
+    [self updateRecentsBadgeNumber];
+    
+    // Auto delete old logs
+    [self deleteLogsAuto];
+    
+    // Refresh recent contacts list
+    [self refreshRecentContacts:nil];
+}
+
+#pragma mark - Recents Refresh Timer Functions
+
+- (void)initRecentsRefreshTimer {
+    recentsRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                           target:self
+                                                         selector:@selector(refreshRecents:)
+                                                         userInfo:nil
+                                                          repeats:TRUE];
+}
+
+- (void)stopRecentsRefreshTimer {
+    
+    if (recentsRefreshTimer) {
+        [recentsRefreshTimer invalidate];
+        recentsRefreshTimer = nil;
     }
 }
 

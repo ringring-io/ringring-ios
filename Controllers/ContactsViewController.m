@@ -99,6 +99,7 @@
             [self.navigationController setNavigationBarHidden:NO animated:NO];
         }completion:nil];
     }
+    
     [super viewWillLayoutSubviews];
 }
 
@@ -110,11 +111,22 @@
     
     // Refresh contacts list
     [self refreshContacts:nil];
+    
+    // Set observer - Text received listener
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textReceived:)
+                                                 name:kLinphoneTextReceived
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
+    // Remove observer - Text received listener
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kLinphoneTextReceived
+                                                  object:nil];
+
     // Remove observer - Text field change listener
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextFieldTextDidChangeNotification
@@ -487,6 +499,15 @@
     else {
         [tbi setBadgeValue:nil];
     }
+}
+
+- (void)textReceived:(id)sender
+{
+    // Update badge on recents tab
+    [self updateRecentsBadgeNumber];
+    
+    // Refresh contacts list to highligh the sender in the list
+    [self refreshContacts:nil];
 }
 
 // Get the status a contact by RESTful API call

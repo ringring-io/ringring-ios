@@ -61,10 +61,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    
+    // Update badge number on Recents tab
+    [self updateRecentsBadgeNumber];
+
     // Set observer - Registration update listener
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(registrationUpdate:)
                                                  name:kLinphoneRegistrationUpdate
+                                               object:nil];
+    
+    // Set observer - Text received listener
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textReceived:)
+                                                 name:kLinphoneTextReceived
                                                object:nil];
     
     // Refresh available settings list
@@ -74,10 +84,15 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    // Remove observer - Manual email text field change listener
+    // Remove observer - Registration update listener
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kLinphoneRegistrationUpdate
                                                   object:nil];
+    
+    // Remove observer - Text received listener
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:kLinphoneTextReceived
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +124,10 @@
     }
 }
 
+- (void)textReceived:(id)sender
+{
+    [self updateRecentsBadgeNumber];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -216,6 +235,18 @@
     
 }
 
+- (void)updateRecentsBadgeNumber {
+    long count = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+    
+    UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+    if (count > 0) {
+        [tbi setBadgeValue:[NSString stringWithFormat:@"%ld", count]];
+    }
+    else {
+        [tbi setBadgeValue:nil];
+    }
+}
+
 #pragma mark - Segue Functions
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -243,8 +274,5 @@
         }
     }
 }
-
-
-
 
 @end

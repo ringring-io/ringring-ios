@@ -142,6 +142,9 @@
                                                     name:UIApplicationDidBecomeActiveNotification
                                                   object:nil];
 
+    // Update application badge number
+    [LinphoneHelper updateApplicationBadgeNumber];
+    
     // Stop Message Refresh Timer
     [self stopMessageRefreshTimer];
 }
@@ -295,8 +298,17 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     // This is a self destructing message - Show expiry countdown
     if ([message.expiryTime intValue] != 0) {
         NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-        NSTimeInterval expiryDate = [message.receivedDate timeIntervalSince1970] + [message.expiryTime intValue];
+        NSTimeInterval expiryDate;
         
+        // Calculate expiry date
+        if (message.messageDirection == IncomingMessage) {
+            expiryDate = [message.openedDate timeIntervalSince1970] + [message.expiryTime intValue];
+        }
+        else {
+            expiryDate = [message.receivedDate timeIntervalSince1970] + [message.expiryTime intValue];
+        }
+
+        // Set subtitle to show expiry date count down
         subtitle = [NSString stringWithFormat:@"%d secs to expiry", (int)(expiryDate - now)];
 
         // Append status to outgoing messages only
@@ -456,15 +468,7 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
             break;
 	}
     
-    [self updateApplicationBadgeNumber];
-}
-
-- (void)updateApplicationBadgeNumber {
-    int count = 0;
-    count += linphone_core_get_missed_calls_count([LinphoneManager getLc]);
-    
-    //count += [ChatModel unreadMessages];
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count];
+    [LinphoneHelper updateApplicationBadgeNumber];
 }
 
 - (void)textReceivedEvent: (NSNotification *) notif {
@@ -548,6 +552,9 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     
     // Reload current chat room messages
     messages = [Message listMessages:contact.email];
+
+    // Mark all message to read from this user
+    [Message markAllAsRead:contact.email];
 }
 
 - (void)refreshMessages:(NSTimer *) aTimer
@@ -558,8 +565,17 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     
     // Find the referenced message on the screen
     for (Message *curMessage in messages) {
-        NSTimeInterval messageAge = [now timeIntervalSinceDate:curMessage.receivedDate];
-        NSTimeInterval expiryDate = [curMessage.receivedDate timeIntervalSince1970] + [curMessage.expiryTime intValue];
+        NSTimeInterval messageAge = [now timeIntervalSinceDate:curMessage.openedDate];
+        NSTimeInterval expiryDate;
+        
+        // Calculate expiry date
+        if (curMessage.messageDirection == IncomingMessage) {
+            expiryDate = [curMessage.openedDate timeIntervalSince1970] + [curMessage.expiryTime intValue];
+        }
+        else {
+            expiryDate = [curMessage.receivedDate timeIntervalSince1970] + [curMessage.expiryTime intValue];
+        }
+        
         int timeToExpiry = (int)(expiryDate - [now timeIntervalSince1970]);
 
         // Ack timeout, update to message status as not received
@@ -601,9 +617,13 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     if(deleteIndexPaths && [deleteIndexPaths count] > 0) {
             
         // Delete messages from message array
+        NSMutableIndexSet *indexes = [[NSMutableIndexSet alloc] init];
         for (NSIndexPath *indexPath in deleteIndexPaths)
-            [messages removeObjectAtIndex:indexPath.item];
-            
+            [indexes addIndex:indexPath.item];
+        
+        if ([indexes count] > 0)
+            [messages removeObjectsAtIndexes:indexes];
+             
         // Delete message on the UI
         [self.collectionView deleteItemsAtIndexPaths:deleteIndexPaths];
     }

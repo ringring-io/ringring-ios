@@ -9,10 +9,10 @@
 #import "SettingsTableViewController.h"
 
 #import "LinphoneManager.h"
+#import "LinphoneHelper.h"
 #import "Settings.h"
 
 @interface SettingsTableViewController ()
-
 @end
 
 @implementation SettingsTableViewController
@@ -39,10 +39,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Update badge number on Recents tab
+    [self updateRecentsBadgeNumber];
+    
+    // Set observer - Text received listener
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textReceived:)
+                                                 name:kLinphoneTextReceived
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    // Remove observer - Text received listener
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kLinphoneTextReceived
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,6 +104,23 @@
 
     // Go back to the previous screen
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)updateRecentsBadgeNumber {
+    long count = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+    
+    UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+    if (count > 0) {
+        [tbi setBadgeValue:[NSString stringWithFormat:@"%ld", count]];
+    }
+    else {
+        [tbi setBadgeValue:nil];
+    }
+}
+
+- (void)textReceived:(id)sender
+{
+    [self updateRecentsBadgeNumber];
 }
 
 @end

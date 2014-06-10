@@ -207,10 +207,10 @@
         if ([Settings isFirstAlreadyLaunched] == NO) {
             
             [Settings setAutoClearCallHistoryEnabled:YES];
-            [Settings setAutoClearCallHistory:FiveteenMinutes];
+            [Settings setAutoClearCallHistory:OneMinute];
             
             [Settings setAutoClearChatHistoryEnabled:YES];
-            [Settings setAutoClearChatHistory:FiveteenMinutes];
+            [Settings setAutoClearChatHistory:OneMinute];
             
             [Settings setFirstAlreadyLaunched:YES];
         }

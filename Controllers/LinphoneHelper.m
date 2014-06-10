@@ -10,6 +10,7 @@
 
 #import "LinphoneHelper.h"
 #import "LinphoneManager.h"
+#import "Message.h"
 
 
 
@@ -301,7 +302,7 @@
     int count = 0;
     count += linphone_core_get_missed_calls_count([LinphoneManager getLc]);
     
-    //count += [ChatModel unreadMessages];
+    count += [[Message getUnreadMessages] intValue];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count];
 }
 

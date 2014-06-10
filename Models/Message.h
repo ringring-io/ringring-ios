@@ -81,6 +81,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
 + (NSMutableArray *)listMessageLog;
 + (NSMutableArray *)listMessages:(NSString *)email;
 + (Message *)getMessage:(NSNumber *)chatId;
++ (NSNumber *)getUnreadMessages;
 + (void)markAllAsRead:(NSString *)email;
 + (void)deleteMessagesBeforeDate:(NSDate *)date;
 + (void)deleteMessagesWithContactEmail:(NSString *)contactEmail;

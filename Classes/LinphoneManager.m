@@ -462,6 +462,7 @@ static void linphone_iphone_display_status(struct _LinphoneCore * lc, const char
 	}
 
     // Disable speaker when no more call
+    
     if ((state == LinphoneCallEnd || state == LinphoneCallError)) {
         if(linphone_core_get_calls_nb(theLinphoneCore) == 0) {
             [self setSpeakerEnabled:FALSE];
@@ -504,7 +505,6 @@ static void linphone_iphone_display_status(struct _LinphoneCore * lc, const char
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
                 [notification release];
             }
-            
         }
     }
     
@@ -598,6 +598,10 @@ static void linphone_iphone_registration_state(LinphoneCore *lc, LinphoneProxyCo
             message.refChatId = message.chatId;
             [message save];
             
+            // Update application badge number
+            [LinphoneHelper updateApplicationBadgeNumber];
+            isPostEventNeeded = YES;
+            
             // Show alert if it's in background
             if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)]
                 && [UIApplication sharedApplication].applicationState !=  UIApplicationStateActive) {
@@ -614,11 +618,6 @@ static void linphone_iphone_registration_state(LinphoneCore *lc, LinphoneProxyCo
                     
                     [[UIApplication sharedApplication] presentLocalNotificationNow:notif];
                 }
-                
-                isPostEventNeeded = NO;
-            }
-            else {
-                isPostEventNeeded = YES;
             }
             
             // Prepare ACK message with MD5 checksum of the incoming message

@@ -217,6 +217,10 @@ withMessageDirection:(MessageDirection)aMessageDirection
         
         [self refreshSipMessage];
     }
+    
+    if (!self.openedDate || ![self.openedDate compare:[NSDate dateWithTimeIntervalSince1970:0]]) {
+        self.hasUnreadMessages = YES;
+    }
 
     return self;
 }
@@ -465,16 +469,52 @@ withMessageDirection:(MessageDirection)aMessageDirection
     return message;
 }
 
++ (NSNumber *)getUnreadMessages
+{
+    NSNumber *unreadMessages = [[NSNumber alloc] initWithInt:0];
+    
+    // Connect to database
+    sqlite3* database = [[LinphoneManager instance] database];
+    if(database == NULL) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Database not ready"];
+        return unreadMessages;
+    }
+    
+    // Select every message from the remote email address
+    const char *sql = "SELECT COUNT(*) FROM chat WHERE direction = @DIRECTION AND opened_date = 0";
+    sqlite3_stmt *sqlStatement;
+    if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Can't execute the query: %s (%s)", sql, sqlite3_errmsg(database)];
+        return unreadMessages;
+    }
+    
+    // Prepare statement
+    sqlite3_bind_int(sqlStatement, 1, (int)IncomingMessage);
+    
+    int err;
+    while ((err = sqlite3_step(sqlStatement)) == SQLITE_ROW) {
+        unreadMessages = [NSNumber numberWithInt:sqlite3_column_int(sqlStatement, 0)];
+    }
+    
+    if (err != SQLITE_DONE) {
+        [LinphoneHelper logc:LinphoneLoggerError format:"Error during execution of query: %s (%s)", sql, sqlite3_errmsg(database)];
+        return unreadMessages;
+    }
+    
+    sqlite3_finalize(sqlStatement);
+    
+    return unreadMessages;
+}
+
 + (void)markAllAsRead:(NSString *)email
 {
-    /*
     sqlite3* database = [[LinphoneManager instance] database];
     if(database == NULL) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Database not ready"];
         return;
     }
     
-    const char *sql = "UPDATE chat SET read = 1 WHERE contact_email=@EMAIL";
+    const char *sql = "UPDATE chat SET opened_date = @OPENED_DATE WHERE opened_date = 0";
     sqlite3_stmt *sqlStatement;
     if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
@@ -482,8 +522,9 @@ withMessageDirection:(MessageDirection)aMessageDirection
     }
     
     // Prepare statement
-    sqlite3_bind_text(sqlStatement, 1, [email UTF8String], -1, SQLITE_STATIC);
-    
+    sqlite3_bind_double(sqlStatement, 1, [[NSDate date] timeIntervalSince1970]);
+//    sqlite3_bind_text(sqlStatement, 2, [email UTF8String], -1, SQLITE_STATIC);
+
     if (sqlite3_step(sqlStatement) != SQLITE_DONE) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Error during execution of query: %s (%s)", sql, sqlite3_errmsg(database)];
         sqlite3_finalize(sqlStatement);
@@ -491,7 +532,6 @@ withMessageDirection:(MessageDirection)aMessageDirection
     }
     
     sqlite3_finalize(sqlStatement);
-     */
 }
 
 + (void)deleteMessagesBeforeDate:(NSDate *)date
@@ -502,7 +542,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
         return;
     }
     
-    const char *sql = "DELETE FROM chat WHERE received_date<=@DATE";
+    const char *sql = "DELETE FROM chat WHERE opened_date != 0 AND opened_date <= @DATE";
     sqlite3_stmt *sqlStatement;
     if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
@@ -529,7 +569,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
         return;
     }
 
-    const char *sql = "DELETE FROM chat WHERE contact_email=@EMAIL";
+    const char *sql = "DELETE FROM chat WHERE contact_email = @EMAIL";
     sqlite3_stmt *sqlStatement;
     if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
@@ -556,7 +596,7 @@ withMessageDirection:(MessageDirection)aMessageDirection
         return;
     }
     
-    const char *sql = "UPDATE chat SET state = @STATE WHERE expiry_time != 0 AND received_date + expiry_time <= @NOW";
+    const char *sql = "UPDATE chat SET state = @STATE WHERE expiry_time != 0 AND opened_date != 0 AND opened_date + expiry_time <= @NOW";
     sqlite3_stmt *sqlStatement;
     if (sqlite3_prepare_v2(database, sql, -1, &sqlStatement, NULL) != SQLITE_OK) {
         [LinphoneHelper logc:LinphoneLoggerError format:"Can't prepare the query: %s (%s)", sql, sqlite3_errmsg(database)];
