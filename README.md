@@ -56,5 +56,7 @@ Install the Pod dependencies:
 Make sure to **always open the Xcode workspace** instead of the project file when building your project:
 
     $ open ringring.xcworkspace
+
+Open Xcode and make sure "Build Active Architecture Only" is set to "No" in the build settings of both the "Pods" and "ringring" project.
     
 Press "Run" in Xcode.
