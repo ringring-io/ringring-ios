@@ -1,6 +1,6 @@
 //
 //  Message.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 08/02/2014.
 //

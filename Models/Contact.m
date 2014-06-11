@@ -1,6 +1,6 @@
 //
 //  ContactPerson.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 13/01/2014.
 //

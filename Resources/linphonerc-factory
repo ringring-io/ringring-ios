@@ -9,8 +9,8 @@ ice=0
 stun=
 
 [sip]
-domain=sip.zirgoo.com
-proxy=sip.zirgoo.com
+domain=sip.ringring.io
+proxy=sip.ringring.io
 expires=600
 transport=tcp
 guess_hostname=1

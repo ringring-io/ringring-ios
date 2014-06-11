@@ -1,6 +1,6 @@
 //
 //  LauncherViewController.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 18/01/2014.
 //

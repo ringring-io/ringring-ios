@@ -1,6 +1,6 @@
 //
 //  ContactListTableViewCell.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 12/01/2014.
 //

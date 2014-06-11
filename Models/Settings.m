@@ -1,6 +1,6 @@
 //
 //  Settings.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 15/02/2014.
 //

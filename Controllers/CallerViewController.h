@@ -1,6 +1,6 @@
 //
 //  CallerViewController.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 14/01/2014.
 //

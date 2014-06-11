@@ -182,7 +182,7 @@ struct codec_name_pref_table codec_pref_table[]={
 }
 
 + (NSString *)getUserAgent {
-    return [NSString stringWithFormat:@"ZirgooIOS/%@ (Linphone/%s; Apple %@/%@)",
+    return [NSString stringWithFormat:@"RingringIOS/%@ (Linphone/%s; Apple %@/%@)",
             [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey],
             linphone_core_get_version(),
             [UIDevice currentDevice].systemName,
@@ -875,7 +875,7 @@ static LinphoneCoreVTable linphonec_vtable = {
 	NSString* factoryConfig = [LinphoneManager bundleFile:[LinphoneManager runningOnIpad]?@"linphonerc-factory~ipad":@"linphonerc-factory"];
 	NSString *confiFileName = [LinphoneManager documentFile:@".linphonerc"];
 	NSString *zrtpSecretsFileName = [LinphoneManager documentFile:@"zrtp_secrets"];
-	const char* lRootCa = [[LinphoneManager bundleFile:@"rootca.pem"] cStringUsingEncoding:[NSString defaultCStringEncoding]];
+	const char* lRootCa = [[LinphoneManager bundleFile:@"ringring_io.pem"] cStringUsingEncoding:[NSString defaultCStringEncoding]];
 	connectivity = none;
 	signal(SIGPIPE, SIG_IGN);
 	//log management	
@@ -907,7 +907,7 @@ static LinphoneCoreVTable linphonec_vtable = {
 										 , [confiFileName cStringUsingEncoding:[NSString defaultCStringEncoding]]
 										 , [factoryConfig cStringUsingEncoding:[NSString defaultCStringEncoding]]
 										 ,self);
-	linphone_core_set_user_agent(theLinphoneCore,"ZirgooIOS",
+	linphone_core_set_user_agent(theLinphoneCore,"RingringIOS",
                                  [[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey] UTF8String]);
 	//fastAddressBook = [[FastAddressBook alloc] init];
 	

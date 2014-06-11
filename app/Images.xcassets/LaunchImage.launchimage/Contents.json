@@ -3,14 +3,14 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "zirgoo_launchimage@2x.png",
+      "filename" : "launchimage@2x.png",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "zirgoo_launchimage-568h@2x.png",
+      "filename" : "launchimage-568h@2x.png",
       "minimum-system-version" : "7.0",
       "subtype" : "retina4",
       "scale" : "2x"
@@ -18,19 +18,19 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "zirgoo_launchimage.png",
+      "filename" : "launchimage.png",
       "scale" : "1x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "zirgoo_launchimage@2x.png",
+      "filename" : "launchimage@2x.png",
       "scale" : "2x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "zirgoo_launchimage-568h@2x.png",
+      "filename" : "launchimage-568h@2x.png",
       "subtype" : "retina4",
       "scale" : "2x"
     }

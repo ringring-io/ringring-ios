@@ -159,7 +159,7 @@
 
 - (void)setupRestKit{
     // Set base URL
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.zirgoo.com/"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.ringring.io/"]];
     
     // Set HTTP parameters
     [objectManager.HTTPClient setParameterEncoding:AFJSONParameterEncoding];

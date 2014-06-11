@@ -1,6 +1,6 @@
 //
 //  User.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 23/02/2014.
 //

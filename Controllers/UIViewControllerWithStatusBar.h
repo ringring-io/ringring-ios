@@ -1,6 +1,6 @@
 //
 //  StatusBarViewController.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 15/01/2014.
 //

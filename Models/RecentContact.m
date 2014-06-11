@@ -1,6 +1,6 @@
 //
 //  RecentContact.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 01/02/2014.
 //

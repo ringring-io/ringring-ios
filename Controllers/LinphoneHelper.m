@@ -1,6 +1,6 @@
 //
 //  LinphoneHelper.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 22/01/2014.
 //

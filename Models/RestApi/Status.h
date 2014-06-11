@@ -1,6 +1,6 @@
 //
 //  StatusResult.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 26/02/2014.
 //

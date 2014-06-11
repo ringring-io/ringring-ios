@@ -1,6 +1,6 @@
 //
 //  WizardEmailViewController.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 10/01/2014.
 //

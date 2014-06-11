@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 11/02/2014.
 //

@@ -1,6 +1,6 @@
 //
 //  CallerViewController.m
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 14/01/2014.
 //
@@ -14,7 +14,7 @@
 #import "LinphoneManager.h"
 
 #import "LinphoneHelper.h"
-#import "ZirgooMessage.h"
+#import "RingringMessage.h"
 #import "AddressBookMap.h"
 
 
@@ -305,8 +305,8 @@
     }
     else {
         if (message != nil) {
-            ZirgooMessage *zirgooMessage = [[ZirgooMessage alloc] initWithZirgooMessageString:message];
-            lMessage = [NSString stringWithFormat : NSLocalizedString(@"%@\n%@", nil), lMessage, zirgooMessage.zirgooText];
+            RingringMessage *ringringMessage = [[RingringMessage alloc] initWithRingringMessageString:message];
+            lMessage = [NSString stringWithFormat : NSLocalizedString(@"%@\n%@", nil), lMessage, ringringMessage.ringringText];
         }
     }
  

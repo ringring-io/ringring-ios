@@ -1,6 +1,6 @@
 //
 //  FastAddressBook.h
-//  zirgoo
+//  ringring.io
 //
 //  Created by Peter Kosztolanyi on 02/02/2014.
 //
