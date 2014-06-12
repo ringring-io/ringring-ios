@@ -10,6 +10,7 @@
 
 #import "LinphoneManager.h"
 #import "LinphoneHelper.h"
+#import "CallerViewController.h"
 #import "Settings.h"
 #import "Message.h"
 
@@ -671,6 +672,29 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     if (messageRefreshTimer) {
         [messageRefreshTimer invalidate];
         messageRefreshTimer = nil;
+    }
+}
+
+#pragma mark - Segue Functions
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if (sender == self) {
+        
+        // Pass selectedContact to the secure call view
+        if([segue.identifier isEqualToString:kPerformedSegueIdentiferAtIncall]){
+            CallerViewController *callerViewController = (CallerViewController *)segue.destinationViewController;
+            
+            // This is an incoming call
+            if (call && callerViewController.callType == kNone) {
+                callerViewController.callType = kIncoming;
+                callerViewController.incomingCall = call;
+                callerViewController.contact = nil;
+                
+                // reset call pointer
+                call = nil;
+            }
+        }
     }
 }
 

@@ -565,8 +565,8 @@
                                                         <constraint firstAttribute="height" constant="15" id="y5q-Dq-G79"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-wC-Upt">
-                                                    <rect key="frame" x="85" y="5" width="160" height="34"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-wC-Upt">
+                                                    <rect key="frame" x="85" y="5" width="90" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="UUT-XA-tod"/>
@@ -575,14 +575,14 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne4-AH-oQe">
-                                                    <rect key="frame" x="85" y="40" width="160" height="14"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Full Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne4-AH-oQe">
+                                                    <rect key="frame" x="85" y="40" width="90" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kC3-E5-0Z0">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kC3-E5-0Z0">
                                                     <rect key="frame" x="248" y="1" width="58" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration">
@@ -594,6 +594,8 @@
                                                     <state key="normal" backgroundImage="contacts_text.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" backgroundImage="contacts_text_incoming.png"/>
+                                                    <state key="highlighted" image="contacts_text_incoming.png" backgroundImage="contacts_text_incoming.png"/>
                                                     <connections>
                                                         <action selector="sendMessageButtonTapped:" destination="1am-js-w7Z" eventType="touchUpInside" id="ym0-ny-2Ny"/>
                                                     </connections>
@@ -1194,6 +1196,7 @@ code has been emailed</string>
         <image name="contacts_avatar_default.png" width="256" height="256"/>
         <image name="contacts_status_online.png" width="32" height="32"/>
         <image name="contacts_text.png" width="128" height="128"/>
+        <image name="contacts_text_incoming.png" width="128" height="128"/>
         <image name="led_offline.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1203,7 +1206,7 @@ code has been emailed</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="tUG-fU-gA4"/>
-        <segue reference="bae-go-2bY"/>
         <segue reference="E1R-0j-lMg"/>
+        <segue reference="bae-go-2bY"/>
     </inferredMetricsTieBreakers>
 </document>

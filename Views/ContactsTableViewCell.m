@@ -46,6 +46,9 @@
         sendMessageButton = [[UIButton alloc] initWithFrame:(CGRectMake(248, 0, 58, 60))];
         [sendMessageButton setBackgroundImage:[UIImage imageNamed:@"contacts_text.png"]
                                      forState:UIControlStateNormal];
+        [sendMessageButton setBackgroundImage:[UIImage imageNamed:@"contacts_text_incoming.png"]
+                                     forState:UIControlStateHighlighted];
+        
         [sendMessageButton addTarget:self
                               action:@selector(sendMessageButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -105,9 +108,9 @@
     }
     
     if (contact.hasUnreadMessages)
-        contactEmailLabel.font = [UIFont boldSystemFontOfSize:14];
+        sendMessageButton.highlighted = YES;
     else
-        contactEmailLabel.font = [UIFont systemFontOfSize:14];
+        sendMessageButton.highlighted = NO;
     
     contactFullNameLabel.text = contact.fullName;
     contactImage.image = [LinphoneHelper imageAsCircle:contact.image];
