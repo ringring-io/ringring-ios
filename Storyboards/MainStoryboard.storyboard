@@ -1190,11 +1190,11 @@ code has been emailed</string>
         </scene>
     </scenes>
     <resources>
-        <image name="call_secure_ok.png" width="256" height="256"/>
-        <image name="contacts_avatar_default.png" width="160" height="166"/>
-        <image name="contacts_status_online.png" width="300" height="300"/>
-        <image name="contacts_text.png" width="500" height="464"/>
-        <image name="led_offline.png" width="18" height="17"/>
+        <image name="call_secure_ok.png" width="128" height="128"/>
+        <image name="contacts_avatar_default.png" width="256" height="256"/>
+        <image name="contacts_status_online.png" width="32" height="32"/>
+        <image name="contacts_text.png" width="128" height="128"/>
+        <image name="led_offline.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1204,6 +1204,6 @@ code has been emailed</string>
     <inferredMetricsTieBreakers>
         <segue reference="tUG-fU-gA4"/>
         <segue reference="bae-go-2bY"/>
-        <segue reference="Z2j-VG-E6L"/>
+        <segue reference="E1R-0j-lMg"/>
     </inferredMetricsTieBreakers>
 </document>
