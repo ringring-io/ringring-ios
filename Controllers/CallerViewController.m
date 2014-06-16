@@ -369,7 +369,7 @@
     
     // Update UI elements with caller details
     contactEmail.title = contact.email;
-    contactImageView.image = contact.image;
+    contactImageView.image = [LinphoneHelper imageAsCircle:contact.image];
     
     // Reset call status UI elements
     [self updateUICallStatus: NSLocalizedString(@"INCOMING_CALL_CALLVIEW", nil)
@@ -397,7 +397,7 @@
 - (void)initOutgoingCall {
     
     contactEmail.title = contact.email;
-    contactImageView.image = contact.image;
+    contactImageView.image = [LinphoneHelper imageAsCircle:contact.image];
     
     NSString *address = [contact.email stringByReplacingOccurrencesOfString:@"@" withString:@"%40"];
     NSString *displayName = contact.fullName;
