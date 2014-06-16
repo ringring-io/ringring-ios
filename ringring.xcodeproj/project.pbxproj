@@ -14,7 +14,6 @@
 		220FAD3210765B400068D98F /* libgsm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220FAD2910765B400068D98F /* libgsm.a */; };
 		220FAD3810765B400068D98F /* libspeex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220FAD2F10765B400068D98F /* libspeex.a */; };
 		220FAD3910765B400068D98F /* libspeexdsp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220FAD3010765B400068D98F /* libspeexdsp.a */; };
-		2214783D1386A2030020F8B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2214783B1386A2030020F8B8 /* Localizable.strings */; };
 		22276E8313C73D3100210156 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22276E8013C73D3100210156 /* libavcodec.a */; };
 		22276E8413C73D3100210156 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22276E8113C73D3100210156 /* libavutil.a */; };
 		22276E8513C73D3100210156 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22276E8213C73D3100210156 /* libswscale.a */; };
@@ -69,6 +68,7 @@
 		4D2546DA192ABFD50000F736 /* libopus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546D9192ABFD50000F736 /* libopus.a */; };
 		4D2546DC192AC0080000F736 /* libcunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546DB192AC0080000F736 /* libcunit.a */; };
 		4D2546DE192AC0B20000F736 /* libbzrtp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546DD192AC0B20000F736 /* libbzrtp.a */; };
+		4D3476F7194F921A00C5ADAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D3476F9194F921A00C5ADAB /* Localizable.strings */; };
 		4D400AEE18A663140047CDEC /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D400AED18A663140047CDEC /* Message.m */; };
 		4D5277281928CF5D002322F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5277271928CF5D002322F5 /* Images.xcassets */; };
 		4D591BF218BAC308001F2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D591BF118BAC308001F2C84 /* User.m */; };
@@ -200,7 +200,6 @@
 		220FAD2F10765B400068D98F /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspeex.a; path = "liblinphone-sdk/apple-darwin/lib/libspeex.a"; sourceTree = "<group>"; };
 		220FAD3010765B400068D98F /* libspeexdsp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspeexdsp.a; path = "liblinphone-sdk/apple-darwin/lib/libspeexdsp.a"; sourceTree = "<group>"; };
 		2211DB911475562600DEE054 /* liblinphone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblinphone.a; path = "liblinphone-sdk/apple-darwin/lib/liblinphone.a"; sourceTree = "<group>"; };
-		2214783C1386A2030020F8B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22276E8013C73D3100210156 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "liblinphone-sdk/apple-darwin/lib/libavcodec.a"; sourceTree = "<group>"; };
 		22276E8113C73D3100210156 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = "liblinphone-sdk/apple-darwin/lib/libavutil.a"; sourceTree = "<group>"; };
 		22276E8213C73D3100210156 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = "liblinphone-sdk/apple-darwin/lib/libswscale.a"; sourceTree = "<group>"; };
@@ -268,6 +267,7 @@
 		4D2546D9192ABFD50000F736 /* libopus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopus.a; path = "liblinphone-sdk/apple-darwin/lib/libopus.a"; sourceTree = "<group>"; };
 		4D2546DB192AC0080000F736 /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = "liblinphone-sdk/apple-darwin/lib/libcunit.a"; sourceTree = "<group>"; };
 		4D2546DD192AC0B20000F736 /* libbzrtp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbzrtp.a; path = "liblinphone-sdk/apple-darwin/lib/libbzrtp.a"; sourceTree = "<group>"; };
+		4D3476F8194F921A00C5ADAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4D400AEC18A663140047CDEC /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Models/Message.h; sourceTree = "<group>"; };
 		4D400AED18A663140047CDEC /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Models/Message.m; sourceTree = "<group>"; };
 		4D5277271928CF5D002322F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = app/Images.xcassets; sourceTree = "<group>"; };
@@ -602,11 +602,11 @@
 			children = (
 				4D094F19188C3CEF00038D6A /* Images */,
 				4D5277271928CF5D002322F5 /* Images.xcassets */,
+				4D3476F9194F921A00C5ADAB /* Localizable.strings */,
 				57F005C315EE2CCF00914747 /* linphonerc */,
 				57F005C615EE2D9200914747 /* linphonerc-factory */,
 				57F005C715EE2D9200914747 /* linphonerc-factory~ipad */,
 				D321FF9815E628CB0098B5F4 /* linphonerc~ipad */,
-				2214783B1386A2030020F8B8 /* Localizable.strings */,
 				4D14F5131949002900041A05 /* ringring_io.pem */,
 				D3C714B2159DB84400705B8E /* hold.wav */,
 				D3804E5E15D92A57008072A5 /* msg.caf */,
@@ -817,7 +817,6 @@
 				4DBEA46C1935255300555C92 /* call_secure_not_ok.png in Resources */,
 				2242E313125235120061DDCE /* ring.caf in Resources */,
 				4D14F5141949002900041A05 /* ringring_io.pem in Resources */,
-				2214783D1386A2030020F8B8 /* Localizable.strings in Resources */,
 				D3C714B3159DB84400705B8E /* hold.wav in Resources */,
 				4DBEA463193522DB00555C92 /* contacts_status_online.png in Resources */,
 				4DDE741B1948316A002765A1 /* README.md in Resources */,
@@ -832,6 +831,7 @@
 				57F005C415EE2CCF00914747 /* linphonerc in Resources */,
 				57F005C815EE2D9200914747 /* linphonerc-factory in Resources */,
 				57F005CA15EE2D9200914747 /* linphonerc-factory~ipad in Resources */,
+				4D3476F7194F921A00C5ADAB /* Localizable.strings in Resources */,
 				4D094F15188C0BB200038D6A /* MainStoryboard.storyboard in Resources */,
 				4DBEA4671935239700555C92 /* contacts_text.png in Resources */,
 				4DBEA46D1935255300555C92 /* call_secure_ok.png in Resources */,
@@ -926,12 +926,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2214783B1386A2030020F8B8 /* Localizable.strings */ = {
+		4D3476F9194F921A00C5ADAB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2214783C1386A2030020F8B8 /* en */,
+				4D3476F8194F921A00C5ADAB /* en */,
 			);
 			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

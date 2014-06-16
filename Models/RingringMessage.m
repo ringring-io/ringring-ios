@@ -55,13 +55,13 @@
     // Translate readable text massage
     if (self.text) {
         if ([self.text isEqualToString:@"\"USER_BUSY\""])
-            self.ringringText = NSLocalizedString(@"User is Busy", nil);
+            self.ringringText = NSLocalizedString(@"USER_BUSY", nil);
         else {
             self.ringringText = self.text;
         }
     }
     else {
-        self.ringringText = NSLocalizedString(@"Try again later", nil);
+        self.ringringText = NSLocalizedString(@"TRY_AGAIN_LATER", nil);
     }
     
     return self;

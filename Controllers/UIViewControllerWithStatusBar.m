@@ -121,31 +121,31 @@
     if (proxyCfg == NULL) {
         state = LinphoneRegistrationNone;
         if(![LinphoneManager isLcReady] || linphone_core_is_network_reachable([LinphoneManager getLc]))
-            registrationStatus = NSLocalizedString(@"No SIP account configured", nil);
+            registrationStatus = NSLocalizedString(@"NO_SIP_ACCOUNT_CONFIGURED", nil);
         else
-            registrationStatus = NSLocalizedString(@"Network down", nil);
+            registrationStatus = NSLocalizedString(@"NETWORK_DOWN", nil);
     } else {
         state = linphone_proxy_config_get_state(proxyCfg);
         
         switch (state) {
             case LinphoneRegistrationOk:
-                registrationStatus = NSLocalizedString(@"Online", nil);
+                registrationStatus = NSLocalizedString(@"ONLINE", nil);
                 registrationStatusImage = [UIImage imageNamed:@"led_online.png"];
                 registeredEmail = [LinphoneHelper registeredEmail];
                 break;
             case LinphoneRegistrationNone:
             case LinphoneRegistrationCleared:
-                registrationStatus =  NSLocalizedString(@"Offline", nil);
+                registrationStatus =  NSLocalizedString(@"OFFLINE", nil);
                 registrationStatusImage = [UIImage imageNamed:@"led_offline.png"];
                 registeredEmail = nil;
                 break;
             case LinphoneRegistrationFailed:
-                registrationStatus =  NSLocalizedString(@"Login failed", nil);
+                registrationStatus =  NSLocalizedString(@"LOGIN_FAILED", nil);
                 registrationStatusImage = [UIImage imageNamed:@"led_login_failed.png"];
                 registeredEmail = nil;
                 break;
             case LinphoneRegistrationProgress:
-                registrationStatus =  NSLocalizedString(@"Logging in..", nil);
+                registrationStatus =  NSLocalizedString(@"LOGGING_IN", nil);
                 registrationStatusImage = [UIImage imageNamed:@"led_logging_in.png"];
                 registeredEmail = nil;
                 break;

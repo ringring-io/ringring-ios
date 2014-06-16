@@ -165,14 +165,14 @@
         case LinphoneCallOutgoingInit:          //  2: An outgoing call is started */
         {
             NSLog(@"========= CALL_UPDATE: OUTGOING_INIT =========");
-            callStatus = NSLocalizedString(@"Connecting..", nil);
+            callStatus = NSLocalizedString(@"CONNECTING", nil);
             refreshUI = YES;
 			break;
         }
         case LinphoneCallOutgoingRinging:       //  4: An outgoing call is ringing at remote end */
         {
             NSLog(@"========= CALL_UPDATE: RINGING =========");
-            callStatus = NSLocalizedString(@"Ringing..", nil);
+            callStatus = NSLocalizedString(@"RINGING", nil);
             refreshUI = YES;
             break;
         }
@@ -209,11 +209,11 @@
                      // Stop Call Security Timer
                      [self stopCallSecurityTimer];
                      
-                     UIAlertView* error = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New contact", nil)
-                                                                     message:NSLocalizedString(@"Do you want to add this contact to the address book?", nil)
+                     UIAlertView* error = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NEW_CONTACT", nil)
+                                                                     message:NSLocalizedString(@"DO_YOU_WANT_TO_ADD_TO_ADDRESS_BOOK", nil)
                                                                     delegate:self
-                                                           cancelButtonTitle:NSLocalizedString(@"No",nil)
-                                                           otherButtonTitles:NSLocalizedString(@"Yes",nil),nil];
+                                                           cancelButtonTitle:NSLocalizedString(@"NO",nil)
+                                                           otherButtonTitles:NSLocalizedString(@"YES",nil),nil];
                      
                      [error show];
                  }
@@ -284,7 +284,7 @@
 
 - (void)displayCallError:(LinphoneCall *)call message:(NSString *)message {
     const char* lUserNameChars=linphone_address_get_username(linphone_call_get_remote_address(call));
-    NSString* lUserName = lUserNameChars?[[[NSString alloc] initWithUTF8String:lUserNameChars] init]:NSLocalizedString(@"Unknown",nil);
+    NSString* lUserName = lUserNameChars?[[[NSString alloc] initWithUTF8String:lUserNameChars] init]:NSLocalizedString(@"UNKNOWN",nil);
     NSString* lMessage;
     NSString* lTitle;
  
@@ -295,13 +295,13 @@
     linphone_core_get_default_proxy([LinphoneManager getLc],&proxyCfg);
     if (proxyCfg == nil) {
  
-        lMessage = NSLocalizedString(@"Please make sure your device is connected to the internet.", nil);
+        lMessage = NSLocalizedString(@"MAKE_SURE_DEVICE_IS_CONNECTED_TO_INTERNET", nil);
     } else {
-        lMessage = [NSString stringWithFormat : NSLocalizedString(@"Cannot call %@", nil), lDisplayName];
+        lMessage = [NSString stringWithFormat : NSLocalizedString(@"CANNOT_CALL", nil), lDisplayName];
     }
  
     if (linphone_call_get_reason(call) == LinphoneReasonNotFound) {
-        lMessage = [NSString stringWithFormat : NSLocalizedString(@"'%@' not registered", nil), lDisplayName];
+        lMessage = [NSString stringWithFormat : NSLocalizedString(@"IS_NOT_REGISTERED", nil), lDisplayName];
     }
     else {
         if (message != nil) {
@@ -310,12 +310,12 @@
         }
     }
  
-    lTitle = NSLocalizedString(@"Call failed",nil);
+    lTitle = NSLocalizedString(@"CALL_FAILED",nil);
  
     UIAlertView* error = [[UIAlertView alloc] initWithTitle:lTitle
                                                     message:lMessage
                                                    delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                          cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                           otherButtonTitles:nil];
 
     [error show];
@@ -372,7 +372,7 @@
     contactImageView.image = contact.image;
     
     // Reset call status UI elements
-    [self updateUICallStatus: NSLocalizedString(@"Incoming call..", nil)
+    [self updateUICallStatus: NSLocalizedString(@"INCOMING_CALL_CALLVIEW", nil)
                     zrtpHash:nil];
 
     // Hide security image
@@ -411,7 +411,7 @@
         isContactInAddressBook = NO;
 
     // Reset call status UI elements
-    [self updateUICallStatus:NSLocalizedString(@"Connecting..", nil)
+    [self updateUICallStatus:NSLocalizedString(@"CONNECTING", nil)
                     zrtpHash:nil];
     
     // Hide security image
@@ -441,7 +441,7 @@
     [acceptButton setHidden:YES];
     
     //
-    [self updateUICallStatus:NSLocalizedString(@"Accepting..", nil)
+    [self updateUICallStatus:NSLocalizedString(@"ACCEPTING", nil)
                     zrtpHash:nil];
 
     //
@@ -513,8 +513,8 @@
 			picker.displayedPerson = aContact;
 			picker.allowsAddingToAddressBook = YES;
 		    picker.allowsActions = YES;
-			picker.title = @"New Contact";
-			picker.message = @"Zirgoo User";
+			picker.title = NSLocalizedString(@"NEW_CONTACT", nil);
+			picker.message = NSLocalizedString(@"RINGRING_USER", nil);
 			
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
             
@@ -526,10 +526,10 @@
 		}
 		else
 		{
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-															message:@"Could not create unknown user"
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil)
+															message:NSLocalizedString(@"COULD_NOT_CREATE_UNKNOWN_USER", nil)
 														   delegate:nil
-												  cancelButtonTitle:@"Cancel"
+												  cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
 												  otherButtonTitles:nil];
 			[alert show];
 		}
@@ -622,8 +622,8 @@
     if (callSecurityTimerStarted) {
         [securityImageView setHidden:FALSE];
 
-        [callStatusLabel setText:NSLocalizedString(@"Securing handshake..", nil)];
-        [zrtpHashLabel setText:NSLocalizedString(@"Waiting..", nil)];
+        [callStatusLabel setText:NSLocalizedString(@"SECURING_HANDSHAKE", nil)];
+        [zrtpHashLabel setText:NSLocalizedString(@"WAITING", nil)];
     
         while(list != NULL) {
             LinphoneCall *call = (LinphoneCall*) list->data;
@@ -635,7 +635,7 @@
                     pending = true;
                 }
             
-                [callStatusLabel setText:NSLocalizedString(@"Secure call code:", nil)];
+                [callStatusLabel setText:NSLocalizedString(@"SECURE_CALL_CODE", nil)];
                 NSString *zrtpHash = [[[NSString alloc] initWithUTF8String:linphone_call_get_authentication_token(call)] uppercaseString];
                 
                 [zrtpHashLabel setText:zrtpHash];

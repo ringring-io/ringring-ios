@@ -133,11 +133,11 @@
 {
     // Logout selected
     if ([indexPath section] == 2 && [indexPath row] == 0) {
-        UIAlertView* confirmLogoutView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirm", nil)
-                                                                    message:NSLocalizedString(@"Do you want to logout?", nil)
+        UIAlertView* confirmLogoutView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CONFIRM", nil)
+                                                                    message:NSLocalizedString(@"DO_YOU_WANT_TO_LOGOUT", nil)
                                                                    delegate:self
-                                                          cancelButtonTitle:@"No"
-                                                          otherButtonTitles:@"Yes", nil];
+                                                          cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                                          otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
         
         [confirmLogoutView show];
     }
@@ -261,7 +261,7 @@
    
             // Set setting and table header
             settingsTableViewController.setting = AutoClearCallHistory;
-            [settingsTableViewController.navigationItem setTitle:NSLocalizedString(@"Call Settings", nil)];
+            [settingsTableViewController.navigationItem setTitle:NSLocalizedString(@"CALL_SETTINGS", nil)];
         }
         
         // Chat history settings selected
@@ -270,7 +270,7 @@
             
             // Set setting and table header
             settingsTableViewController.setting = AutoClearChatHistory;
-            [settingsTableViewController.navigationItem setTitle:NSLocalizedString(@"Chat Settings", nil)];
+            [settingsTableViewController.navigationItem setTitle:NSLocalizedString(@"CHAT_SETTINGS", nil)];
         }
     }
 }

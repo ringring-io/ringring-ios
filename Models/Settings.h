@@ -41,7 +41,6 @@ typedef enum ClearInterval : NSUInteger {
 + (void)setAutoClearChatHistoryEnabled:(BOOL) autoClearChatHistoryEnabled;
 + (void)setAutoClearChatHistory:(ClearInterval) clearInterval;
 
-+ (NSString *)settingToString:(Setting)setting;
 + (NSString *)clearIntervalToString:(ClearInterval)clearInterval;
 + (NSTimeInterval)clearIntervalToTimeInterval:(ClearInterval)clearInterval;
 

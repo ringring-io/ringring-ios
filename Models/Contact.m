@@ -83,9 +83,9 @@
     self = [super init];
     if (self) {
         self.email = anEmail;
-        self.firstName = NSLocalizedString(@"Unknown", nil);
-        self.lastName = NSLocalizedString(@"Unknown", nil);
-        self.fullName = NSLocalizedString(@"Unknown", nil);
+        self.firstName = NSLocalizedString(@"UNKNOWN", nil);
+        self.lastName = NSLocalizedString(@"UNKNOWN", nil);
+        self.fullName = NSLocalizedString(@"UNKNOWN", nil);
         self.image = [UIImage imageNamed:@"contacts_avatar_default.png"];
         self.hasUnreadMessages = NO;
         self.isActivated = NO;

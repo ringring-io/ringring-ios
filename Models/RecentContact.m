@@ -105,10 +105,10 @@
     
     switch ((RecentType)recentType) {
         case RecentCall:
-            recentTypeString = NSLocalizedString(@"Call", nil);
+            recentTypeString = NSLocalizedString(@"CALL", nil);
             break;
         case RecentMessage:
-            recentTypeString = NSLocalizedString(@"Message",  nil);
+            recentTypeString = NSLocalizedString(@"MESSAGE",  nil);
             break;
     }
     
@@ -122,10 +122,10 @@
     if (recentType == RecentCall) {
         switch ((LinphoneCallDir)callDirection) {
             case LinphoneCallOutgoing:
-                callDirectionString = NSLocalizedString(@"Outgoing", nil);
+                callDirectionString = NSLocalizedString(@"OUTGOING", nil);
                 break;
             case LinphoneCallIncoming:
-                callDirectionString = NSLocalizedString(@"Incoming", nil);
+                callDirectionString = NSLocalizedString(@"INCOMING", nil);
                 break;
         }
     }
@@ -140,19 +140,19 @@
     if (recentType == RecentCall) {
         switch ((LinphoneCallStatus)callStatus) {
             case LinphoneCallAborted:
-                callStatusString = NSLocalizedString(@"Aborted", nil);
+                callStatusString = NSLocalizedString(@"ABORTED", nil);
                 break;
 
             case LinphoneCallDeclined:
-                callStatusString = NSLocalizedString(@"Declined", nil);
+                callStatusString = NSLocalizedString(@"DECLINED", nil);
                 break;
 
             case LinphoneCallMissed:
-                callStatusString = NSLocalizedString(@"Missed", nil);
+                callStatusString = NSLocalizedString(@"MISSED", nil);
                 break;
 
             case LinphoneCallSuccess:
-                callStatusString = NSLocalizedString(@"Success", nil);
+                callStatusString = NSLocalizedString(@"SUCCESS", nil);
                 break;
         }
     }
@@ -167,13 +167,13 @@
     if (recentType == RecentMessage) {
         switch ((MessageDirection)messageDirection) {
             case NoMessage:
-                messageDirectionString = NSLocalizedString(@"NoMessage", nil);
+                messageDirectionString = NSLocalizedString(@"NO_MESSAGE", nil);
                 break;
             case OutgoingMessage:
-                messageDirectionString = NSLocalizedString(@"Outgoing", nil);
+                messageDirectionString = NSLocalizedString(@"OUTGOING", nil);
                 break;
             case IncomingMessage:
-                messageDirectionString = NSLocalizedString(@"Incoming", nil);
+                messageDirectionString = NSLocalizedString(@"INCOMING", nil);
                 break;
         }
     }

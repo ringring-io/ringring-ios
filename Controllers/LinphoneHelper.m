@@ -213,7 +213,7 @@
 
 + (NSString *)emailFromCallLog:(LinphoneCallLog *)callLog
 {
-    NSString *sipUser = NSLocalizedString(@"Unkown", nil);
+    NSString *sipUser = NSLocalizedString(@"UNKNOWN", nil);
     
     // Get contact sip username from the call log
     if (callLog) {
@@ -262,9 +262,9 @@
         dateString = [timeFormatter stringFromDate:date];
     }
     
-    // Use 'yesterday' for yestarday
+    // Use 'yesterday' for yesterday
     else if ([callStartDate isEqualToDate:yesterday]) {
-        dateString = NSLocalizedString(@"Yesterday", nil);
+        dateString = NSLocalizedString(@"YESTERDAY", nil);
     }
     
     // Use date format otherwise

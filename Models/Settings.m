@@ -85,49 +85,33 @@
     [defaults synchronize];
 }
 
-
-+ (NSString *)settingToString:(Setting)setting {
-    NSString *settingToString;
-    
-    switch ((Setting)AutoClearCallHistory) {
-        case AutoClearCallHistory:
-            settingToString = NSLocalizedString(@"AutoClearCallHistory", nil);
-            break;
-        case AutoClearChatHistory:
-            settingToString = NSLocalizedString(@"AutoClearChatHistory", nil);
-            break;
-    }
-    
-    return settingToString;
-}
-
 + (NSString *)clearIntervalToString:(ClearInterval)clearInterval {
     NSString *clearIntervalToString;
     
     switch ((ClearInterval)clearInterval) {
         case NotDefined:
-            clearIntervalToString = NSLocalizedString(@"Not defined", nil);
+            clearIntervalToString = NSLocalizedString(@"NOT_DEFINED", nil);
             break;
         case OneMinute:
-            clearIntervalToString = NSLocalizedString(@"1 minute", nil);
+            clearIntervalToString = NSLocalizedString(@"1_MINUTE", nil);
             break;
         case FiveMinutes:
-            clearIntervalToString = NSLocalizedString(@"5 minutes", nil);
+            clearIntervalToString = NSLocalizedString(@"5_MINUTES", nil);
             break;
         case FiveteenMinutes:
-            clearIntervalToString = NSLocalizedString(@"15 minutes", nil);
+            clearIntervalToString = NSLocalizedString(@"15_MINUTES", nil);
             break;
         case ThirtyMinutes:
-            clearIntervalToString = NSLocalizedString(@"30 minutes", nil);
+            clearIntervalToString = NSLocalizedString(@"30_MINUTES", nil);
             break;
         case OneHour:
-            clearIntervalToString = NSLocalizedString(@"1 hour", nil);
+            clearIntervalToString = NSLocalizedString(@"1_HOUR", nil);
             break;
         case TwelveHours:
-            clearIntervalToString = NSLocalizedString(@"12 hours", nil);
+            clearIntervalToString = NSLocalizedString(@"12_HOURS", nil);
             break;
         case OneDay:
-            clearIntervalToString = NSLocalizedString(@"1 day", nil);
+            clearIntervalToString = NSLocalizedString(@"1_DAY", nil);
             break;
     }
     

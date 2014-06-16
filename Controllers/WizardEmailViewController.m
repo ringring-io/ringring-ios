@@ -102,14 +102,14 @@
     NSMutableString *errors = [NSMutableString string];
     
     if (![LinphoneHelper isValidEmail:userEmailTextField.text]) {
-        [errors appendString:NSLocalizedString(@"Invalid email", nil)];
+        [errors appendString:NSLocalizedString(@"INVALID_EMAIL", nil)];
     }
     
     if([errors length]) {
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CHECK_ERRORS",nil)
                                                             message:[errors substringWithRange:NSMakeRange(0, [errors length] - 1)]
                                                            delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                   otherButtonTitles:nil,nil];
         [errorView show];
     } else {
@@ -195,20 +195,20 @@
             // Catch email is already registered error
             else if ([status.status isEqualToString:@"EMAIL_ALREADY_REGISTERED"]) {
                     // Popup confirmation for validation code email
-                    UIAlertView* userExistsView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Email is already registered", nil)
-                                                                             message:NSLocalizedString(@"Do you want to receive a new activation code?", nil)
+                    UIAlertView* userExistsView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"EMAIL_ALREADY_REGISTERED", nil)
+                                                                             message:NSLocalizedString(@"DO_YOU_WANT_NEW_ACTIVATION_CODE", nil)
                                                                             delegate:self
-                                                                   cancelButtonTitle:NSLocalizedString(@"No", nil)
-                                                                   otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
+                                                                   cancelButtonTitle:NSLocalizedString(@"NO", nil)
+                                                                   otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
                     [userExistsView show];
             }
             
             // Any other non-success message
             else {
-                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
                                                                         message:NSLocalizedString(status.status, nil)
                                                                        delegate:nil
-                                                              cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                              cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                               otherButtonTitles:nil,nil];
                     [errorView show];
             }
@@ -216,10 +216,10 @@
         
         // The response message is not valid
         else {
-            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
-                                                                message:NSLocalizedString(@"Empty response", nil)
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
+                                                                message:NSLocalizedString(@"EMPTY_RESPONSE", nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                       otherButtonTitles:nil,nil];
             [errorView show];
         }
@@ -238,10 +238,10 @@
             errorMessage = [NSString stringWithFormat:@"Internal communication error. %@ (Code: %ld)", [error localizedDescription], (long)[error code]];
         }
         
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
                                                             message:NSLocalizedString(errorMessage, nil)
                                                            delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                   otherButtonTitles:nil,nil];
         [errorView show];
     }];
@@ -269,10 +269,10 @@
         
         // Otherwise show an error message
         else {
-            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
                                                                 message:NSLocalizedString(status.status, nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                       otherButtonTitles:nil,nil];
             [errorView show];
         }
@@ -289,13 +289,13 @@
         if([error code] == -1009) {
             errorMessage = [error localizedDescription];
         } else {
-            errorMessage = [NSString stringWithFormat:@"Internal communication error. (Code: %ld)", (long)[error code]];
+            errorMessage = [NSString stringWithFormat:NSLocalizedString(@"INTERNAL_COMMUNICATION_ERROR", nil), (long)[error code]];
         }
         
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
-                                                            message:NSLocalizedString(errorMessage, nil)
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
+                                                            message:errorMessage
                                                            delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                   otherButtonTitles:nil,nil];
         [errorView show];
     }];

@@ -310,7 +310,7 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
         }
 
         // Set subtitle to show expiry date count down
-        subtitle = [NSString stringWithFormat:@"%d secs to expiry", (int)(expiryDate - now)];
+        subtitle = [NSString stringWithFormat:NSLocalizedString(@"X_SECS_TO_EXPIRY", nil), (int)(expiryDate - now)];
 
         // Append status to outgoing messages only
         if (message.messageDirection == OutgoingMessage) {
@@ -527,7 +527,7 @@ static void message_status(LinphoneChatMessage* msg,LinphoneChatMessageState sta
     
     // Show notification if the sender is not the current user on the screen
     else {
-        self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"IM_MSG", nil), [LinphoneHelper sipUserToEmail:message.email]];
+        self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"INCOMING_MESSAGE", nil), [LinphoneHelper sipUserToEmail:message.email]];
         self.navigationItem.title = contact.fullName;
     }
 }

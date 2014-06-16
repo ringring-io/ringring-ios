@@ -241,7 +241,7 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     // Replace and show Call button
-    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Call", nil)
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CALL", nil)
                                                                          style:UIBarButtonItemStyleBordered
                                                                         target:self
                                                                         action:@selector(callManualNumber:)];
@@ -554,8 +554,8 @@
                 
                 // The contact is activated but not logged in
                 else {
-                    UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Call failed", nil)
-                                                                    message:NSLocalizedString(@"This user is not available at the moment", nil)
+                    UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CALL_FAILED", nil)
+                                                                    message:NSLocalizedString(@"THIS_USER_IS_CURRENTLY_NOT_AVAILABLE", nil)
                                                                    delegate:self
                                                           cancelButtonTitle:NSLocalizedString(@"OK",nil)
                                                           otherButtonTitles:nil];
@@ -565,8 +565,8 @@
             
             // The contact is not activated
             else {
-                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Call failed", nil)
-                                                                message:NSLocalizedString(@"This user is not registered at Zirgoo", nil)
+                UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CALL_FAILED", nil)
+                                                                message:NSLocalizedString(@"THIS_PERSON_IS_NOT_REGISTERED_AT_RINGRING", nil)
                                                                delegate:self
                                                       cancelButtonTitle:NSLocalizedString(@"OK",nil)
                                                       otherButtonTitles:nil];
@@ -576,20 +576,20 @@
                                            
         // Any other non-success message
         else if ([status.status isEqualToString:@"USER_NOT_FOUND"]) {
-            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"This email is not registered", nil)
-                                                                message:NSLocalizedString(@"Do you want to invite this person to use Zirgoo?", nil)
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"THIS_PERSON_IS_NOT_REGISTERED_AT_RINGRING", nil)
+                                                                message:NSLocalizedString(@"DO_YOU_WANT_TO_INVITE_TO_RINGRING", nil)
                                                                delegate:self
-                                                      cancelButtonTitle:NSLocalizedString(@"No",nil)
-                                                      otherButtonTitles:NSLocalizedString(@"Yes",nil), nil];
+                                                      cancelButtonTitle:NSLocalizedString(@"NO",nil)
+                                                      otherButtonTitles:NSLocalizedString(@"YES",nil), nil];
             [errorView show];
         }
                                            
         // Any other non-success message
         else {
-            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
+            UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
                                                                 message:NSLocalizedString(status.status, nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                       otherButtonTitles:nil,nil];
             [errorView show];
         }
@@ -607,13 +607,13 @@
         if([error code] == -1009) {
             errorMessage = [error localizedDescription];
         } else {
-            errorMessage = [NSString stringWithFormat:@"Internal communication error. (Code: %ld)", (long)[error code]];
+            errorMessage = [NSString stringWithFormat:NSLocalizedString(@"INTERNAL_COMMUNICATION_ERROR", nil), (long)[error code]];
         }
         
-        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil)
-                                                            message:NSLocalizedString(errorMessage, nil)
+        UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR",nil)
+                                                            message:errorMessage
                                                            delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"Continue",nil)
+                                                  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
                                                   otherButtonTitles:nil,nil];
         [errorView show];
 
@@ -695,34 +695,34 @@
         Status *status = [mappingResult.dictionary objectForKey:@""];
         
         if (status.success) {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Great",nil)
-                                                                message:NSLocalizedString(@"The invitation will be sent to your contact shortly, provided that no other invitation has not been sent", nil)
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GREAT",nil)
+                                                                message:NSLocalizedString(@"INVITATION_WILL_BE_SENT", nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                                       otherButtonTitles:nil,nil];
             [alertView show];
         }
         else if ([status.status isEqualToString:@"EMAIL_ALREADY_REGISTERED"]) {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
-                                                                message:NSLocalizedString(@"This email is already registered in Zirgoo.", nil)
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AUCH",nil)
+                                                                message:NSLocalizedString(@"EMAIL_ALREADY_REGISTERED", nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                                       otherButtonTitles:nil,nil];
             [alertView show];
         }
         else if ([status.status isEqualToString:@"INVITATION_LIMIT_NOT_EXCEEDED"]) {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
-                                                                message:NSLocalizedString(@"We already sent an invitation to this email recently.", nil)
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AUCH",nil)
+                                                                message:NSLocalizedString(@"INVITATION_SENT_RECENTLY", nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                                       otherButtonTitles:nil,nil];
             [alertView show];
         }
         else {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Auch",nil)
-                                                                message:NSLocalizedString(@"Cannot send invitation currently. Try again later", nil)
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AUCH",nil)
+                                                                message:NSLocalizedString(@"INVITATION_CANNOT_SEND", nil)
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                      cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                                       otherButtonTitles:nil,nil];
             [alertView show];
         }
@@ -732,10 +732,10 @@
          // Hide the loader animation
          [self dismissLoader];
          
-         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail",nil)
-                                                             message:NSLocalizedString(@"Could not send the invitation this time. Try again later", nil)
+         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AUCH",nil)
+                                                             message:NSLocalizedString(@"INVITATION_CANNOT_SEND", nil)
                                                             delegate:nil
-                                                   cancelButtonTitle:NSLocalizedString(@"Dismiss",nil)
+                                                   cancelButtonTitle:NSLocalizedString(@"DISMISS",nil)
                                                    otherButtonTitles:nil,nil];
          [alertView show];
      }];

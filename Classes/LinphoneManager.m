@@ -443,8 +443,8 @@ static void linphone_iphone_display_status(struct _LinphoneCore * lc, const char
 				data->notification = [[UILocalNotification alloc] init];
 				if (data->notification) {
 					data->notification.repeatInterval = 0;
-					data->notification.alertBody =[NSString  stringWithFormat:NSLocalizedString(@"IC_MSG",nil), [LinphoneHelper sipUserToEmail:address]];
-					data->notification.alertAction = NSLocalizedString(@"Answer", nil);
+					data->notification.alertBody =[NSString  stringWithFormat:NSLocalizedString(@"INCOMING_CALL",nil), [LinphoneHelper sipUserToEmail:address]];
+					data->notification.alertAction = NSLocalizedString(@"ANSWER", nil);
 					data->notification.soundName = @"ring.caf";
 					data->notification.userInfo = [NSDictionary dictionaryWithObject:callId forKey:@"callId"];
 					
@@ -499,8 +499,8 @@ static void linphone_iphone_display_status(struct _LinphoneCore * lc, const char
 
                 UILocalNotification *notification = [[UILocalNotification alloc] init];
                 notification.repeatInterval = 0;
-                notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"You miss %@ call", nil), [LinphoneHelper sipUserToEmail:address]];
-                notification.alertAction = NSLocalizedString(@"Show", nil);
+                notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"YOU_MISS_CALL", nil), [LinphoneHelper sipUserToEmail:address]];
+                notification.alertAction = NSLocalizedString(@"SHOW", nil);
                 notification.userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithUTF8String:linphone_call_log_get_call_id(log)] forKey:@"callLog"];
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
                 [notification release];
@@ -611,8 +611,8 @@ static void linphone_iphone_registration_state(LinphoneCore *lc, LinphoneProxyCo
                 UILocalNotification* notif = [[[UILocalNotification alloc] init] autorelease];
                 if (notif) {
                     notif.repeatInterval = 0;
-                    notif.alertBody = [NSString  stringWithFormat:NSLocalizedString(@"IM_MSG",nil), [LinphoneHelper sipUserToEmail:message.email]];
-                    notif.alertAction = NSLocalizedString(@"Show", nil);
+                    notif.alertBody = [NSString  stringWithFormat:NSLocalizedString(@"ICOMING_MESSAGE",nil), [LinphoneHelper sipUserToEmail:message.email]];
+                    notif.alertAction = NSLocalizedString(@"SHOW", nil);
                     notif.soundName = @"msg.caf";
                     notif.userInfo = [NSDictionary dictionaryWithObject:[message email] forKey:@"chat"];
                     
@@ -938,10 +938,10 @@ static LinphoneCoreVTable linphonec_vtable = {
 	NSError* err;
 	[audioSession setActive:NO error: &err]; 
 	if(!bAudioInputAvailable){
-		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"No microphone",nil)
-														message:NSLocalizedString(@"You need to plug a microphone to your device to use this application.",nil) 
+		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"NO_MICROPHONE",nil)
+														message:NSLocalizedString(@"PLUG_A_MICROPHONE",nil)
 													   delegate:nil 
-											  cancelButtonTitle:NSLocalizedString(@"Ok",nil) 
+											  cancelButtonTitle:NSLocalizedString(@"OK",nil)
 											  otherButtonTitles:nil ,nil];
 		[error show];
         [error release];
@@ -1279,10 +1279,10 @@ static void audioRouteChangeListenerCallback (
 
 - (void)call:(NSString *)address displayName:(NSString*)displayName transfer:(BOOL)transfer {
     if (!linphone_core_is_network_reachable(theLinphoneCore)) {
-		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"Network Error",nil)
-														message:NSLocalizedString(@"There is no network connection available, enable WIFI or WWAN prior to place a call",nil) 
+		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"NETWORK_ERROR",nil)
+														message:NSLocalizedString(@"NO_NETWORK",nil)
 													   delegate:nil 
-											  cancelButtonTitle:NSLocalizedString(@"Continue",nil) 
+											  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
 											  otherButtonTitles:nil];
 		[error show];
         [error release];
@@ -1292,10 +1292,10 @@ static void audioRouteChangeListenerCallback (
     CTCallCenter* callCenter = [[CTCallCenter alloc] init];
     if ([callCenter currentCalls]!=nil) {
         [LinphoneHelper logc:LinphoneLoggerError format:"GSM call in progress, cancelling outgoing SIP call request"];
-		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"Cannot make call",nil)
-														message:NSLocalizedString(@"Please terminate GSM call",nil) 
+		UIAlertView* error = [[UIAlertView alloc]	initWithTitle:NSLocalizedString(@"CANNOT_MAKE_CALL",nil)
+														message:NSLocalizedString(@"PLEASE_TERMINATE_GSM_CALL",nil)
 													   delegate:nil 
-											  cancelButtonTitle:NSLocalizedString(@"Continue",nil) 
+											  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
 											  otherButtonTitles:nil];
 		[error show];
         [error release];
@@ -1330,10 +1330,10 @@ static void audioRouteChangeListenerCallback (
         }
         linphone_address_destroy(linphoneAddress);
 	} else if (proxyCfg==nil){
-		UIAlertView* error = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid SIP address",nil)
-														message:NSLocalizedString(@"Either configure a SIP proxy server from settings prior to place a call or use a valid SIP address (I.E sip:john@example.net)",nil)
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"INVALID_SIP_ADDRESS",nil)
+														message:NSLocalizedString(@"INVALID_SIP_ADDRESS",nil)
 													   delegate:nil 
-											  cancelButtonTitle:NSLocalizedString(@"Continue",nil) 
+											  cancelButtonTitle:NSLocalizedString(@"CONTINUE",nil)
 											  otherButtonTitles:nil];
 		[error show];
 		[error release];
@@ -1394,8 +1394,7 @@ static void audioRouteChangeListenerCallback (
 		for(int i = 0; i < [tokenData length]; ++i) {
 			[tokenString appendFormat:@"%02X", (unsigned int)tokenBuffer[i]];
 		}
-		// NSLocalizedString(@"IC_MSG", nil); // Fake for genstrings
-		// NSLocalizedString(@"IM_MSG", nil); // Fake for genstrings
+
 #ifdef DEBUG
 #define APPMODE_SUFFIX @"dev"
 #else
