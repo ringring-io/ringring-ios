@@ -69,6 +69,7 @@
 		4D2546DC192AC0080000F736 /* libcunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546DB192AC0080000F736 /* libcunit.a */; };
 		4D2546DE192AC0B20000F736 /* libbzrtp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546DD192AC0B20000F736 /* libbzrtp.a */; };
 		4D3476F7194F921A00C5ADAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D3476F9194F921A00C5ADAB /* Localizable.strings */; };
+		4D3476FB194FB3F300C5ADAB /* logo_blue_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3476FA194FB3F300C5ADAB /* logo_blue_transparent.png */; };
 		4D400AEE18A663140047CDEC /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D400AED18A663140047CDEC /* Message.m */; };
 		4D5277281928CF5D002322F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5277271928CF5D002322F5 /* Images.xcassets */; };
 		4D591BF218BAC308001F2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D591BF118BAC308001F2C84 /* User.m */; };
@@ -268,6 +269,7 @@
 		4D2546DB192AC0080000F736 /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = "liblinphone-sdk/apple-darwin/lib/libcunit.a"; sourceTree = "<group>"; };
 		4D2546DD192AC0B20000F736 /* libbzrtp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbzrtp.a; path = "liblinphone-sdk/apple-darwin/lib/libbzrtp.a"; sourceTree = "<group>"; };
 		4D3476F8194F921A00C5ADAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4D3476FA194FB3F300C5ADAB /* logo_blue_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_blue_transparent.png; path = Resources/Images/logo_blue_transparent.png; sourceTree = "<group>"; };
 		4D400AEC18A663140047CDEC /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Models/Message.h; sourceTree = "<group>"; };
 		4D400AED18A663140047CDEC /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Models/Message.m; sourceTree = "<group>"; };
 		4D5277271928CF5D002322F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = app/Images.xcassets; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				4D14F51519494EFB00041A05 /* contacts_text_incoming.png */,
 				4DBEA46A1935255300555C92 /* call_secure_not_ok.png */,
 				4DBEA46B1935255300555C92 /* call_secure_ok.png */,
+				4D3476FA194FB3F300C5ADAB /* logo_blue_transparent.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				4DDE741B1948316A002765A1 /* README.md in Resources */,
 				4DBEA45F1935213F00555C92 /* led_online.png in Resources */,
 				4DBEA45D1935213F00555C92 /* led_login_failed.png in Resources */,
+				4D3476FB194FB3F300C5ADAB /* logo_blue_transparent.png in Resources */,
 				D3804E6015D92A57008072A5 /* msg.caf in Resources */,
 				4DBEA45C1935213F00555C92 /* led_logging_in.png in Resources */,
 				4DBEA45E1935213F00555C92 /* led_offline.png in Resources */,

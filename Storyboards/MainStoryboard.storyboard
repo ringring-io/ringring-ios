@@ -694,13 +694,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-jf-ur6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-jf-ur6">
                                 <rect key="frame" x="20" y="206" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2YM-1b-Sz3"/>
                                 </constraints>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Register at Ringring.io">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -722,10 +722,17 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCO-X3-MqC">
                                 <rect key="frame" x="20" y="130" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.34509804840000002" green="0.58823531870000001" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_blue_transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="cjh-tD-iww">
+                                <rect key="frame" x="90" y="261" width="180" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="r4t-Ne-JB6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -736,6 +743,9 @@
                             <constraint firstItem="jP4-uv-PuV" firstAttribute="top" secondItem="nCO-X3-MqC" secondAttribute="bottom" constant="8" symbolic="YES" id="C1V-hU-C2g"/>
                             <constraint firstItem="nCO-X3-MqC" firstAttribute="top" secondItem="rz3-dQ-mwy" secondAttribute="top" constant="130" id="HBK-gV-L4a"/>
                             <constraint firstItem="jP4-uv-PuV" firstAttribute="leading" secondItem="rz3-dQ-mwy" secondAttribute="leading" constant="20" symbolic="YES" id="R3y-ET-q2N"/>
+                            <constraint firstItem="cjh-tD-iww" firstAttribute="leading" secondItem="rz3-dQ-mwy" secondAttribute="leading" constant="90" id="Ryx-XK-nWb"/>
+                            <constraint firstItem="cjh-tD-iww" firstAttribute="top" secondItem="YCn-jf-ur6" secondAttribute="bottom" constant="25" id="Tmb-Yd-9CB"/>
+                            <constraint firstAttribute="trailing" secondItem="cjh-tD-iww" secondAttribute="trailing" constant="50" id="Xd0-zn-Dp7"/>
                             <constraint firstItem="YCn-jf-ur6" firstAttribute="leading" secondItem="rz3-dQ-mwy" secondAttribute="leading" constant="20" symbolic="YES" id="YRB-5B-kUV"/>
                             <constraint firstItem="nCO-X3-MqC" firstAttribute="leading" secondItem="rz3-dQ-mwy" secondAttribute="leading" constant="20" symbolic="YES" id="wvY-OM-jNd"/>
                         </constraints>
@@ -764,7 +774,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Check your mailbox" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-uF-GFq">
-                                <rect key="frame" x="20" y="196" width="280" height="30"/>
+                                <rect key="frame" x="20" y="187" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bjK-wL-sNY"/>
@@ -776,12 +786,12 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oC0-vb-wAx">
-                                <rect key="frame" x="20" y="234" width="280" height="30"/>
+                                <rect key="frame" x="20" y="225" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="yPE-hh-Fck"/>
                                 </constraints>
-                                <state key="normal" title="Activate">
+                                <state key="normal" title="Activate at Ringing.io">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -789,26 +799,37 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Cne-Yo-uBO">
-                                <rect key="frame" x="20" y="70" width="280" height="118"/>
+                                <rect key="frame" x="20" y="100" width="280" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Your account has been
 created and the activation 
-code has been emailed</string>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
+code is emailed</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.34509804840000002" green="0.58823531870000001" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_blue_transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="GpC-Op-HxE">
+                                <rect key="frame" x="90" y="280" width="180" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="O1a-rY-pWr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GpC-Op-HxE" firstAttribute="top" secondItem="oC0-vb-wAx" secondAttribute="bottom" constant="25" id="4eA-cK-x5R"/>
                             <constraint firstItem="oC0-vb-wAx" firstAttribute="leading" secondItem="Kb6-MZ-U2V" secondAttribute="leading" constant="20" symbolic="YES" id="5iD-hN-WEC"/>
                             <constraint firstAttribute="trailing" secondItem="ee1-uF-GFq" secondAttribute="trailing" constant="20" symbolic="YES" id="7ub-wX-ADH"/>
+                            <constraint firstItem="GpC-Op-HxE" firstAttribute="leading" secondItem="Kb6-MZ-U2V" secondAttribute="leading" constant="90" id="Ksg-DL-ejP"/>
                             <constraint firstItem="ee1-uF-GFq" firstAttribute="top" secondItem="Cne-Yo-uBO" secondAttribute="bottom" constant="8" symbolic="YES" id="bsF-o8-NNg"/>
+                            <constraint firstAttribute="trailing" secondItem="GpC-Op-HxE" secondAttribute="trailing" constant="50" id="hUH-64-cbu"/>
                             <constraint firstAttribute="trailing" secondItem="Cne-Yo-uBO" secondAttribute="trailing" constant="20" symbolic="YES" id="hXo-gN-61f"/>
                             <constraint firstAttribute="trailing" secondItem="oC0-vb-wAx" secondAttribute="trailing" constant="20" symbolic="YES" id="ihn-60-T48"/>
                             <constraint firstItem="Cne-Yo-uBO" firstAttribute="leading" secondItem="Kb6-MZ-U2V" secondAttribute="leading" constant="20" symbolic="YES" id="l9N-5X-Dz9"/>
                             <constraint firstItem="ee1-uF-GFq" firstAttribute="leading" secondItem="Kb6-MZ-U2V" secondAttribute="leading" constant="20" symbolic="YES" id="oib-hM-bSb"/>
                             <constraint firstItem="oC0-vb-wAx" firstAttribute="top" secondItem="ee1-uF-GFq" secondAttribute="bottom" constant="8" symbolic="YES" id="rxV-Sa-TVz"/>
-                            <constraint firstItem="Cne-Yo-uBO" firstAttribute="top" secondItem="Kb6-MZ-U2V" secondAttribute="top" constant="70" id="t4b-kc-AJd"/>
+                            <constraint firstItem="Cne-Yo-uBO" firstAttribute="top" secondItem="Kb6-MZ-U2V" secondAttribute="top" constant="100" id="t4b-kc-AJd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GbR-RB-sDO"/>
@@ -871,8 +892,8 @@ code has been emailed</string>
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Self destruct after" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OUV-Xm-vqB">
-                                                    <rect key="frame" x="15" y="11" width="137" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Call log expiry time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OUV-Xm-vqB">
+                                                    <rect key="frame" x="15" y="11" width="147" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -934,8 +955,8 @@ code has been emailed</string>
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Self destruct after" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rOR-RH-sAy">
-                                                    <rect key="frame" x="15" y="11" width="137" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Message expiry time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rOR-RH-sAy">
+                                                    <rect key="frame" x="15" y="11" width="159" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1198,6 +1219,7 @@ code has been emailed</string>
         <image name="contacts_text.png" width="128" height="128"/>
         <image name="contacts_text_incoming.png" width="128" height="128"/>
         <image name="led_offline.png" width="16" height="16"/>
+        <image name="logo_blue_transparent.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
