@@ -1,6 +1,10 @@
-# Ringring on iOS #
+[![license MIT](http://img.shields.io/badge/license-GPLv2-orange.png)](http://opensource.org/licenses/gpl-2.0.php)
 
-Ringring is a Phone and Messaging application built for privacy with open architectures. You can originate calls and send messages in an easy and secured way with no data-collecting man or company in the middle. The technology is freely available for public.
+# Ringring.io on iOS #
+
+Ringring.io (http://www.ringring.io) is a Phone and Messaging application built for privacy with open architectures. You can originate calls and send messages in an easy and secured way with no data-collecting man or company in the middle. The technology is freely available for public.
+
+![Ringring.io Screenshot 1](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Screenshots/screenshot0_small.png) &nbsp;&nbsp;&nbsp; ![Ringring.io Screenshot 2](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Screenshots/screenshot1_small.png)
 
 ## Build Prerequisites ##
 
