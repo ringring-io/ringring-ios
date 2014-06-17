@@ -340,9 +340,11 @@
 
     }
     
-    if ([Settings autoClearChatHistory]) {
-        [Message deleteMessagesBeforeDate:firstLogDate];
-    }
+    // Re-calculate message expiry times
+    [Message updateExpiredMessages];
+    
+    // Delete expired messages
+    [Message deleteExpiredMessages];
 }
 
 - (void)deleteLogsWithRecentContact:(RecentContact *)recentContact
