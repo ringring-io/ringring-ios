@@ -330,14 +330,14 @@
 
 - (void)deleteLogsAuto
 {
-    NSDate *currentDate = [NSDate date];
-    NSDate *firstLogDate = [currentDate dateByAddingTimeInterval:
-                            [Settings clearIntervalToTimeInterval:
-                             [Settings autoClearCallHistory]] * -1];
-
-    if ([Settings autoClearCallHistory]) {
+    // Clear call history if self destruct option is enabled
+    if ([Settings isAutoClearCallHistoryEnabled]) {
+        NSDate *currentDate = [NSDate date];
+        NSDate *firstLogDate = [currentDate dateByAddingTimeInterval:
+                                [Settings clearIntervalToTimeInterval:
+                                 [Settings autoClearCallHistory]] * -1];
+        
         [self deleteCallLogBeforeDate:firstLogDate];
-
     }
     
     // Re-calculate message expiry times
