@@ -74,7 +74,7 @@
 "CALL_FAILED" = "Call failed";
 "THIS_USER_IS_CURRENTLY_NOT_AVAILABLE" = "This user is currently not available";
 "THIS_PERSON_IS_NOT_REGISTERED_AT_RINGRING" = "This person is not registered at Ringring.io";
-"DO_YOU_WANT_TO_INVITE_TO_RINGRING" = "Do you want to invite this person to use Ringring.io?";
+"DO_YOU_WANT_TO_INVITE_TO_RINGRING" = "Do you want to send an invite?";
 "GREAT" = "Great";
 "INVITATION_WILL_BE_SENT" = "The invitation will be sent to your contact shortly, provided that no other invitation has not been sent";
 "AUCH" = "Auch";

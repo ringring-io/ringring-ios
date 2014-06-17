@@ -611,7 +611,7 @@ static void linphone_iphone_registration_state(LinphoneCore *lc, LinphoneProxyCo
                 UILocalNotification* notif = [[[UILocalNotification alloc] init] autorelease];
                 if (notif) {
                     notif.repeatInterval = 0;
-                    notif.alertBody = [NSString  stringWithFormat:NSLocalizedString(@"ICOMING_MESSAGE",nil), [LinphoneHelper sipUserToEmail:message.email]];
+                    notif.alertBody = [NSString  stringWithFormat:NSLocalizedString(@"INCOMING_MESSAGE",nil), [LinphoneHelper sipUserToEmail:message.email]];
                     notif.alertAction = NSLocalizedString(@"SHOW", nil);
                     notif.soundName = @"msg.caf";
                     notif.userInfo = [NSDictionary dictionaryWithObject:[message email] forKey:@"chat"];
