@@ -385,7 +385,7 @@
     [self updateRecentsBadgeNumber];
 }
 
-    - (IBAction)enterEditMode:(id)sender
+- (IBAction)enterEditMode:(id)sender
 {
     // Set edit mode and replace and show Done button
     if (![recentsTableView isEditing]) {
@@ -447,7 +447,9 @@
     [self deleteLogsAuto];
     
     // Refresh recent contacts list
-    [self refreshRecentContacts:nil];
+    if(![recentsTableView isEditing]) {
+        [self refreshRecentContacts:nil];
+    }
 }
 
 #pragma mark - Recents Refresh Timer Functions
