@@ -313,11 +313,16 @@
     while(logListRef != NULL) {
         LinphoneCallLog *callLog = (LinphoneCallLog *) logListRef->data;
         
+        // Get call start and end dates
         NSDate *callStartDate = [NSDate dateWithTimeIntervalSince1970:linphone_call_log_get_start_date(callLog)];
+        int callDuration = linphone_call_log_get_duration(callLog);
+        NSDate *callEndDate = [NSDate dateWithTimeInterval:callDuration sinceDate:callStartDate];
+        
+        // Get the next log element
         logListRef = ms_list_next(logListRef);
         
-        // Remove call logs before date
-        if ([callStartDate compare:date] == NSOrderedAscending) {
+        // Remove call logs before call end date
+        if ([callEndDate compare:date] == NSOrderedAscending) {
             linphone_core_remove_call_log([LinphoneManager getLc], callLog);
         }
     }
