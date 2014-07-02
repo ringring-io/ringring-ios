@@ -53,6 +53,7 @@
 		4D0F310A192AC9C80093A1CB /* libortp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220FAD2C10765B400068D98F /* libortp.a */; };
 		4D14F5141949002900041A05 /* ringring_io.pem in Resources */ = {isa = PBXBuildFile; fileRef = 4D14F5131949002900041A05 /* ringring_io.pem */; };
 		4D14F51619494EFB00041A05 /* contacts_text_incoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D14F51519494EFB00041A05 /* contacts_text_incoming.png */; };
+		4D20B4251964AF4A00565219 /* ringring-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D20B4241964AF4A00565219 /* ringring-Info.plist */; };
 		4D2546C2192ABEEF0000F736 /* libxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C1192ABEEF0000F736 /* libxml2.a */; };
 		4D2546C4192ABF030000F736 /* libwels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C3192ABF030000F736 /* libwels.a */; };
 		4D2546C6192ABF1D0000F736 /* libopus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2546C5192ABF1D0000F736 /* libopus.a */; };
@@ -253,6 +254,7 @@
 		4D094F14188C0BB200038D6A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4D14F5131949002900041A05 /* ringring_io.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ringring_io.pem; path = Resources/ringring_io.pem; sourceTree = "<group>"; };
 		4D14F51519494EFB00041A05 /* contacts_text_incoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contacts_text_incoming.png; path = Resources/Images/contacts_text_incoming.png; sourceTree = "<group>"; };
+		4D20B4241964AF4A00565219 /* ringring-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ringring-Info.plist"; sourceTree = "<group>"; };
 		4D2546C1192ABEEF0000F736 /* libxml2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml2.a; path = "liblinphone-sdk/apple-darwin/lib/libxml2.a"; sourceTree = "<group>"; };
 		4D2546C3192ABF030000F736 /* libwels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwels.a; path = "liblinphone-sdk/apple-darwin/lib/libwels.a"; sourceTree = "<group>"; };
 		4D2546C5192ABF1D0000F736 /* libopus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopus.a; path = "liblinphone-sdk/apple-darwin/lib/libopus.a"; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				4DDE741D1948318C002765A1 /* main.m */,
 				4DDE741C19483176002765A1 /* ringring_Prefix.pch */,
+				4D20B4241964AF4A00565219 /* ringring-Info.plist */,
 				DFA4B8DBD9F24580839A73F4 /* Pods.xcconfig */,
 				4DDE741A1948316A002765A1 /* README.md */,
 				4DDE74201948F7C9002765A1 /* Products */,
@@ -828,6 +831,7 @@
 				4D3476FB194FB3F300C5ADAB /* logo_blue_transparent.png in Resources */,
 				D3804E6015D92A57008072A5 /* msg.caf in Resources */,
 				4DBEA45C1935213F00555C92 /* led_logging_in.png in Resources */,
+				4D20B4251964AF4A00565219 /* ringring-Info.plist in Resources */,
 				4DBEA45E1935213F00555C92 /* led_offline.png in Resources */,
 				4DBEA4651935230300555C92 /* contacts_status_unregistered.png in Resources */,
 				D3804E6215D92A57008072A5 /* msg.wav in Resources */,
