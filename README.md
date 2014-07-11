@@ -4,7 +4,7 @@
 
 Ringring.io (http://www.ringring.io) is a Phone and Messaging application built for privacy with open architectures. You can originate calls and send messages in an easy and secured way with no data-collecting man or company in the middle. The technology is freely available for public.
 
-![Download on the App Store](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Download_on_the_App_Store.png)
+[![Download on the App Store](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Download_on_the_App_Store.png)](https://itunes.apple.com/us/app/ringring/id883785412?ls=1&mt=8)
 
 ![Ringring.io Screenshot 1](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Screenshots/screenshot0_small.png) &nbsp;&nbsp;&nbsp; ![Ringring.io Screenshot 2](https://raw.githubusercontent.com/ringring-io/ringring-ios/master/Screenshots/screenshot1_small.png)
 
